@@ -182,6 +182,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.github.mohammadatif:Animatoo:master' //for animatoo (animation)
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3' //for gif (animation)
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

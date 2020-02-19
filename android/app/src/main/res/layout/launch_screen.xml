@@ -43,6 +43,12 @@
         android:layout_alignParentBottom="true"
         />
 
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/dancer"
+        android:src="@drawable/gif" />
+
     <ImageView
         android:layout_width="300dp"
         android:layout_height="200dp"

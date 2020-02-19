@@ -12,54 +12,33 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 
 public class SplashActivity extends AppCompatActivity{
-    protected int waktu_delay = 1000;
     protected ImageView beaver;
     protected MediaPlayer mp;
+    protected int waktu_delay = 2000;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         
-        this.beaver = (ImageView)findViewById(R.id.beaver);
-        this.mp = MediaPlayer.create(SplashActivity.this,R.raw.splash_sound);
-        
+        // this.beaver = (ImageView)findViewById(R.id.beaver);
         // beaver.animate().alpha(0f).setDuration(500);
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
-        beaver.startAnimation(animation);
+        this.mp = MediaPlayer.create(SplashActivity.this,R.raw.whistle);
+        
+        // Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        // startActivity(intent);
+        // Animatoo.animateFade(SplashActivity.this);
+        // finish();
 
-        // new Handler().postDelayed(new Runnable(){
-        //     @Override
-        //     public void run(){
-        //         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-        //         startActivity(intent);
-        //         Animatoo.animateFade(SplashActivity.this);
-        //         finish();
-        //     }
-        // },waktu_delay);
-
-        Thread timer = new Thread(){
-
+        new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
                 
-                try {
-                    sleep(3000);
-                    mp.start();
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                    super.run(); 
-                    finish();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }  
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                Animatoo.animateFade(SplashActivity.this);
+                mp.start();
+                finish();
             }
-        };
-        timer.start();
+        },waktu_delay);
     }
-
-    // @Override
-    // protected void onPause(){
-    //     super.onPause();
-    //     this.mp.release();
-        
-    // }
 }
