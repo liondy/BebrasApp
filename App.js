@@ -18,6 +18,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 function App() {
+  React.useEffect(()=>{
+		SplashScreen.hide();
+	},[]);
   return (
     <NavigationContainer>
       {/* Rest of your app code */}
