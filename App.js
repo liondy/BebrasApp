@@ -5,27 +5,25 @@
  * @format
  * @flow
  */
-
-import React, {useEffect} from 'react';
-import SplashScreen from 'react-native-splash-screen'
-
+import 'react-native-gesture-handler';
+import * as React from 'react';
 import {
   StyleSheet,
   View,
   Text,
 } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const App = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  },[]);
-  return(
-        <View style={styles.sectionContainer}>
-            <Text>Hello!</Text>
-        </View>
 
+function App() {
+  return (
+    <NavigationContainer>
+      {/* Rest of your app code */}
+    </NavigationContainer>
   );
-};
+}
 
 const styles = StyleSheet.create({
   sectionContainer: {

@@ -183,6 +183,8 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.github.mohammadatif:Animatoo:master' //for animatoo (animation)
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3' //for gif (animation)
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
