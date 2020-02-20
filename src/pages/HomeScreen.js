@@ -1,48 +1,87 @@
-import * as React from 'react';
-import { View,Image } from 'react-native'
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Home from '../tabs/Home';
+import React from 'react';
+import {
+    StyleSheet,
+    Image,
+} from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Beranda from '../tabs/Home';
 import Profil from '../tabs/Profile';
 import Toko from '../tabs/Shop';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
-function Beranda(){
+function Home(){
     return(
         <Image
-        style={{width: 100, height: 100}}
-        source={require('../assets/picture/beranda_tab.png')}
+            style={styles.tabIcon}
+            source={require('../assets/picture/tabs/beranda_tab.png')}
         />
     );
 }
 
+function Profile(){
+    return(
+        <Image
+            style={styles.tabIcon}
+            source={require('../assets/picture/tabs/profile_tab.png')}
+        />
+    )
+}
+
+function Shop(){
+    return(
+        <Image
+            style={styles.tabIcon}
+            source={require('../assets/picture/tabs/toko_tab.png')}
+        />
+    )
+}
+
 function HomeScreen() {
     return (
-        <Tab.Navigator 
-            barStyle={{backgroundColor: 'transparent'}}>
+        <Tab.Navigator
+            tabBarOptions={{
+                showLabel: false,
+                style:{
+                    paddingHorizontal: 20,
+                },
+            }}>
             <Tab.Screen
                 name='Beranda'
-                component={Home}
+                component={Beranda}
                 options={{
-                    tabBarLabel: '',
-                    tabBarIcon: ({props}) => (
-                        <View
-                            style={{
-                                position: 'absolute',
-                                height: 150,
-                                width: 100,
-                                borderRadius: 58,
-                            }}>
-                            <Beranda {...props}/>
-                        </View>
-                    ),
-                    tabBarColor: '#fff'
+                    tabBarIcon:({props})=>
+                        <Home {...props}/>
                 }}
             />
-            <Tab.Screen name="Profil" component={Profil} />
-            <Tab.Screen name="Toko" component={Toko} />
+            <Tab.Screen
+                name="Profil"
+                component={Profil}
+                options={{
+                    title:'Profil',
+                    tabBarIcon:({props})=>
+                        <Profile {...props}/>
+                }}
+            />
+            <Tab.Screen
+                name="Toko"
+                component={Toko}
+                options={{
+                    title:'Toko',
+                    tabBarIcon:({props})=>
+                        <Shop {...props}/>
+                }}
+            />
         </Tab.Navigator>
     );
 }
+
+const styles=StyleSheet.create({
+    tabIcon:{
+        width: 120,
+        height: 135,
+        resizeMode: 'stretch',
+    }
+});
 
 export default HomeScreen;

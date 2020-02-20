@@ -6,11 +6,9 @@
  * @flow
  */
 import 'react-native-gesture-handler';
-import * as React from 'react';
+import React from 'react';
 import {
   StyleSheet,
-  View,
-  Text,
   Image
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
@@ -20,11 +18,11 @@ import Home from './src/pages/HomeScreen';
 
 const Stack = createStackNavigator();
 
-function Logo(){
+function HomeTitle(){
   return(
     <Image
-      style={{width: 100, height: 50}}
-      source={require('./src/assets/picture/beranda.png')}
+      style={styles.homeTitle}
+      source={require('./src/assets/picture/home/beranda.png')}
     />
   );
 }
@@ -40,12 +38,11 @@ function App() {
           name="Home"
           component={Home}
           options={{
-            headerTitle: props => <Logo {...props}/>,
+            headerTitle: props => <HomeTitle {...props}/>,
             headerStyle: {
               backgroundColor: 'none',
               elevation: 0
-            },
-            headerTintColor: '#fff',
+            }
           }}
         />
       </Stack.Navigator>
@@ -54,10 +51,12 @@ function App() {
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-      flex: 1,
+  homeTitle:{
+    width: 250,
+    height: 150,
+    resizeMode: 'stretch',
+    marginTop: 10
   }
 });
 
 export default App;
-
