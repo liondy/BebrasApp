@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
@@ -13,15 +13,89 @@ import Modal from 'react-native-modal'
 const HomeStack = createStackNavigator();
 
 
-function Home() {
-    return (
-        <View style={styles.content}>
-            <ImageBackground
-                source={require('../assets/picture/backgrounds/primary.png')}
-                style={styles.background}>
-            </ImageBackground>
-        </View>
+class Home extends Component {
+    state={
+        isModalVisible: false
+    };
+    toggle = () => {
+        this.setState({
+            isModalVisible: !this.state.isModalVisible
+        });
+    };
+    render(){
+        return (
+            <View style={styles.container}>
+                <View style={styles.settings}>
+                    <TouchableOpacity
+                        onPress={this.toggle}>
+                        <Button
+                            type='outline'
+                            buttonStyle={styles.settings_button}
+                            icon={<Image
+                                source={require('../assets/picture/home/settings_icon.png')}
+                            />}
+                        />
+                    </TouchableOpacity>
+                </View>
+                <ImageBackground
+                    source={require('../assets/picture/backgrounds/primary.png')}
+                    style={styles.background}>
+                    <View style={styles.content}>
+                        <View style={styles.prop}>
+                            <UserCharacter/>
+                        </View>
+                        <View style={styles.prop}>
+                            <PilihSoal/>
+                        </View>
+                        <View style={styles.prop}>
+                            <Soal/>
+                        </View>
+                    </View>
+                    <Modal
+                        isVisible={this.state.isModalVisible}
+                        onBackdropPress={() => this.setState({ isModalVisible: false })}
+                        backdropColor="white"
+                        backdropOpacity={0.8}
+                        animationIn="zoomInDown"
+                        animationOut="zoomOutUp"
+                        animationInTiming={600}
+                        animationOutTiming={600}
+                        backdropTransitionInTiming={600}
+                        backdropTransitionOutTiming={600}
+                    >
+                        <View style={{ flex: 1 }}>
+                            <Text>Modal for settings</Text>
+                            <Button title="Hide modal" onPress={this.toggle} />
+                        </View>
+                    </Modal>
+                </ImageBackground>
+            </View>
+        );
+    }
+}
+
+function Soal(){
+    return(
+        <Image
+            source={require('../assets/picture/home/2016.png')}
+        />
     );
+}
+
+function PilihSoal(){
+    return(
+        <Image
+            source={require('../assets/picture/home/pilih_soal.png')}
+        />
+    );
+}
+
+function UserCharacter(){
+    return(
+        <Image
+            source={require('../assets/picture/profile/original_character.png')}
+        />
+    )
 }
 
 function HomeTitle(){
@@ -33,36 +107,6 @@ function HomeTitle(){
     );
 }
 
-function SettingsLogo({navigation}){
-    return(
-        <TouchableOpacity
-            style={styles.touchable}>
-            <Button
-                type='outline'
-                buttonStyle={styles.settings_button}
-                containerStyle={styles.containerStyle}
-                onPress={()=>navigation.navigate('Settings')}
-                icon={<Image
-                    style={styles.settings}
-                    source={require('../assets/picture/home/settings_icon.png')}
-                />}
-            />
-        </TouchableOpacity>
-    )
-}
-
-function SettingsScreen({navigation}){
-    return(
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Modal
-                isVisible='true'>
-                <Text style={{fontSize: 30}}>Settings</Text>
-                <Button onPress={() => navigation.goBack()} title="Dismiss" />
-            </Modal>
-        </View>
-    )
-}
-
 function HomeStackScreen(){
     return(
         <HomeStack.Navigator mode="modal">
@@ -71,23 +115,18 @@ function HomeStackScreen(){
                 component={Home}
                 options={{
                     headerTitle: props => <HomeTitle {...props}/>,
-                    headerRight: props => <SettingsLogo {...props}/>,
                     headerStyle: {
                         backgroundColor: 'transparent',
                         elevation: 0
                     }
                 }}
             />
-            <HomeStack.Screen
-                name="Settings"
-                component={SettingsScreen}
-            />
         </HomeStack.Navigator>
     );
 }
 
 const styles = StyleSheet.create({
-    content:{
+    container:{
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
@@ -107,8 +146,16 @@ const styles = StyleSheet.create({
         elevation: 50,
         padding: 10,
     },
-    touchable: {
-        marginRight: 30
+    settings: {
+        flexDirection: 'row-reverse'
+    },
+    content: {
+        flexDirection: 'column',
+        marginTop: 0
+    },
+    prop: {
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
