@@ -9,6 +9,7 @@ import {
 import { Button } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Modal from 'react-native-modal'
 const HomeStack = createStackNavigator();
 
 
@@ -34,29 +35,33 @@ function HomeTitle(){
 
 function SettingsLogo({navigation}){
     return(
+        <TouchableOpacity
+            style={styles.touchable}>
             <Button
                 type='outline'
                 buttonStyle={styles.settings_button}
                 containerStyle={styles.containerStyle}
-                onPress={() => navigation.navigate('setting')}
+                onPress={()=>navigation.navigate('Settings')}
                 icon={<Image
                     style={styles.settings}
                     source={require('../assets/picture/home/settings_icon.png')}
                 />}
             />
+        </TouchableOpacity>
     )
 }
 
-function ModalScreen({navigation}){
+function SettingsScreen({navigation}){
     return(
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={{fontSize: 30}}>Settings</Text>
-            <Button onPress={() => navigation.goBack()} title="Dismiss" />
+            <Modal
+                isVisible='true'>
+                <Text style={{fontSize: 30}}>Settings</Text>
+                <Button onPress={() => navigation.goBack()} title="Dismiss" />
+            </Modal>
         </View>
     )
 }
-
-const RootStack = createStackNavigator();
 
 function HomeStackScreen(){
     return(
@@ -73,23 +78,12 @@ function HomeStackScreen(){
                     }
                 }}
             />
+            <HomeStack.Screen
+                name="Settings"
+                component={SettingsScreen}
+            />
         </HomeStack.Navigator>
     );
-}
-
-function RootStackScreen(){
-    return(
-        <RootStack.Navigator mode="modal">
-            <RootStack.Screen
-                name="Main"
-                component={HomeStackScreen}
-                options={{
-                    headerShown:false
-                }}
-            />
-            <RootStack.Screen name="setting" component={ModalScreen}/>
-        </RootStack.Navigator>
-    )
 }
 
 const styles = StyleSheet.create({
@@ -118,4 +112,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default RootStackScreen;
+export default HomeStackScreen;
