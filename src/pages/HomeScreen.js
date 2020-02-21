@@ -7,33 +7,40 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Beranda from '../tabs/Home';
 import Profil from '../tabs/Profile';
 import Toko from '../tabs/Shop';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 
 function Home(){
     return(
-        <Image
-            style={styles.tabIcon}
-            source={require('../assets/picture/tabs/beranda_tab.png')}
-        />
+        <TouchableOpacity>
+            <Image
+                style={styles.tabIcon}
+                source={require('../assets/picture/tabs/beranda_tab.png')}
+            />
+        </TouchableOpacity>
     );
 }
 
 function Profile(){
     return(
-        <Image
-            style={styles.tabIcon}
-            source={require('../assets/picture/tabs/profile_tab.png')}
-        />
+        <TouchableOpacity>
+            <Image
+                style={styles.tabIcon}
+                source={require('../assets/picture/tabs/profile_tab.png')}
+            />
+        </TouchableOpacity>
     )
 }
 
 function Shop(){
     return(
-        <Image
-            style={styles.tabIcon}
-            source={require('../assets/picture/tabs/toko_tab.png')}
-        />
+        <TouchableOpacity>
+            <Image
+                style={styles.tabIcon}
+                source={require('../assets/picture/tabs/toko_tab.png')}
+            />
+        </TouchableOpacity>
     )
 }
 

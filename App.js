@@ -7,25 +7,13 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
-import {
-  StyleSheet,
-  Image
-} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/pages/HomeScreen';
 
-const Stack = createStackNavigator();
 
-function HomeTitle(){
-  return(
-    <Image
-      style={styles.homeTitle}
-      source={require('./src/assets/picture/home/beranda.png')}
-    />
-  );
-}
+const Stack = createStackNavigator();
 
 function App() {
   React.useEffect(()=>{
@@ -38,25 +26,11 @@ function App() {
           name="Home"
           component={Home}
           options={{
-            headerTitle: props => <HomeTitle {...props}/>,
-            headerStyle: {
-              backgroundColor: 'transparent',
-              elevation: 0
-            }
+            headerShown: false
           }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  homeTitle:{
-    width: 250,
-    height: 150,
-    resizeMode: 'stretch',
-    marginTop: 10
-  }
-});
-
 export default App;
