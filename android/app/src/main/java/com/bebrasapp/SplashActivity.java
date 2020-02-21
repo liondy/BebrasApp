@@ -29,10 +29,6 @@ public class SplashActivity extends AppCompatActivity{
 
         this.splashvid.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.vdsplash));
         this.splashvid.start();
-        // Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-        // startActivity(intent);
-        // Animatoo.animateFade(SplashActivity.this);
-        // finish();
 
         new Handler().postDelayed(new Runnable(){
             @Override
