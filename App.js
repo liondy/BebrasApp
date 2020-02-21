@@ -40,7 +40,7 @@ function App() {
           options={{
             headerTitle: props => <HomeTitle {...props}/>,
             headerStyle: {
-              backgroundColor: 'none',
+              backgroundColor: 'transparent',
               elevation: 0
             }
           }}
