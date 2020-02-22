@@ -12,66 +12,60 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Modal from 'react-native-modal'
 const HomeStack = createStackNavigator();
 
+function Home({ navigation }) {
+    const[isVisible,toggle]=React.useState(false);
+    
+    navigation.setOptions({
+        headerRight: () => (
+            <TouchableOpacity
+                style={{marginRight: 15}}
+                onPress={() => toggle(currentIsOpen => !currentIsOpen)}>
+                <Button
+                    type='outline'
+                    buttonStyle={styles.settings_button}
+                    icon={<Image
+                        source={require('../assets/picture/home/settings_icon.png')}
+                    />}
+                />
+            </TouchableOpacity>
+        ),
+    });
 
-class Home extends Component {
-    state={
-        isModalVisible: false
-    };
-    toggle = () => {
-        this.setState({
-            isModalVisible: !this.state.isModalVisible
-        });
-    };
-    render(){
-        return (
-            <View style={styles.container}>
-                <View style={styles.settings}>
-                    <TouchableOpacity
-                        onPress={this.toggle}>
-                        <Button
-                            type='outline'
-                            buttonStyle={styles.settings_button}
-                            icon={<Image
-                                source={require('../assets/picture/home/settings_icon.png')}
-                            />}
-                        />
-                    </TouchableOpacity>
-                </View>
-                <ImageBackground
-                    source={require('../assets/picture/backgrounds/primary.png')}
-                    style={styles.background}>
-                    <View style={styles.content}>
-                        <View style={styles.prop}>
-                            <UserCharacter/>
-                        </View>
-                        <View style={styles.prop}>
-                            <PilihSoal/>
-                        </View>
-                        <View style={styles.prop}>
-                            <Soal/>
-                        </View>
+    return (
+        <View style={styles.container}>
+            <ImageBackground
+                source={require('../assets/picture/backgrounds/primary.png')}
+                style={styles.background}>
+                <View style={styles.content}>
+                    <View style={styles.character}>
+                        <UserCharacter/>
                     </View>
-                    <Modal
-                        isVisible={this.state.isModalVisible}
-                        onBackdropPress={() => this.setState({ isModalVisible: false })}
-                        backdropColor="white"
-                        backdropOpacity={0.8}
-                        animationIn="zoomInDown"
-                        animationOut="zoomOutUp"
-                        animationInTiming={600}
-                        animationOutTiming={600}
-                        backdropTransitionInTiming={600}
-                        backdropTransitionOutTiming={600}
-                    >
-                        <View style={{ flex: 1 }}>
-                            <Text>Modal for settings</Text>
-                            <Button title="Hide modal" onPress={this.toggle} />
-                        </View>
-                    </Modal>
-                </ImageBackground>
-            </View>
-        );
-    }
+                    <View style={styles.prop}>
+                        <PilihSoal/>
+                    </View>
+                    <View style={styles.prop}>
+                        <Soal/>
+                    </View>
+                </View>
+                <Modal
+                    style={styles.modal}
+                    isVisible={isVisible}
+                    backdropColor="white"
+                    backdropOpacity={0.8}
+                    animationIn="zoomInDown"
+                    animationOut="zoomOutUp"
+                    animationInTiming={600}
+                    animationOutTiming={600}
+                    backdropTransitionInTiming={600}
+                    backdropTransitionOutTiming={600}>
+                    <View style={styles.modal_content}>
+                        <Text style={styles.contentTitle}>Modal for settings</Text>
+                        <Button title="Hide modal" onPress={() => toggle(currentIsOpen => !currentIsOpen)} />
+                    </View>
+                </Modal>
+            </ImageBackground>
+        </View>
+    );
 }
 
 function Soal(){
@@ -146,17 +140,38 @@ const styles = StyleSheet.create({
         elevation: 50,
         padding: 10,
     },
-    settings: {
-        flexDirection: 'row-reverse'
+    modal: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 0,
+        height: '100%',
+        width: '100%'
+    },
+    modal_content: {
+        backgroundColor: 'white',
+        padding: 22,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 4,
+        borderColor: 'rgba(0,0,0,0.1)'
     },
     content: {
         flexDirection: 'column',
         marginTop: 0
     },
     prop: {
-        justifyContent: 'center',
         alignItems: 'center'
-    }
+    },
+    character: {
+        alignSelf: 'baseline', //ini buat si view nya dia jd wrap content
+        marginLeft: -270, //remove this if the image character has been fix
+        marginTop: -130 //remove this if the image character has been fix
+    },
+    contentTitle: {
+        fontSize: 20,
+        marginBottom: 12,
+    },
 });
 
 export default HomeStackScreen;

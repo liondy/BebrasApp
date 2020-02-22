@@ -12,12 +12,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/pages/HomeScreen';
 
+//bingung naro kode ini dimana
+var Sound = require('react-native-sound');
+Sound.setCategory('Playback');
+var backgroundSong = new Sound('background.mp3',Sound.MAIN_BUNDLE,(error)=>{
+    if(error){
+        console.log('failed to load the sound',error);
+        return;
+    }
+});
 
 const Stack = createStackNavigator();
 
 function App() {
   React.useEffect(()=>{
-		SplashScreen.hide();
+    SplashScreen.hide();
 	},[]);
   return (
     <NavigationContainer>
