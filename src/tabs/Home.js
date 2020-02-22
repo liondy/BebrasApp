@@ -1,15 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     StyleSheet,
     View,
     Image,
     ImageBackground,
     Text,
+    FlatList
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import Modal from 'react-native-modal'
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import Modal from 'react-native-modal';
+
+const DATA = [
+    {
+        id: '1',
+        title: '2016',
+        image: <Image resizeMode= 'contain' source={require('../assets/picture/home/2016.png')}/>
+    },
+    {
+        id: '2',
+        title: '2017',
+        image: <Image source={require('../assets/picture/home/2017.png')}/>
+    }
+];
+
+function Soal({title}){
+    return(
+        <View>
+            <Text>{title}</Text>
+        </View>
+    );
+}
+
 const HomeStack = createStackNavigator();
 
 function Home({ navigation }) {
@@ -43,8 +66,16 @@ function Home({ navigation }) {
                     <View style={styles.prop}>
                         <PilihSoal/>
                     </View>
-                    <View style={styles.prop}>
-                        <Soal/>
+                    <View>
+                        <ScrollView contentContainerStyle={styles.contentContainer}>
+                            <FlatList
+                                horizontal
+                                data={DATA}
+                                renderItem={({ item }) => <Soal title={item.image}/>}
+                                keyExtractor={item => item.id}
+                            />
+                        </ScrollView>
+                        
                     </View>
                 </View>
                 <Modal
@@ -65,14 +96,6 @@ function Home({ navigation }) {
                 </Modal>
             </ImageBackground>
         </View>
-    );
-}
-
-function Soal(){
-    return(
-        <Image
-            source={require('../assets/picture/home/2016.png')}
-        />
     );
 }
 
@@ -172,6 +195,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 12,
     },
+    contentContainer: {
+        paddingVertical: 20
+    }
 });
 
 export default HomeStackScreen;
