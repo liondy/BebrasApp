@@ -11,23 +11,39 @@ import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/pages/HomeScreen';
+import { BackHandler,DeviceEventEmitter } from 'react-native';
 
 //bingung naro kode ini dimana
 var Sound = require('react-native-sound');
-Sound.setCategory('Playback');
 var backgroundSong = new Sound('background.mp3',Sound.MAIN_BUNDLE,(error)=>{
     if(error){
         console.log('failed to load the sound',error);
         return;
     }
+    backgroundSong.setNumberOfLoops(-1);
+    backgroundSong.play();
 });
+
+BackHandler.addEventListener('hardwareBackPress',function(){
+  if(Home){
+    backgroundSong.pause();
+  }
+})
 
 const Stack = createStackNavigator();
 
 function App() {
   React.useEffect(()=>{
     SplashScreen.hide();
-	},[]);
+    backgroundSong.play();
+    console.log('kepanggil');
+    DeviceEventEmitter.addListener(
+      'ON_HOME_BUTTON_PRESSED',
+      () => {
+        backgroundSong.pause();
+      });
+},[]);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
