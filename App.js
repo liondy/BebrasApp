@@ -36,7 +36,6 @@ function App() {
   React.useEffect(()=>{
     SplashScreen.hide();
     backgroundSong.play();
-    console.log('kepanggil');
     DeviceEventEmitter.addListener(
       'ON_HOME_BUTTON_PRESSED',
       () => {

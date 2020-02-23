@@ -16,20 +16,28 @@ const DATA = [
     {
         id: '1',
         title: '2016',
-        image: <Image resizeMode= 'contain' source={require('../assets/picture/home/2016.png')}/>
+        image: <Image source={require('../assets/picture/home/2016.png')}/>
     },
     {
         id: '2',
         title: '2017',
         image: <Image source={require('../assets/picture/home/2017.png')}/>
+    },
+    {
+        id: '3',
+        title: '2018',
+        image: <Image source={require('../assets/picture/home/2018.png')}/>
+    },
+    {
+        id: '4',
+        title: '2019',
+        image: <Image source={require('../assets/picture/home/2019.png')}/>
     }
 ];
 
 function Soal({title}){
     return(
-        <View>
-            <Text>{title}</Text>
-        </View>
+        <TouchableOpacity>{title}</TouchableOpacity>
     );
 }
 
@@ -59,41 +67,41 @@ function Home({ navigation }) {
             <ImageBackground
                 source={require('../assets/picture/backgrounds/primary.png')}
                 style={styles.background}>
-                <View style={styles.content}>
-                    <View style={styles.character}>
-                        <UserCharacter/>
-                    </View>
-                    <View style={styles.prop}>
-                        <PilihSoal/>
-                    </View>
-                    <View>
-                        <ScrollView contentContainerStyle={styles.contentContainer}>
+                <ScrollView
+                    style={styles.contentContainer}>
+                    <View style={styles.content}>
+                        <View style={styles.character}>
+                            <UserCharacter/>
+                        </View>
+                        <View style={styles.prop}>
+                            <PilihSoal/>
+                        </View>
+                        <View style={styles.pilihan_soal}>
                             <FlatList
                                 horizontal
                                 data={DATA}
                                 renderItem={({ item }) => <Soal title={item.image}/>}
                                 keyExtractor={item => item.id}
                             />
-                        </ScrollView>
-                        
+                        </View>
                     </View>
-                </View>
-                <Modal
-                    style={styles.modal}
-                    isVisible={isVisible}
-                    backdropColor="white"
-                    backdropOpacity={0.8}
-                    animationIn="zoomInDown"
-                    animationOut="zoomOutUp"
-                    animationInTiming={600}
-                    animationOutTiming={600}
-                    backdropTransitionInTiming={600}
-                    backdropTransitionOutTiming={600}>
-                    <View style={styles.modal_content}>
-                        <Text style={styles.contentTitle}>Modal for settings</Text>
-                        <Button title="Hide modal" onPress={() => toggle(currentIsOpen => !currentIsOpen)} />
-                    </View>
-                </Modal>
+                    <Modal
+                        style={styles.modal}
+                        isVisible={isVisible}
+                        backdropColor="white"
+                        backdropOpacity={0.8}
+                        animationIn="zoomInDown"
+                        animationOut="zoomOutUp"
+                        animationInTiming={600}
+                        animationOutTiming={600}
+                        backdropTransitionInTiming={600}
+                        backdropTransitionOutTiming={600}>
+                        <View style={styles.modal_content}>
+                            <Text style={styles.contentTitle}>Modal for settings</Text>
+                            <Button title="Hide modal" onPress={() => toggle(currentIsOpen => !currentIsOpen)} />
+                        </View>
+                    </Modal>
+                </ScrollView>
             </ImageBackground>
         </View>
     );
@@ -110,6 +118,7 @@ function PilihSoal(){
 function UserCharacter(){
     return(
         <Image
+            style={styles.userCharacter}
             source={require('../assets/picture/profile/original_character.png')}
         />
     )
@@ -186,17 +195,22 @@ const styles = StyleSheet.create({
     prop: {
         alignItems: 'center'
     },
+    userCharacter: {
+        width: 250,
+        height: 250,
+    },
     character: {
         alignSelf: 'baseline', //ini buat si view nya dia jd wrap content
-        marginLeft: -270, //remove this if the image character has been fix
-        marginTop: -130 //remove this if the image character has been fix
+        paddingHorizontal: 50
     },
     contentTitle: {
         fontSize: 20,
         marginBottom: 12,
     },
-    contentContainer: {
-        paddingVertical: 20
+    pilihan_soal: {
+        alignSelf: 'baseline',
+        marginTop: -10,
+        paddingBottom: 35
     }
 });
 
