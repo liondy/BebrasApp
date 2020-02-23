@@ -24,6 +24,8 @@ var backgroundSong = new Sound('background.mp3',Sound.MAIN_BUNDLE,(error)=>{
     backgroundSong.play();
 });
 
+export {backgroundSong};
+
 BackHandler.addEventListener('hardwareBackPress',function(){
   if(Home){
     backgroundSong.pause();
@@ -34,6 +36,7 @@ const Stack = createStackNavigator();
 
 function App() {
   React.useEffect(()=>{
+    console.log('kepanggil');
     SplashScreen.hide();
     backgroundSong.play();
     DeviceEventEmitter.addListener(
@@ -41,7 +44,7 @@ function App() {
       () => {
         backgroundSong.pause();
       });
-},[]);
+  },[]);
 
   return (
     <NavigationContainer>
