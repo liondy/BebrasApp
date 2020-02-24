@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1081251006510",
+    "firebase_url": "https://bebrasapp-ea861.firebaseio.com",
+    "project_id": "bebrasapp-ea861",
+    "storage_bucket": "bebrasapp-ea861.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081251006510:android:179e3b67bb752e20b937bf",
+        "android_client_info": {
+          "package_name": "com.bebrasapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081251006510-kl3jljqmk6lj31n78l2baafke6mea6dg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1QMtRTlGh_KUDPr2jTLAHjT36GmQTavI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081251006510-kl3jljqmk6lj31n78l2baafke6mea6dg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
