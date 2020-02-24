@@ -4,13 +4,15 @@ import {
     View,
     Image,
     ImageBackground,
-    Text,
     FlatList
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
+import ToggleSwitch from 'toggle-switch-react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import { backgroundSong } from '../../App';
 
 const DATA = [
     {
@@ -45,6 +47,15 @@ const HomeStack = createStackNavigator();
 
 function Home({ navigation }) {
     const[isVisible,toggle]=React.useState(false);
+    const[isMusicOn,turnMusic]=React.useState(true);
+
+    const changeMusic = () => {
+        turnMusic(isMusicOn => !isMusicOn);
+    };
+
+    const handleMusic = (isOn) => {
+        isOn? backgroundSong.play():backgroundSong.stop();
+    }
     
     navigation.setOptions({
         headerRight: () => (
@@ -97,8 +108,20 @@ function Home({ navigation }) {
                         backdropTransitionInTiming={600}
                         backdropTransitionOutTiming={600}>
                         <View style={styles.modal_content}>
-                            <Text style={styles.contentTitle}>Modal for settings</Text>
-                            <Button title="Hide modal" onPress={() => toggle(currentIsOpen => !currentIsOpen)} />
+                            <ToggleSwitch
+                                isOn={isMusicOn}
+                                onColor='green'
+                                label='Suara'
+                                labelStyle={styles.toggleLabel}
+                                size='large'
+                                onToggle={
+                                    isMusicOn => {
+                                        changeMusic();
+                                        handleMusic(isMusicOn);
+                                    }
+                                }
+                            />
+                            <Button title="Close" onPress={() => toggle(currentIsOpen => !currentIsOpen)} />
                         </View>
                     </Modal>
                 </ScrollView>
@@ -187,6 +210,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 4,
         borderColor: 'rgba(0,0,0,0.1)'
+    },
+    toggleLabel: {
+        color: 'black',
+        fontWeight: '900',
     },
     content: {
         flexDirection: 'column',
