@@ -38,18 +38,6 @@ const DATA = [
     }
 ];
 
-function GoToBtn({screenName,tahun}){
-    const navigation = useNavigation();
-
-    return(
-        <Button
-            onPress={()=> navigation.navigate(screenName,{
-                tahunId: tahun
-            })}
-        />
-    );
-}
-
 var temp = 0;//variabel global yang akan menyimpan nilai tahun
 
 function ListSoal({title,id,selectSoal}){

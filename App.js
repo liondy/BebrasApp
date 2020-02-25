@@ -13,7 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/pages/HomeScreen';
 import StartingSoal from './src/pages/StartingSoal';
 import IsiSoal from './src/pages/IsiSoal';
-import { BackHandler,DeviceEventEmitter } from 'react-native';
+import { BackHandler,DeviceEventEmitter,Image, ImageBackground } from 'react-native';
 
 //bingung naro kode ini dimana
 var Sound = require('react-native-sound');
@@ -61,6 +61,10 @@ function App() {
         <Stack.Screen
           name="StartingSoal"
           component={StartingSoal}
+          options={{
+            headerTitle: '',
+            headerTransparent: true,
+          }}
         />
         {/* <Stack.Screen
           name="IsiSoal"

@@ -50,7 +50,7 @@ function HomeScreen() {
             tabBarOptions={{
                 showLabel: false,
                 style:{
-                    paddingHorizontal: 20,
+                    paddingHorizontal: 5,
                 },
             }}>
             <Tab.Screen
