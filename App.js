@@ -11,6 +11,8 @@ import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/pages/HomeScreen';
+import StartingSoal from './src/pages/StartingSoal';
+import IsiSoal from './src/pages/IsiSoal';
 import { BackHandler,DeviceEventEmitter } from 'react-native';
 
 //bingung naro kode ini dimana
@@ -23,7 +25,7 @@ var backgroundSong = new Sound('background.mp3',Sound.MAIN_BUNDLE,(error)=>{
     backgroundSong.setNumberOfLoops(-1);
     backgroundSong.play();
 });
-
+// untuk digunakan di home agar dapat di toogle
 export {backgroundSong};
 
 BackHandler.addEventListener('hardwareBackPress',function(){
@@ -56,6 +58,14 @@ function App() {
             headerShown: false
           }}
         />
+        <Stack.Screen
+          name="StartingSoal"
+          component={StartingSoal}
+        />
+        {/* <Stack.Screen
+          name="IsiSoal"
+          component={IsiSoal}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

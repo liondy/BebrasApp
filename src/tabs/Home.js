@@ -13,38 +13,63 @@ import Modal from 'react-native-modal';
 import ToggleSwitch from 'toggle-switch-react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import { backgroundSong } from '../../App';
+import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
     {
         id: '1',
-        title: '2016',
+        tahun: '2016',
         image: <Image source={require('../assets/picture/home/2016.png')}/>
     },
     {
         id: '2',
-        title: '2017',
+        tahun: '2017',
         image: <Image source={require('../assets/picture/home/2017.png')}/>
     },
     {
         id: '3',
-        title: '2018',
+        tahun: '2018',
         image: <Image source={require('../assets/picture/home/2018.png')}/>
     },
     {
         id: '4',
-        title: '2019',
+        tahun: '2019',
         image: <Image source={require('../assets/picture/home/2019.png')}/>
     }
 ];
 
-function Soal({title}){
+function GoToBtn({screenName,tahun}){
+    const navigation = useNavigation();
+
     return(
-        <TouchableOpacity>{title}</TouchableOpacity>
+        <Button
+            onPress={()=> navigation.navigate(screenName,{
+                tahunId: tahun
+            })}
+        />
+    );
+}
+
+var temp = 0;//variabel global yang akan menyimpan nilai tahun
+
+function ListSoal({title,id,selectSoal}){
+    const navigation = useNavigation();
+    
+    return(
+        <TouchableOpacity 
+        onPressIn={() => selectSoal(id)}
+        onPress={() => navigation.navigate('StartingSoal',{
+            tahunId: temp
+            })
+        }>
+        {title}
+        </TouchableOpacity>
     );
 }
 
 const HomeStack = createStackNavigator();
 
+// mirip penggunaan class 
 function Home({ navigation }) {
     const[isVisible,toggle]=React.useState(false);
     const[isMusicOn,turnMusic]=React.useState(true);
@@ -57,6 +82,10 @@ function Home({ navigation }) {
         isOn? backgroundSong.play():backgroundSong.stop();
     }
     
+    const selectSoal = (id) => {
+        temp = id;
+    }
+
     navigation.setOptions({
         headerRight: () => (
             <TouchableOpacity
@@ -91,7 +120,7 @@ function Home({ navigation }) {
                             <FlatList
                                 horizontal
                                 data={DATA}
-                                renderItem={({ item }) => <Soal title={item.image}/>}
+                                renderItem={({ item }) => <ListSoal title={item.image} selectSoal={selectSoal} id={item.tahun}/>}
                                 keyExtractor={item => item.id}
                             />
                         </View>
@@ -158,7 +187,7 @@ function HomeTitle(){
 
 function HomeStackScreen(){
     return(
-        <HomeStack.Navigator mode="modal">
+        <HomeStack.Navigator>
             <HomeStack.Screen
                 name="Home"
                 component={Home}
