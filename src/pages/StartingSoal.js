@@ -11,8 +11,6 @@ import { Button } from 'react-native-elements';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import useNavigation from '@react-navigation/native';
 
-const soalStack = createStackNavigator();
-
 function TahunSoal({tahun}){
     if (tahun=='2016'){
         return(
@@ -84,17 +82,8 @@ function HiasanBawah(){
     )
 }
 
-function BtnSoal(){
-    return(
-        <TouchableOpacity>
-            <Image source={require('../assets/picture/startingSoal/start.png')}/>
-        </TouchableOpacity>
-    )
-}
-
 function StartingSoal({route, navigation}){
     const { tahunId } = route.params;
-    
     return(
         <>
         <View style={styles.container}>
@@ -119,40 +108,18 @@ function StartingSoal({route, navigation}){
                     
                     <View style={styles.cacing}>
                         <HiasanBawah/>
-                    </View>
-                    
+                    </View>  
             </ImageBackground>
         </View>
 
         <View style={styles.btnSoal}>
-            <BtnSoal/>
+            <TouchableOpacity onPress={()=> navigation.navigate('IsiSoal')}>
+                <Image source={require('../assets/picture/startingSoal/start.png')}/>
+            </TouchableOpacity>
         </View>
         </>
     )
 }
-
-function IsiSoal({navigate}){
-    return(
-        <View style={StyleSheet.container}>
-            <Text>Hello</Text>
-        </View>
-    )
-}
-
-// function MyStack(){
-//     return(
-//         <soalStack.Navigator>
-//             <soalStack.Screen
-//                 name='StartingSoal'
-//                 component={StartingSoal(route,navigation)}
-//             />     
-//             <soalStack.Screen
-//                 name="IsiSoal"
-//                 component={IsiSoal}
-//             />
-//         </soalStack.Navigator>
-//     )
-// }
 
 const styles = StyleSheet.create({
     container:{
@@ -177,8 +144,8 @@ const styles = StyleSheet.create({
 
     },
     karakter:{
-        width: 140,
-        height: 130,
+        width: 160,
+        height: 150,
         alignSelf: 'center',
         marginBottom: -30
     },

@@ -10,10 +10,13 @@ import React from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import { BackHandler,DeviceEventEmitter} from 'react-native';
+
 import Home from './src/pages/HomeScreen';
 import StartingSoal from './src/pages/StartingSoal';
 import IsiSoal from './src/pages/IsiSoal';
-import { BackHandler,DeviceEventEmitter,Image, ImageBackground } from 'react-native';
+import TantanganSoal from './src/pages/TantanganSoal';
 
 //bingung naro kode ini dimana
 var Sound = require('react-native-sound');
@@ -66,10 +69,20 @@ function App() {
             headerTransparent: true,
           }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="IsiSoal"
           component={IsiSoal}
-        /> */}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="TantanganSoal"
+          component={TantanganSoal}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
