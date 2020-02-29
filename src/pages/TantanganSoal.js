@@ -93,7 +93,7 @@ function TantanganSoal({navigation}){
                             kota mana yang tidak dapat dikunjungi?
                         </Text>
                         <TouchableOpacity 
-                            onPress={()=> navigation.navigate('IsiSoal')}
+                            onPress={() => navigation.navigate('IsiSoal')}
                             style={styles.toBtn}>
                             <Image
                                 style={styles.btnback}
@@ -147,19 +147,17 @@ function TantanganSoal({navigation}){
                 animationInTiming={600}
                 animationOutTiming={600}
                 backdropTransitionInTiming={600}
-                backdropTransitionOutTiming={600}>
-                    <View style={{marginTop: 22}}>
-                        <View style={{width: '100%',height: '100%'}}>
-                            <Text style={styles.jawaban}>Jawaban : </Text>
-                            <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
-                            <Gambar/>
-                            
-                            
-                        <TouchableHighlight>
-                                <Button title="Close" onPress={() => 
-                                toggle(currentIsOpen => !currentIsOpen)}/>
-                        </TouchableHighlight>
-                        </View>
+                backdropTransitionOutTiming={600}>                 
+                    <View style={{width: '100%',height: '100%',marginTop: 10}}>
+                        <Text style={styles.jawaban}>Jawaban : </Text>
+                        <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
+                        <Gambar/> 
+                    <TouchableOpacity>
+                            <Button 
+                                color='#FF5733' 
+                                title="Next" 
+                                onPress={() => navigation.navigate('SelesaiSoal')}/>
+                    </TouchableOpacity>
                     </View>
                 </Modal>
             </View>
@@ -197,7 +195,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15
+        padding: 15,
+        fontFamily: 'KiriFont'
     },
     waktu:{
         marginTop: 10
@@ -240,6 +239,17 @@ const styles = StyleSheet.create({
         height: 50,
         marginTop: 70,
         marginRight: 10
+    },
+    btnNext: {
+        borderRadius: 50,
+        marginTop: 10,
+        paddingVertical: 15,
+        backgroundColor: '#FF5733'
+    },
+    txNext: {
+        fontFamily: 'KiriFont',
+        fontSize: 15,
+        textAlign: 'center'
     }
 })
 

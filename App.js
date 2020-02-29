@@ -17,6 +17,7 @@ import Home from './src/pages/HomeScreen';
 import StartingSoal from './src/pages/StartingSoal';
 import IsiSoal from './src/pages/IsiSoal';
 import TantanganSoal from './src/pages/TantanganSoal';
+import SelesaiSoal from './src/pages/SelesaiSoal';
 
 //bingung naro kode ini dimana
 var Sound = require('react-native-sound');
@@ -79,6 +80,13 @@ function App() {
         <Stack.Screen
           name="TantanganSoal"
           component={TantanganSoal}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="SelesaiSoal"
+          component={SelesaiSoal}
           options={{
             headerShown: false,
           }}
