@@ -9,9 +9,8 @@ import {
     Alert
 } from 'react-native';
 import { Button } from 'react-native-elements';
-import useNavigation from '@react-navigation/native';
 import CountDown from 'react-native-countdown-component';
-import { TouchableOpacity, FlatList, TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
 import Sound from 'react-native-sound';
 
 var correct = new Sound('correct.mp3', Sound.MAIN_BUNDLE, (error)=> {

@@ -4,39 +4,35 @@ import {
     View,
     Image,
     ImageBackground,
-    Text
 } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Button } from 'react-native-elements';
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
-import useNavigation from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function TahunSoal({tahun}){
     if (tahun=='2016'){
         return(
             <Image
-            source={require('../assets/picture/startingSoal/2016.png')}
+                source={require('../assets/picture/startingSoal/2016.png')}
             />
         )
     }
     else if (tahun=='2017'){
         return(
             <Image
-            source={require('../assets/picture/startingSoal/2017.png')}
+                source={require('../assets/picture/startingSoal/2017.png')}
             />
         )
     }        
     else if (tahun=='2018'){
         return(
             <Image
-            source={require('../assets/picture/startingSoal/2018.png')}
+                source={require('../assets/picture/startingSoal/2018.png')}
             />
         )
     }    
     else if (tahun=='2019'){
         return(
             <Image
-            source={require('../assets/picture/startingSoal/2019.png')}
+                source={require('../assets/picture/startingSoal/2019.png')}
             />
         )
     }
@@ -86,37 +82,39 @@ function StartingSoal({route, navigation}){
     const { tahunId } = route.params;
     return(
         <>
-        <View style={styles.container}>
-            <ImageBackground
-                source={require('../assets/picture/backgrounds/primary.png')}
-                style={styles.background}>
-                    <View style={styles.tahunSoal}>
-                        <TahunSoal tahun={tahunId}/>
-                    </View>
-                    <View style={styles.totalSoal}>
-                        <TotalSoal/>
-                    </View>
-                    <View style={styles.waktu}>
-                        <Waktu/>
-                    </View>
-                    <View>
-                        <GoImg/>
-                    </View>
-                    <View style={styles.karakterContainer}>
-                        <Karakter/>
-                    </View>
-                    
-                    <View style={styles.cacing}>
-                        <HiasanBawah/>
-                    </View>  
-            </ImageBackground>
-        </View>
-
-        <View style={styles.btnSoal}>
-            <TouchableOpacity onPress={()=> navigation.navigate('IsiSoal')}>
-                <Image source={require('../assets/picture/startingSoal/start.png')}/>
-            </TouchableOpacity>
-        </View>
+            <View style={styles.container}>
+                <ImageBackground
+                    source={require('../assets/picture/backgrounds/primary.png')}
+                    style={styles.background}>
+                        <View style={styles.tahunSoal}>
+                            <TahunSoal tahun={tahunId}/>
+                        </View>
+                        <View style={styles.totalSoal}>
+                            <TotalSoal/>
+                        </View>
+                        <View style={styles.waktu}>
+                            <Waktu/>
+                        </View>
+                        <View>
+                            <GoImg/>
+                        </View>
+                        <View style={styles.karakterContainer}>
+                            <Karakter/>
+                        </View>
+                        <View style={styles.cacing}>
+                            <HiasanBawah/>
+                        </View>  
+                </ImageBackground>
+            </View>
+            <View style={styles.btnSoal}>
+                <TouchableOpacity
+                    onPress={()=> navigation.navigate('IsiSoal'),{
+                        tahunId: tahunId,
+                        awal: true,
+                    }}>
+                    <Image source={require('../assets/picture/startingSoal/start.png')}/>
+                </TouchableOpacity>
+            </View>
         </>
     )
 }

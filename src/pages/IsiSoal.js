@@ -4,11 +4,7 @@ import {
     View,
     Image,
     ImageBackground,
-    Text,
-    ScrollView
 } from 'react-native';
-import { Button } from 'react-native-elements';
-import CountDown from 'react-native-countdown-component';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
@@ -29,38 +25,54 @@ function BtnTantangan(){
     )
 }
 
-function DeskripsiSoal(){
+let availableSoal = []; //list of available numbers
+let answered = 0; //how many the user has answered
+let currentNumber = 0; //give the function the current number
+function IsiSoal({route,navigation}){
+    const { tahunId } = route.params;
+    const { awal } = route.params; //checked if it is the beginnning or the middle of the soal
+    const isAwal = (awal) => {
+        if(awal){
+            for (let index = 0; index < 24; index++) {
+                availableSoal.pop(); //removing cache, make availableSoal to []
+            }
+            for (let index = 0; index < 24; index++) {
+                availableSoal.push(true); //make all numbers available again
+            }
+            answered = 0; //start a new game
+            return true; //means you can start the game
+        }
+        else {
+            if(answered==12){
+                return false; //means you has to stop the game because you already have all 12 questions
+            }
+            else{
+                return true; //means you still can have the game until 12 question
+            }
+        }
+    }
+    const randomNomorSoal = () => {
+        do{
+            let nomor = Math.floor(Math.random() * 24)+1; //random number 1-24
+            console.log('nomor soal: '+nomor);
+        }
+        while(availableSoal[nomor] = false);
+        availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
+        answered++; //increment the answered question
+        return nomor; //gets the new number of soal
+    };
+    componentDidMount(){
+        if(isAwal({awal})){
+            currentNumber = randomNomorSoal();
+            import DeskripsiSoal from "'../assets/soal/"+{tahunId}+"/"+currentNumber+"'";
+        }
+    }
     return(
-        <ScrollView>
-            <ImageBackground 
-            style={styles.bgSoal}
-            source={require('../assets/picture/soal/bgsoal.png')}>
-            <Text style={styles.textSoal} numberOflines={10}>
-                Bebras Joni ingin melakukan perjalanan untuk mengunjungi 5 kota di negaranya:
-                Kotasatu, Kotadua, Kotatiga, Kotaempat, Kotalima, Kotaenam. Kota-kota tersebut
-                dihubungkan dengan jalur bus. Rute bus yang tersedia (dalam dua arah) adalah
-                sebagai berikut:{"\n"}
-                    <Text> 
-                    1. Kotatiga - Kotasatu{"\n"}
-                    2. Kotasatu - Kotadua{"\n"}
-                    3. Kotaenam - Kotatiga{"\n"}
-                    4. Kotalima - Kotaempat{"\n"}
-                    </Text>
-            </Text>
-        </ImageBackground>
-        </ScrollView> 
-    )
-}
-
-function IsiSoal({navigation}){
-    return(
-        <>
         <View style={styles.container}>
             <ImageBackground
                 source={require('../assets/picture/backgrounds/primary.png')}
                 style={styles.background}>
                 <ImgSoal/>
-
                 <View style={styles.soalContainer}>
                     <DeskripsiSoal/>
                 </View>
@@ -69,7 +81,6 @@ function IsiSoal({navigation}){
                 </View>
             </ImageBackground>
         </View>
-        </>
     )
 }
 

@@ -11,7 +11,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
 import ToggleSwitch from 'toggle-switch-react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5'
 import { backgroundSong } from '../../App';
 import { useNavigation } from '@react-navigation/native';
 
@@ -45,9 +44,9 @@ function ListSoal({title,id,selectSoal}){
     
     return(
         <TouchableOpacity 
-        onPressIn={() => selectSoal(id)}
-        onPress={() => navigation.navigate('StartingSoal',{
-            tahunId: temp
+            onPressIn={() => selectSoal(id)}
+            onPress={() => navigation.navigate('StartingSoal',{
+                tahunId: temp
             })
         }>
         {title}
