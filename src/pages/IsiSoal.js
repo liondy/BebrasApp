@@ -4,6 +4,8 @@ import {
     View,
     Image,
     ImageBackground,
+    BackHandler,
+    Alert
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -24,6 +26,22 @@ function IsiSoal({route,navigation}){
     const { tahunId } = route.params;
     const { awal } = route.params; //checked if it is the beginnning or the middle of the soal
     React.useEffect(()=>{
+        BackHandler.addEventListener('hardwareBackPress', function(){
+            Alert.alert(
+                'Keluar?',
+                'Apakah kamu yakin ingin keluar dari game ini?',
+                [
+                    {
+                        text: 'Tidak',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    {text: 'Iya', onPress: () => navigation.navigate('Home')},
+                ],
+                {cancelable: false},
+            );
+            return true;
+        });
         if(isAwal({awal})){
             currentNumber = randomNomorSoal();
             console.log('current number: '+currentNumber);

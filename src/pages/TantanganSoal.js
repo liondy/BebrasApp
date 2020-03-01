@@ -5,7 +5,9 @@ import {
     Image,
     Text,
     ImageBackground,
-    Button
+    Button,
+    BackHandler,
+    Alert
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 import { TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
@@ -33,22 +35,6 @@ var wrong = new Sound('wrong.mp3', Sound.MAIN_BUNDLE, (error)=> {
 
 export {wrong};
 
-function Waktu(){
-    return(
-        <CountDown style={styles.waktu}
-            until={3*60}
-            size={15}
-            onFinish={()=> alert('FINISH')}
-            digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#FFBD33'}}
-            digitTxtStyle={{color: '#F0B50B'}}
-            timeToShow={['M', 'S']}
-            timeLabels={{m: null, s: null}}
-            separatorStyle={{color: '#F0B50B'}}
-            showSeparator
-        />
-    )
-}
-
 function GambarBenar(){
     return(
         <View style={styles.penjelasanContainer}>
@@ -74,8 +60,7 @@ export {GambarSalah};
 
 
 var temp = 0; //bener atau salah
-// var soal = <Soal20161/>
-// var pilihan = <Pilihan20161 onPress={()=>this.toggle,this.temp}/>
+var currentTime = 180;
 
 function TantanganSoal({route,navigation}){
     const[isVisible,toggle]=React.useState(false);
@@ -93,6 +78,22 @@ function TantanganSoal({route,navigation}){
     var jawaban = <Jawaban20161/>
 
     React.useEffect(()=>{
+        BackHandler.addEventListener('hardwareBackPress', function(){
+            Alert.alert(
+                'Keluar?',
+                'Apakah kamu yakin ingin keluar dari game ini?',
+                [
+                    {
+                        text: 'Tidak',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    {text: 'Iya', onPress: () => navigation.navigate('Home')},
+                ],
+                {cancelable: false},
+            );
+            return true;
+        });
         if(tahunId=='2016'){
             switch(nomor){
                 case 1:
@@ -112,7 +113,24 @@ function TantanganSoal({route,navigation}){
                 <ImageBackground
                     style={styles.background}
                     source={require('../assets/picture/backgrounds/primary.png')}>
-                    <Waktu/>
+                    <CountDown style={styles.waktu}
+                        until={currentTime}
+                        onChange = {()=>{
+                            currentTime = currentTime-1
+                        }}
+                        size={15}
+                        onFinish={()=> {
+                            toggle(currentIsOpen=>!currentIsOpen),
+                            wrong.play(),
+                            currentTime = 180
+                        }}
+                        digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#FFBD33'}}
+                        digitTxtStyle={{color: '#F0B50B'}}
+                        timeToShow={['M', 'S']}
+                        timeLabels={{m: null, s: null}}
+                        separatorStyle={{color: '#F0B50B'}}
+                        showSeparator
+                    />
                     <View style={styles.tantanganCont}>
                         <ImageBackground
                             source={require('../assets/picture/tantangan/Dasar.png')}
@@ -142,15 +160,21 @@ function TantanganSoal({route,navigation}){
                     animationOutTiming={600}
                     backdropTransitionInTiming={600}
                     backdropTransitionOutTiming={600}>
-                    <View>
-                        <View>
-                            {jawaban}
-                            {temp==1?<GambarBenar/>:<GambarSalah/>}
-                        <TouchableHighlight>
-                                <Button title="Close" onPress={() => 
-                                toggle(currentIsOpen => !currentIsOpen)}/>
-                        </TouchableHighlight>
+                    <View style={{width: '100%',height: '100%',marginTop: 10}}>
+                        {jawaban}
+                        {temp==1?<GambarBenar/>:<GambarSalah/>}
+                        <View style={{flexDirection: 'row'}}>
+                            <TouchableOpacity
+                                onPress={()=> {navigation.navigate('PenjelasanScreen'),toggle(currentIsOpen => !currentIsOpen)}}>
+                                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
+                            </TouchableOpacity>
                         </View>
+                        
+                        <TouchableOpacity
+                            style={styles.btnNext}
+                            onPress={() => {navigation.navigate('SelesaiSoal'),toggle(currentIsOpen => !currentIsOpen)}}>
+                            <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
+                        </TouchableOpacity>
                     </View>
                 </Modal>
             </View>
