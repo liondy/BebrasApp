@@ -6,7 +6,8 @@ import {
     ImageBackground,
     Text,
     Modal,
-    Alert
+    Alert,
+    TouchableOpacity
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import CountDown from 'react-native-countdown-component';
@@ -129,6 +130,15 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    txTantangan:{
+        color : '#FF5733',
+        fontWeight: 'bold',
+        fontSize: 20,
+        lineHeight: 40,
+        includeFontPadding: true,
+        padding: 15,
+        fontFamily: 'KiriFont'
+    },
     waktu:{
         marginTop: 10
     },
@@ -170,6 +180,14 @@ const styles = StyleSheet.create({
         height: 50,
         marginTop: 70,
         marginRight: 10
+    },
+    btnNext: {
+        alignSelf: 'flex-end'
+    },
+    txNext: {
+        fontFamily: 'KiriFont',
+        fontSize: 15,
+        textAlign: 'center'
     }
 })
 

@@ -10,29 +10,33 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 function TahunSoal({tahun}){
     if (tahun=='2016'){
         return(
-            <Image
-                source={require('../assets/picture/startingSoal/2016.png')}
+            <Image 
+            style={styles.tahun}
+            source={require('../assets/picture/startingSoal/2016.png')}
             />
         )
     }
     else if (tahun=='2017'){
         return(
             <Image
-                source={require('../assets/picture/startingSoal/2017.png')}
+            style={styles.tahun}
+            source={require('../assets/picture/startingSoal/2017.png')}
             />
         )
     }        
     else if (tahun=='2018'){
         return(
             <Image
-                source={require('../assets/picture/startingSoal/2018.png')}
+            style={styles.tahun}
+            source={require('../assets/picture/startingSoal/2018.png')}
             />
         )
     }    
     else if (tahun=='2019'){
         return(
             <Image
-                source={require('../assets/picture/startingSoal/2019.png')}
+            style={styles.tahun}
+            source={require('../assets/picture/startingSoal/2019.png')}
             />
         )
     }
@@ -41,6 +45,7 @@ function TahunSoal({tahun}){
 function TotalSoal(){
     return(
         <Image
+            style={styles.totalSoal}
             source={require('../assets/picture/startingSoal/totalSoal.png')}
         />
     )
@@ -48,7 +53,8 @@ function TotalSoal(){
 
 function Waktu(){
     return(
-        <Image 
+        <Image
+            style={styles.waktu} 
             source={require('../assets/picture/startingSoal/waktu.png')}
         />
     )
@@ -73,6 +79,7 @@ function GoImg(){
 function HiasanBawah(){
     return(
         <Image 
+            style={styles.cacing}
             source={require('../assets/picture/startingSoal/hiasan.png')}
         />
     )
@@ -130,26 +137,48 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'100%'
     },
-    tahunSoal:{
-        marginLeft: 50
+    tahunSoalCont:{
+            alignContent: 'center',
+            justifyContent: 'center'
     },
-    totalSoal:{
-        marginLeft: 20
-    },
-    waktu:{
-        marginLeft: 20
-    },
-    karakter:{
-        width: 160,
-        height: 150,
+    tahun: {
         alignSelf: 'center',
-        marginBottom: -30
+        marginLeft: 100
+    },
+    totalSoalCont:{
+        alignContent: 'center',
+        justifyContent: 'center'
+    },
+    totalSoal: {
+        alignSelf: 'center',
+        marginLeft: 25,
+        paddingBottom: 10
+    },
+    waktuCont:{
+        alignContent: 'center',
+        justifyContent: 'center'
+    },
+    waktu: {
+        alignSelf: 'center',
+        marginTop: 15,
+        marginLeft: 10
     },
     karakterContainer: {
         alignContent: 'center',
         justifyContent: 'center'
     },
-    cacing:{
+    karakter:{
+        marginTop: -30,
+        width: 230,
+        height: 220,
+        alignSelf: 'center'
+    },
+    cacingCont:{
+        alignContent: 'flex-end',
+        justifyContent: 'flex-end'
+    },
+    cacing: {
+        alignSelf: 'baseline',
         marginLeft: -50,
     },
     btnSoal:{
