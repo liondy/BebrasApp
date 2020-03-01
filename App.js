@@ -46,6 +46,7 @@ function App() {
   React.useEffect(()=>{
     SplashScreen.hide();
     backgroundSong.play();
+    console.disableYellowBox = true;
     DeviceEventEmitter.addListener(
       'ON_HOME_BUTTON_PRESSED',
       () => {

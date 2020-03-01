@@ -3,18 +3,17 @@ import {
     StyleSheet,
     View,
     Image,
-    ImageBackground,
     Text,
-    Modal,
-    Alert,
-    TouchableOpacity
+    ImageBackground,
+    Button
 } from 'react-native';
-import { Button } from 'react-native-elements';
 import CountDown from 'react-native-countdown-component';
 import { TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
 import Sound from 'react-native-sound';
+import Modal from 'react-native-modal';
 import Soal20161 from '../assets/soal/2016/1/Soal';
-import Pilihan20161 from '../assets/soal/2016/1/Jawaban';
+import Pilihan20161 from '../assets/soal/2016/1/Pilihan';
+import Jawaban20161 from '../assets/soal/2016/1/Jawaban';
 
 var correct = new Sound('correct.mp3', Sound.MAIN_BUNDLE, (error)=> {
     if(error){
@@ -73,10 +72,40 @@ function GambarSalah(){
 export {GambarBenar};
 export {GambarSalah};
 
-var soal = <Soal20161/>
-var pilihan = <Pilihan20161/>
 
-function TantanganSoal({navigation}){
+var temp = 0; //bener atau salah
+// var soal = <Soal20161/>
+// var pilihan = <Pilihan20161 onPress={()=>this.toggle,this.temp}/>
+
+function TantanganSoal({route,navigation}){
+    const[isVisible,toggle]=React.useState(false);
+    const { tahunId } = route.params;
+    const { nomor } = route.params;
+    const { jumlahSoal } = route.params;
+
+    const showJawaban = (x) => {
+        temp = x;
+        toggle(currentIsOpen => !currentIsOpen);
+    }
+
+    var soal = <Soal20161/>
+    var pilihan = <Pilihan20161 showJawaban={showJawaban}/>
+    var jawaban = <Jawaban20161/>
+
+    React.useEffect(()=>{
+        if(tahunId=='2016'){
+            switch(nomor){
+                case 1:
+                    soal = <Soal20161/>;
+                    pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
+                    jawaban = <Jawaban20161/>
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+
     return(
         <>
             <View style={styles.container}>
@@ -90,7 +119,7 @@ function TantanganSoal({navigation}){
                             style={styles.dasar}>
                             {soal}
                             <TouchableOpacity 
-                                onPress={()=> navigation.navigate('IsiSoal')}
+                                onPress={() => navigation.navigate('IsiSoal')}
                                 style={styles.toBtn}>
                                 <Image
                                     style={styles.btnback}
@@ -100,8 +129,30 @@ function TantanganSoal({navigation}){
                     </View> 
                 </ImageBackground>
             </View>
-            <View>
+            <View style={styles.container}>
                 {pilihan}
+                <Modal
+                    style={styles.modal}
+                    visible={isVisible}
+                    backdropColor="white"
+                    backdropOpacity={0.8}
+                    animationIn="zoomInDown"
+                    animationOut="zoomOutUp"
+                    animationInTiming={600}
+                    animationOutTiming={600}
+                    backdropTransitionInTiming={600}
+                    backdropTransitionOutTiming={600}>
+                    <View>
+                        <View>
+                            {jawaban}
+                            {temp==1?<GambarBenar/>:<GambarSalah/>}
+                        <TouchableHighlight>
+                                <Button title="Close" onPress={() => 
+                                toggle(currentIsOpen => !currentIsOpen)}/>
+                        </TouchableHighlight>
+                        </View>
+                    </View>
+                </Modal>
             </View>
         </>
     )
@@ -130,47 +181,14 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    txTantangan:{
-        color : '#FF5733',
-        fontWeight: 'bold',
-        fontSize: 20,
-        lineHeight: 40,
-        includeFontPadding: true,
-        padding: 15,
-        fontFamily: 'KiriFont'
-    },
     waktu:{
         marginTop: 10
     },
-    txPilihan: {
-        color : '#FF5733',
-        fontWeight: 'bold',
-        fontSize: 20,
-        textAlign: 'center'
-    },
-    btnPilihan:{
-        borderRadius: 50,
-        marginBottom: 10,
-        paddingVertical: 15,
-        backgroundColor: '#fff'
-    },
     modal: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         margin: 0,
-        height: '50%',
-        width: '80%'
-    },
-    jawaban:{
-        fontSize: 30,
-        color: '#FF5733',
-        fontWeight: 'bold'
-    },
-    penjelasan: {
-        fontSize: 20,
-        color: '#FF5733',
-        includeFontPadding: true
+        backgroundColor: 'white'
     },
     penjelasanContainer: {
         flexDirection: 'row',
@@ -180,14 +198,6 @@ const styles = StyleSheet.create({
         height: 50,
         marginTop: 70,
         marginRight: 10
-    },
-    btnNext: {
-        alignSelf: 'flex-end'
-    },
-    txNext: {
-        fontFamily: 'KiriFont',
-        fontSize: 15,
-        textAlign: 'center'
     }
 })
 

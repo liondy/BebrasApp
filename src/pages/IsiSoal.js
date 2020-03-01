@@ -27,12 +27,41 @@ function IsiSoal({route,navigation}){
         if(isAwal({awal})){
             currentNumber = randomNomorSoal();
             console.log('current number: '+currentNumber);
-            switch(currentNumber){
-                case 1:
-                    path = <Des20161/>;
-                    break;
-                default:
-                    break;
+            if(tahunId=='2016'){
+                switch(currentNumber){
+                    case 1:
+                        path = <Des20161/>;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if(tahunId=='2017'){
+                switch(currentNumber){
+                    case 1:
+                        path = <Des20171/>;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if(tahunId=='2018'){
+                switch(currentNumber){
+                    case 1:
+                        path = <Des20181/>;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if(tahunId=='2019'){
+                switch(currentNumber){
+                    case 1:
+                        path = <Des20191/>;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         else{
