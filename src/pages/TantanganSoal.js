@@ -49,41 +49,33 @@ function Waktu(){
     )
 }
 
-var temp=0;
-
-function Gambar(temp){
-    console.log("nilai temp : ",temp)
-    if(temp==1){
-        return(
-            <View style={styles.penjelasanContainer}>
-                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
-                <Image source={require('../assets/picture/hasilJawaban/BebrasBenar.png')}/>
-                <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiBenar.png')}/>
-                
-            </View>
-        )
-    }
-    else{
-        return(
-            <View style={styles.penjelasanContainer}>
-                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
-                <Image source={require('../assets/picture/hasilJawaban/BebrasSalah.png')}/>
-                <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiSalah.png')}/>
-            </View>
-        )
-    }
+function GambarBenar(){
+    return(
+        <View style={styles.penjelasanContainer}>
+            <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
+            <Image source={require('../assets/picture/hasilJawaban/BebrasBenar.png')}/>
+            <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiBenar.png')}/>
+        </View>
+    );
 }
+
+function GambarSalah(){
+    return(
+        <View style={styles.penjelasanContainer}>
+            <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
+            <Image source={require('../assets/picture/hasilJawaban/BebrasSalah.png')}/>
+            <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiSalah.png')}/>
+        </View>
+    )
+}
+
+export {GambarBenar};
+export {GambarSalah};
 
 var soal = <Soal20161/>
 var pilihan = <Pilihan20161/>
 
 function TantanganSoal({navigation}){
-    const[isBenar,cek]=React.useState(false);
-    const[isVisible,toggle]=React.useState(false);
-    const benar = (trigger) => {
-        isBenar = trigger;
-    }
-
     return(
         <>
             <View style={styles.container}>
