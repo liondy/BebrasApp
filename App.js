@@ -41,7 +41,6 @@ const Stack = createStackNavigator();
 
 function App() {
   React.useEffect(()=>{
-    console.log('kepanggil');
     SplashScreen.hide();
     backgroundSong.play();
     DeviceEventEmitter.addListener(

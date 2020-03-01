@@ -12,20 +12,26 @@ import { Button } from 'react-native-elements';
 import CountDown from 'react-native-countdown-component';
 import { TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
 import Sound from 'react-native-sound';
+import Soal20161 from '../assets/soal/2016/1/Soal';
+import Pilihan20161 from '../assets/soal/2016/1/Jawaban';
 
 var correct = new Sound('correct.mp3', Sound.MAIN_BUNDLE, (error)=> {
     if(error){
         console.log('failed to load the sound', error)
-        return
+        return;
     }
 })
+
+export {correct};
 
 var wrong = new Sound('wrong.mp3', Sound.MAIN_BUNDLE, (error)=> {
     if(error){
         console.log('failed to load the sound', error)
-        return
+        return;
     }
 })
+
+export {wrong};
 
 function Waktu(){
     return(
@@ -45,7 +51,7 @@ function Waktu(){
 
 var temp=0;
 
-function Gambar(){
+function Gambar(temp){
     console.log("nilai temp : ",temp)
     if(temp==1){
         return(
@@ -68,101 +74,42 @@ function Gambar(){
     }
 }
 
-function TantanganSoal({navigation}){
-    const[isVisible,toggle]=React.useState(false);
-    const[isBenar,cek]=React.useState(false);
+var soal = <Soal20161/>
+var pilihan = <Pilihan20161/>
 
+function TantanganSoal({navigation}){
+    const[isBenar,cek]=React.useState(false);
+    const[isVisible,toggle]=React.useState(false);
     const benar = (trigger) => {
         isBenar = trigger;
     }
 
     return(
         <>
-        <View style={styles.container}>
-            <ImageBackground
-                style={styles.background}
-                source={require('../assets/picture/backgrounds/primary.png')}>
-                <Waktu/>
-                <View style={styles.tantanganCont}>
-                    <ImageBackground
-                        source={require('../assets/picture/tantangan/Dasar.png')}
-                        style={styles.dasar}>
-                        <Text style={styles.txTantangan}> 
-                            Jika Joni memulai perjalanannya dari Kotatiga dengan bus,{"\n"}
-                            kota mana yang tidak dapat dikunjungi?
-                        </Text>
-                        <TouchableOpacity 
-                            onPress={()=> navigation.navigate('IsiSoal')}
-                            style={styles.toBtn}>
-                            <Image
-                                style={styles.btnback}
-                                source={require('../assets/picture/tantangan/ButtonSoal.png')}/>
-                        </TouchableOpacity>
-                    </ImageBackground> 
-                </View> 
-            </ImageBackground>
-        </View>
-        <View>
-            <TouchableHighlight
-                underlayColor='#d9eb36'
-                style={styles.btnPilihan}
-                onPressIn={()=> correct.play()}
-                onPress={()=> {toggle(currentIsOpen => !currentIsOpen); temp=1}}>
-                <Text style={styles.txPilihan}>Kotalima</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-                underlayColor='#d9eb36'
-                style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
-                onPress={()=>  {toggle(currentIsOpen => !currentIsOpen); temp=0}}>
-                <Text style={styles.txPilihan}>Kotasatu</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-                underlayColor='#d9eb36'
-                style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
-                onPress={()=>  {toggle(currentIsOpen => !currentIsOpen); temp=0}}>
-                <Text style={styles.txPilihan}>Kotadua</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-                underlayColor='#d9eb36'
-                style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
-                onPress={()=>  {toggle(currentIsOpen => !currentIsOpen); temp=0}}>
-                <Text style={styles.txPilihan}>Kotatiga</Text>
-            </TouchableHighlight>
-
-            <View style={styles.modalCont}>
-                <Modal
-                style={styles.modal}
-                visible={isVisible}
-                backdropColor="white"
-                backdropOpacity={0.8}
-                animationIn="zoomInDown"
-                animationOut="zoomOutUp"
-                animationInTiming={600}
-                animationOutTiming={600}
-                backdropTransitionInTiming={600}
-                backdropTransitionOutTiming={600}>
-                    <View style={{marginTop: 22}}>
-                        <View style={{width: '100%',height: '100%'}}>
-                            <Text style={styles.jawaban}>Jawaban : </Text>
-                            <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
-                            <Gambar/>
-                            
-                            
-                        <TouchableHighlight>
-                                <Button title="Close" onPress={() => 
-                                toggle(currentIsOpen => !currentIsOpen)}/>
-                        </TouchableHighlight>
-                        </View>
-                    </View>
-                </Modal>
+            <View style={styles.container}>
+                <ImageBackground
+                    style={styles.background}
+                    source={require('../assets/picture/backgrounds/primary.png')}>
+                    <Waktu/>
+                    <View style={styles.tantanganCont}>
+                        <ImageBackground
+                            source={require('../assets/picture/tantangan/Dasar.png')}
+                            style={styles.dasar}>
+                            {soal}
+                            <TouchableOpacity 
+                                onPress={()=> navigation.navigate('IsiSoal')}
+                                style={styles.toBtn}>
+                                <Image
+                                    style={styles.btnback}
+                                    source={require('../assets/picture/tantangan/ButtonSoal.png')}/>
+                            </TouchableOpacity>
+                        </ImageBackground> 
+                    </View> 
+                </ImageBackground>
             </View>
-        </View>
+            <View>
+                {pilihan}
+            </View>
         </>
     )
 }
@@ -189,14 +136,6 @@ const styles = StyleSheet.create({
         marginTop: 25,
         width: '100%',
         height: '100%',
-    },
-    txTantangan:{
-        color : '#FF5733',
-        fontWeight: 'bold',
-        fontSize: 20,
-        lineHeight: 40,
-        includeFontPadding: true,
-        padding: 15
     },
     waktu:{
         marginTop: 10

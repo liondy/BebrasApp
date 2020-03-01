@@ -108,10 +108,11 @@ function StartingSoal({route, navigation}){
             </View>
             <View style={styles.btnSoal}>
                 <TouchableOpacity
-                    onPress={()=> navigation.navigate('IsiSoal'),{
-                        tahunId: tahunId,
-                        awal: true,
-                    }}>
+                    onPress={() => navigation.navigate('IsiSoal',{
+                        tahunId: {tahunId},
+                        awal: true
+                    })
+                }>
                     <Image source={require('../assets/picture/startingSoal/start.png')}/>
                 </TouchableOpacity>
             </View>
@@ -137,9 +138,6 @@ const styles = StyleSheet.create({
     },
     waktu:{
         marginLeft: 20
-    },
-    go: {
-
     },
     karakter:{
         width: 160,

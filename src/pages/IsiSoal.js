@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import Des20161 from '../assets/soal/2016/1/DeskripsiSoal';
 
 function ImgSoal(){
     return(
@@ -15,22 +16,29 @@ function ImgSoal(){
     )
 }
 
-function BtnTantangan(){
-    const navigation = useNavigation();
-
-    return(
-        <TouchableOpacity onPress={()=>navigation.navigate('TantanganSoal')}>
-            <Image source={require('../assets/picture/soal/btntantangan.png')}/>    
-        </TouchableOpacity>
-    )
-}
-
 let availableSoal = []; //list of available numbers
 let answered = 0; //how many the user has answered
 let currentNumber = 0; //give the function the current number
+let path = <Des20161/>
 function IsiSoal({route,navigation}){
     const { tahunId } = route.params;
     const { awal } = route.params; //checked if it is the beginnning or the middle of the soal
+    React.useEffect(()=>{
+        if(isAwal({awal})){
+            currentNumber = randomNomorSoal();
+            console.log('current number: '+currentNumber);
+            switch(currentNumber){
+                case 1:
+                    path = <Des20161/>;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else{
+            navigation.navigate('Home');
+        }
+    });
     const isAwal = (awal) => {
         if(awal){
             for (let index = 0; index < 24; index++) {
@@ -52,21 +60,16 @@ function IsiSoal({route,navigation}){
         }
     }
     const randomNomorSoal = () => {
+        let nomor;
         do{
-            let nomor = Math.floor(Math.random() * 24)+1; //random number 1-24
+            nomor = Math.floor(Math.random() * 24)+1; //random number 1-24
             console.log('nomor soal: '+nomor);
         }
-        while(availableSoal[nomor] = false);
+        while(availableSoal[nomor] = false && nomor == 0);
         availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
         answered++; //increment the answered question
         return nomor; //gets the new number of soal
     };
-    componentDidMount(){
-        if(isAwal({awal})){
-            currentNumber = randomNomorSoal();
-            import DeskripsiSoal from "'../assets/soal/"+{tahunId}+"/"+currentNumber+"'";
-        }
-    }
     return(
         <View style={styles.container}>
             <ImageBackground
@@ -74,10 +77,18 @@ function IsiSoal({route,navigation}){
                 style={styles.background}>
                 <ImgSoal/>
                 <View style={styles.soalContainer}>
-                    <DeskripsiSoal/>
+                    {path}
                 </View>
                 <View style={styles.tantangan}>
-                    <BtnTantangan/>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('TantanganSoal',{
+                            tahunId: {tahunId},
+                            nomor: {currentNumber},
+                            jumlahSoal: {answered}
+                        })
+                    }>
+                        <Image source={require('../assets/picture/soal/btntantangan.png')}/>  
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         </View>
