@@ -25,7 +25,9 @@ let path = <Des20161/>
 function IsiSoal({route,navigation}){
     const { tahunId } = route.params;
     const { awal } = route.params; //checked if it is the beginnning or the middle of the soal
+    const { number } = route.params;
     React.useEffect(()=>{
+        console.log('tahunId: '+{tahunId});
         BackHandler.addEventListener('hardwareBackPress', function(){
             Alert.alert(
                 'Keluar?',
@@ -45,49 +47,47 @@ function IsiSoal({route,navigation}){
         if(isAwal({awal})){
             currentNumber = randomNomorSoal();
             console.log('current number: '+currentNumber);
-            if(tahunId=='2016'){
-                switch(currentNumber){
-                    case 1:
-                        path = <Des20161/>;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if(tahunId=='2017'){
-                switch(currentNumber){
-                    case 1:
-                        path = <Des20171/>;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if(tahunId=='2018'){
-                switch(currentNumber){
-                    case 1:
-                        path = <Des20181/>;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if(tahunId=='2019'){
-                switch(currentNumber){
-                    case 1:
-                        path = <Des20191/>;
-                        break;
-                    default:
-                        break;
-                }
+        }
+        if({tahunId}=='2016'){
+            switch(currentNumber){
+                case 1:
+                    path = <Des20161/>;
+                    console.log('masuk');
+                    break;
+                default:
+                    break;
             }
         }
-        else{
-            navigation.navigate('Home');
+        else if({tahunId}=='2017'){
+            switch(currentNumber){
+                case 1:
+                    path = <Des20171/>;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if({tahunId}=='2018'){
+            switch(currentNumber){
+                case 1:
+                    path = <Des20181/>;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if({tahunId}=='2019'){
+            switch(currentNumber){
+                case 1:
+                    path = <Des20191/>;
+                    break;
+                default:
+                    break;
+            }
         }
     });
     const isAwal = (awal) => {
-        if(awal){
+        if(awal==0){
             for (let index = 0; index < 24; index++) {
                 availableSoal.pop(); //removing cache, make availableSoal to []
             }
@@ -96,6 +96,10 @@ function IsiSoal({route,navigation}){
             }
             answered = 0; //start a new game
             return true; //means you can start the game
+        }
+        else if(awal==1){
+            currentNumber = {number};
+            return false;
         }
         else {
             if(answered==12){

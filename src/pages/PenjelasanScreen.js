@@ -7,20 +7,32 @@ import {
     Text,
     TouchableOpacity
 } from 'react-native';
+import Penjelasan20161 from '../assets/soal/2016/1/Penjelasan';
 
-function PenjelasanScreen({navigation}){
+function PenjelasanScreen({route,navigation}){
+    const {tahunId} = route.params;
+    const {nomor} = route.params;
+    var contentPenjelasan;
+    React.useEffect=()=>{
+        console.log('tahunId: '+{tahunId});
+        if({tahunId}=='2016'){
+            switch(nomor){
+                case 1:
+                    contentPenjelasan = <Penjelasan20161/>;
+                    break;
+                default:
+                    contentPenjelasan = <Penjelasan20161/>;
+                    break;
+            }
+        }
+    };
     return(
         <View style={styles.cont}>
             <ImageBackground
                 style={styles.background}
                 source={require('../assets/picture/backgrounds/combined.png')}>
                 <Text style={styles.txPenjelasan}>Penjelasan</Text>
-                <Text style={styles.txIsiPenjelasan}>
-                Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-                titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-                ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-                bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-                </Text>
+                {contentPenjelasan}
                 {/* <Image 
                 style={styles.gambar} 
                 source={require('../assets/picture/penjelasan/')}/> */}
@@ -52,14 +64,6 @@ const styles = StyleSheet.create({
         color : '#FF5733',
         fontWeight: 'bold',
         fontSize: 25,
-        lineHeight: 40,
-        includeFontPadding: true,
-        padding: 15
-    },
-    txIsiPenjelasan:{
-        color : '#FF5733',
-        fontWeight: 'bold',
-        fontSize: 15,
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15

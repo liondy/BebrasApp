@@ -7,10 +7,10 @@ import {
     ImageBackground,
     Button,
     BackHandler,
-    Alert
+    Alert,
+    TouchableOpacity
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
-import { TouchableOpacity, TouchableHighlight } from 'react-native-gesture-handler';
 import Sound from 'react-native-sound';
 import Modal from 'react-native-modal';
 import Soal20161 from '../assets/soal/2016/1/Soal';
@@ -38,7 +38,6 @@ export {wrong};
 function GambarBenar(){
     return(
         <View style={styles.penjelasanContainer}>
-            <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
             <Image source={require('../assets/picture/hasilJawaban/BebrasBenar.png')}/>
             <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiBenar.png')}/>
         </View>
@@ -48,7 +47,6 @@ function GambarBenar(){
 function GambarSalah(){
     return(
         <View style={styles.penjelasanContainer}>
-            <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
             <Image source={require('../assets/picture/hasilJawaban/BebrasSalah.png')}/>
             <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiSalah.png')}/>
         </View>
@@ -78,6 +76,7 @@ function TantanganSoal({route,navigation}){
     var jawaban = <Jawaban20161/>
 
     React.useEffect(()=>{
+        console.log('tahunId: '+{tahunId});
         BackHandler.addEventListener('hardwareBackPress', function(){
             Alert.alert(
                 'Keluar?',
@@ -94,7 +93,7 @@ function TantanganSoal({route,navigation}){
             );
             return true;
         });
-        if(tahunId=='2016'){
+        if({tahunId}=='2016'){
             switch(nomor){
                 case 1:
                     soal = <Soal20161/>;
@@ -137,8 +136,11 @@ function TantanganSoal({route,navigation}){
                             style={styles.dasar}>
                             {soal}
                             <TouchableOpacity 
-                                onPress={() => navigation.navigate('IsiSoal')}
-                                style={styles.toBtn}>
+                                style={styles.toBtn}
+                                onPress={() => navigation.navigate('IsiSoal',{
+                                    number: {nomor},
+                                    awal: 1
+                                })}>
                                 <Image
                                     style={styles.btnback}
                                     source={require('../assets/picture/tantangan/ButtonSoal.png')}/>
@@ -162,17 +164,20 @@ function TantanganSoal({route,navigation}){
                     backdropTransitionOutTiming={600}>
                     <View style={{width: '100%',height: '100%',marginTop: 10}}>
                         {jawaban}
-                        {temp==1?<GambarBenar/>:<GambarSalah/>}
                         <View style={{flexDirection: 'row'}}>
                             <TouchableOpacity
-                                onPress={()=> {navigation.navigate('PenjelasanScreen'),toggle(currentIsOpen => !currentIsOpen)}}>
+                                onPress={() => {navigation.navigate('PenjelasanScreen',{
+                                    tahunId: {tahunId},
+                                    nomor: {nomor}
+                                }),toggle(currentIsOpen => !currentIsOpen)}}>
                                 <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
                             </TouchableOpacity>
+                            {temp==1?<GambarBenar/>:<GambarSalah/>}
                         </View>
                         
                         <TouchableOpacity
                             style={styles.btnNext}
-                            onPress={() => {navigation.navigate('SelesaiSoal'),toggle(currentIsOpen => !currentIsOpen)}}>
+                            onPress={() => {console.log('kepencet')}}>
                             <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
                         </TouchableOpacity>
                     </View>
@@ -222,7 +227,10 @@ const styles = StyleSheet.create({
         height: 50,
         marginTop: 70,
         marginRight: 10
-    }
+    },
+    btnNext: {
+        alignSelf: 'flex-end'
+    },
 })
 
 export default TantanganSoal;
