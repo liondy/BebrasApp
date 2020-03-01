@@ -150,7 +150,7 @@ function TantanganSoal({navigation}){
                         
                         <View style={{flexDirection: 'row'}}>
                             <TouchableOpacity
-                                onPress={()=> navigation.navigate('PenjelasanScreen')}>
+                                onPress={()=> {navigation.navigate('PenjelasanScreen'),toggle(currentIsOpen => !currentIsOpen)}}>
                                 <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
                             </TouchableOpacity>
                             <Gambar/>
