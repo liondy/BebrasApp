@@ -159,7 +159,7 @@ function TantanganSoal({navigation}){
                         <TouchableOpacity
                             style={styles.btnNext}
                             onPress={() => {navigation.navigate('SelesaiSoal'),toggle(currentIsOpen => !currentIsOpen)}}>
-                            <Image source={require('../assets/picture/selesaiSoal/backBeranda.png')}/>
+                            <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
                         </TouchableOpacity>
                     </View>
                 </Modal>
