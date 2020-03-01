@@ -120,7 +120,7 @@ function IsiSoal({route,navigation}){
     return(
         <View style={styles.container}>
             <ImageBackground
-                source={require('../assets/picture/backgrounds/primary.png')}
+                source={require('../assets/picture/backgrounds/combined.png')}
                 style={styles.background}>
                 <ImgSoal/>
                 <View style={styles.soalContainer}>
