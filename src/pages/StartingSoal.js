@@ -6,10 +6,8 @@ import {
     ImageBackground,
     Text
 } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Button } from 'react-native-elements';
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
-import useNavigation from '@react-navigation/native';
+import { TouchableOpacity} from 'react-native-gesture-handler';
+
 
 function TahunSoal({tahun}){
     if (tahun=='2016'){

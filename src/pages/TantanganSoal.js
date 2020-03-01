@@ -6,12 +6,11 @@ import {
     ImageBackground,
     Text,
     Modal,
-    Alert
+    Alert,
+    TouchableOpacity
 } from 'react-native';
-import { Button } from 'react-native-elements';
-import useNavigation from '@react-navigation/native';
 import CountDown from 'react-native-countdown-component';
-import { TouchableOpacity, FlatList, TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import Sound from 'react-native-sound';
 
 var correct = new Sound('correct.mp3', Sound.MAIN_BUNDLE, (error)=> {
@@ -47,11 +46,9 @@ function Waktu(){
 var temp=0;
 
 function Gambar(){
-    console.log("nilai temp : ",temp)
     if(temp==1){
         return(
             <View style={styles.penjelasanContainer}>
-                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
                 <Image source={require('../assets/picture/hasilJawaban/BebrasBenar.png')}/>
                 <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiBenar.png')}/>
                 
@@ -61,7 +58,6 @@ function Gambar(){
     else{
         return(
             <View style={styles.penjelasanContainer}>
-                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
                 <Image source={require('../assets/picture/hasilJawaban/BebrasSalah.png')}/>
                 <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiSalah.png')}/>
             </View>
@@ -107,7 +103,7 @@ function TantanganSoal({navigation}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> correct.play()}
+                onPressOut={()=> correct.play()}
                 onPress={()=> {toggle(currentIsOpen => !currentIsOpen); temp=1}}>
                 <Text style={styles.txPilihan}>Kotalima</Text>
             </TouchableHighlight>
@@ -115,7 +111,7 @@ function TantanganSoal({navigation}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
+                onPressOut={()=> wrong.play()}
                 onPress={()=>  {toggle(currentIsOpen => !currentIsOpen); temp=0}}>
                 <Text style={styles.txPilihan}>Kotasatu</Text>
             </TouchableHighlight>
@@ -123,7 +119,7 @@ function TantanganSoal({navigation}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
+                onPressOut={()=> wrong.play()}
                 onPress={()=>  {toggle(currentIsOpen => !currentIsOpen); temp=0}}>
                 <Text style={styles.txPilihan}>Kotadua</Text>
             </TouchableHighlight>
@@ -131,7 +127,7 @@ function TantanganSoal({navigation}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
+                onPressOut={()=> wrong.play()}
                 onPress={()=>  {toggle(currentIsOpen => !currentIsOpen); temp=0}}>
                 <Text style={styles.txPilihan}>Kotatiga</Text>
             </TouchableHighlight>
@@ -151,13 +147,20 @@ function TantanganSoal({navigation}){
                     <View style={{width: '100%',height: '100%',marginTop: 10}}>
                         <Text style={styles.jawaban}>Jawaban : </Text>
                         <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
-                        <Gambar/> 
-                    <TouchableOpacity>
-                            <Button 
-                                color='#FF5733' 
-                                title="Next" 
-                                onPress={() => navigation.navigate('SelesaiSoal')}/>
-                    </TouchableOpacity>
+                        
+                        <View style={{flexDirection: 'row'}}>
+                            <TouchableOpacity
+                                onPress={()=> navigation.navigate('PenjelasanScreen')}>
+                                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
+                            </TouchableOpacity>
+                            <Gambar/>
+                        </View>
+                        
+                        <TouchableOpacity
+                            style={styles.btnNext}
+                            onPress={() => {navigation.navigate('SelesaiSoal'),toggle(currentIsOpen => !currentIsOpen)}}>
+                            <Image source={require('../assets/picture/selesaiSoal/backBeranda.png')}/>
+                        </TouchableOpacity>
                     </View>
                 </Modal>
             </View>
@@ -241,10 +244,7 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     btnNext: {
-        borderRadius: 50,
-        marginTop: 10,
-        paddingVertical: 15,
-        backgroundColor: '#FF5733'
+        alignSelf: 'flex-end'
     },
     txNext: {
         fontFamily: 'KiriFont',
