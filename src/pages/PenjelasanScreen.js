@@ -16,7 +16,7 @@ function PenjelasanScreen({route,navigation}){
     const {nilai} = route.params;
     var contentPenjelasan;
     React.useEffect=()=>{
-        console.log('tahunId: '+{tahunId});
+        console.log('tahunId: '+tahunId);
     };
     if(tahunId=='2016'){
         switch(nomor){
