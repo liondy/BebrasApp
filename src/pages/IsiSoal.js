@@ -23,6 +23,7 @@ let availableSoal = []; //list of available numbers
 let answered = 0; //how many the user has answered
 let currentNumber = 0; //give the function the current number
 var currentTime = 0;
+var currentNilai = 0;
 
 function IsiSoal({route,navigation}){
     const { tahunId } = route.params;
@@ -30,14 +31,19 @@ function IsiSoal({route,navigation}){
     const { number } = route.params;
     const { pertama } = route.params;
     const { time } = route.params;
+    const { nilai } = route.params;
+
+    currentNilai = nilai;
+    console.log('total nilai: '+currentNilai);
+
     var path;
     if(!pertama){
         currentTime = time;
     }
+    else{
+        currentTime = 0;
+    }
     React.useEffect(()=>{
-        console.log('tahun: '+tahunId);
-        console.log('awal: '+awal);
-        console.log('pertama: '+pertama);
         BackHandler.addEventListener('hardwareBackPress', function(){
             Alert.alert(
                 'Keluar?',
@@ -57,13 +63,13 @@ function IsiSoal({route,navigation}){
     });
     const isAwal = (awal) => {
         if(awal=='0'){
-            console.log('masuk');
             for (let index = 0; index < 24; index++) {
                 availableSoal.pop(); //removing cache, make availableSoal to []
             }
             for (let index = 0; index < 24; index++) {
                 availableSoal.push(true); //make all numbers available again
             }
+            currentNilai = 0;
             answered = 0; //start a new game
             return true; //means you can start the game
         }
@@ -72,7 +78,11 @@ function IsiSoal({route,navigation}){
             return false;
         }
         else {
-            if(answered==12){
+            if(answered==3){
+                navigation.navigate('SelesaiSoal',{
+                    tahunId: tahunId,
+                    nilai: currentNilai
+                })
                 return false; //means you has to stop the game because you already have all 12 questions
             }
             else{
@@ -89,20 +99,18 @@ function IsiSoal({route,navigation}){
         while(availableSoal[nomor] = false && nomor == 0);
         availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
         answered++; //increment the answered question
+        console.log('Soal ke: '+answered);
         return nomor; //gets the new number of soal
     };
     if(isAwal(awal)){
         currentNumber = randomNomorSoal();
-        console.log('current number: '+currentNumber);
     }
     if(tahunId=='2016'){
         switch(currentNumber){
             case 1:
                 path = <Des20161/>;
-                console.log('masukSini');
                 break;
             default:
-                console.log('masukSitu');
                 path = <Des20161/>;
                 break;
         }
@@ -169,7 +177,8 @@ function IsiSoal({route,navigation}){
                             tahunId: tahunId,
                             nomor: currentNumber,
                             jumlahSoal: answered,
-                            time: currentTime
+                            time: currentTime,
+                            nilai: currentNilai,
                         })
                     }>
                         <Image source={require('../assets/picture/soal/btntantangan.png')}/>  

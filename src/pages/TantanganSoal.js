@@ -3,9 +3,7 @@ import {
     StyleSheet,
     View,
     Image,
-    Text,
     ImageBackground,
-    Button,
     BackHandler,
     Alert,
     TouchableOpacity
@@ -68,14 +66,17 @@ function checkTime(time){
     }
 }
 
+var currentNilai = 0;
+
 function TantanganSoal({route,navigation}){
     const[isVisible,toggle]=React.useState(false);
     const { tahunId } = route.params;
     const { nomor } = route.params;
     const { jumlahSoal } = route.params;
     const { time } = route.params;
+    const { nilai } = route.params;
 
-    console.log('time: '+time);
+    currentNilai = nilai;
 
     const showJawaban = (x) => {
         temp = x;
@@ -102,7 +103,6 @@ function TantanganSoal({route,navigation}){
     }
 
     React.useEffect(()=>{
-        console.log('tahunId: '+{tahunId});
         BackHandler.addEventListener('hardwareBackPress', function(){
             Alert.alert(
                 'Keluar?',
@@ -113,7 +113,7 @@ function TantanganSoal({route,navigation}){
                         onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel',
                     },
-                    {text: 'Iya', onPress: () => navigation.navigate('Home')},
+                    {text: 'Iya', onPress: () => {navigation.navigate('Home'),currentTime=180}},
                 ],
                 {cancelable: false},
             );
@@ -135,7 +135,7 @@ function TantanganSoal({route,navigation}){
                         }}
                         size={15}
                         onFinish={()=> {
-                            toggle(currentIsOpen=currentNumber>!currentIsOpen),
+                            toggle(currentIsOpen=>!currentIsOpen),
                             wrong.play(),
                             currentTime = 180
                         }}
@@ -184,9 +184,14 @@ function TantanganSoal({route,navigation}){
                         {jawaban}
                         <View style={{flexDirection: 'row'}}>
                             <TouchableOpacity
-                                onPress={() => {navigation.navigate('PenjelasanScreen',{
-                                    tahunId: {tahunId},
-                                    nomor: {nomor}
+                                onPress={() => {temp==1?navigation.navigate('PenjelasanScreen',{
+                                    tahunId: tahunId,
+                                    nomor: nomor,
+                                    nilai: currentNilai+10,
+                                }):navigation.navigate('PenjelasanScreen',{
+                                    tahunId: tahunId,
+                                    nomor: nomor,
+                                    nilai: currentNilai
                                 }),toggle(currentIsOpen => !currentIsOpen)}}>
                                 <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
                             </TouchableOpacity>
@@ -195,7 +200,17 @@ function TantanganSoal({route,navigation}){
                         
                         <TouchableOpacity
                             style={styles.btnNext}
-                            onPress={() => {console.log('kepencet')}}>
+                            onPress={() => {temp==1?navigation.navigate('IsiSoal',{
+                                tahunId: tahunId,
+                                nilai: currentNilai+10,
+                                awal: 2,
+                                pertama: true,
+                            }):navigation.navigate('IsiSoal',{
+                                tahunId: tahunId,
+                                nilai: currentNilai,
+                                awal: 2,
+                                pertama: true,
+                            }),toggle(currentIsOpen => !currentIsOpen)}}>
                             <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
                         </TouchableOpacity>
                     </View>

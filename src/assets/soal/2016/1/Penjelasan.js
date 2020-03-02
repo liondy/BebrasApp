@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15
+        padding: 15,
+        marginTop: 50
     },
 })
 

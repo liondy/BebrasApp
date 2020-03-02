@@ -30,19 +30,20 @@ function Karakter(){
     )
 }
 
-function Diamond(){
+function Diamond({reward}){
     return(
         <View style={styles.diamondCont}>
             <Image 
             style={styles.diamond}
             source={require('../assets/picture/selesaiSoal/diamond.png')}/>
-                <Text style={styles.txdiamond}>+80</Text>
+                <Text style={styles.txdiamond}>+{reward}</Text>
         </View>
         
     )
 }
 
-function SelesaiSoal({navigation}){
+function SelesaiSoal({route,navigation}){
+    const { nilai } = route.params;
     return(
         <View style={styles.container}>
             <ImageBackground
@@ -50,11 +51,11 @@ function SelesaiSoal({navigation}){
                 source={require('../assets/picture/backgrounds/primary.png')}>
                 <Selamat/>
                 <Karakter/>
-                <Diamond/>
+                <Diamond reward={nilai}/>
                 <TouchableOpacity
                     style={styles.btnBackBeranda}
                     onPress={()=> navigation.navigate('Home')}>
-                        <Image 
+                        <Image
                         style={styles.btnBack} 
                         source={require('../assets/picture/selesaiSoal/backBeranda.png')}/>
                 </TouchableOpacity>

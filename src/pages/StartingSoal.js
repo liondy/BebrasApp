@@ -12,7 +12,6 @@ var tahunSekarang;
 function TahunSoal({tahun}){
     tahunSekarang = tahun
     if (tahun=='2016'){
-        console.log('tahunId: '+tahun);
         return(
             <Image 
             style={styles.tahun}

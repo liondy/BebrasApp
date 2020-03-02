@@ -8,24 +8,26 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Penjelasan20161 from '../assets/soal/2016/1/Penjelasan';
+import { answered } from '../pages/IsiSoal';
 
 function PenjelasanScreen({route,navigation}){
     const {tahunId} = route.params;
     const {nomor} = route.params;
+    const {nilai} = route.params;
     var contentPenjelasan;
     React.useEffect=()=>{
         console.log('tahunId: '+{tahunId});
-        if({tahunId}=='2016'){
-            switch(nomor){
-                case 1:
-                    contentPenjelasan = <Penjelasan20161/>;
-                    break;
-                default:
-                    contentPenjelasan = <Penjelasan20161/>;
-                    break;
-            }
-        }
     };
+    if(tahunId=='2016'){
+        switch(nomor){
+            case 1:
+                contentPenjelasan = <Penjelasan20161/>;
+                break;
+            default:
+                contentPenjelasan = <Penjelasan20161/>;
+                break;
+        }
+    }
     return(
         <View style={styles.cont}>
             <ImageBackground
@@ -33,12 +35,15 @@ function PenjelasanScreen({route,navigation}){
                 source={require('../assets/picture/backgrounds/combined.png')}>
                 <Text style={styles.txPenjelasan}>Penjelasan</Text>
                 {contentPenjelasan}
-                {/* <Image 
-                style={styles.gambar} 
-                source={require('../assets/picture/penjelasan/')}/> */}
 
             <TouchableOpacity
-                onPress={()=> navigation.navigate('SelesaiSoal')}>
+                onPress={()=> answered==12?navigation.navigate('SelesaiSoal',{
+                    tahunId: tahunId,
+                    nilai: nilai
+                }):navigation.navigate('IsiSoal',{
+                    tahunId: tahunId,
+                    nilai: nilai
+                })}>
                 <Image style={styles.btnNext}
                 source={require('../assets/picture/hasilJawaban/next.png')}/>
             </TouchableOpacity>
