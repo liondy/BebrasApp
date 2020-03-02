@@ -20,7 +20,7 @@ function ImgSoal(){
 }
 
 let availableSoal = []; //list of available numbers
-let answered = 0; //how many the user has answered
+let answered = 1; //how many the user has answered
 let currentNumber = 0; //give the function the current number
 var currentTime = 0;
 var currentNilai = 0;
