@@ -58,22 +58,48 @@ export {GambarSalah};
 
 
 var temp = 0; //bener atau salah
-var currentTime = 180;
+var currentTime;
+function checkTime(time){
+    if(time==0){
+        currentTime = 180;
+    }
+    else{
+        currentTime = time;
+    }
+}
 
 function TantanganSoal({route,navigation}){
     const[isVisible,toggle]=React.useState(false);
     const { tahunId } = route.params;
     const { nomor } = route.params;
     const { jumlahSoal } = route.params;
+    const { time } = route.params;
+
+    console.log('time: '+time);
 
     const showJawaban = (x) => {
         temp = x;
         toggle(currentIsOpen => !currentIsOpen);
     }
 
-    var soal = <Soal20161/>
-    var pilihan = <Pilihan20161 showJawaban={showJawaban}/>
-    var jawaban = <Jawaban20161/>
+    var soal;
+    var pilihan;
+    var jawaban;
+
+    if(tahunId=='2016'){
+        switch(nomor){
+            case 1:
+                soal = <Soal20161/>;
+                pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20161/>
+                break;
+            default:
+                soal = <Soal20161/>;
+                pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20161/>
+                break;
+        }
+    }
 
     React.useEffect(()=>{
         console.log('tahunId: '+{tahunId});
@@ -93,18 +119,8 @@ function TantanganSoal({route,navigation}){
             );
             return true;
         });
-        if({tahunId}=='2016'){
-            switch(nomor){
-                case 1:
-                    soal = <Soal20161/>;
-                    pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
-                    jawaban = <Jawaban20161/>
-                    break;
-                default:
-                    break;
-            }
-        }
     });
+    checkTime(time);
 
     return(
         <>
@@ -119,7 +135,7 @@ function TantanganSoal({route,navigation}){
                         }}
                         size={15}
                         onFinish={()=> {
-                            toggle(currentIsOpen=>!currentIsOpen),
+                            toggle(currentIsOpen=currentNumber>!currentIsOpen),
                             wrong.play(),
                             currentTime = 180
                         }}
@@ -138,8 +154,10 @@ function TantanganSoal({route,navigation}){
                             <TouchableOpacity 
                                 style={styles.toBtn}
                                 onPress={() => navigation.navigate('IsiSoal',{
-                                    number: {nomor},
-                                    awal: 1
+                                    number: nomor,
+                                    awal: 1,
+                                    time: currentTime,
+                                    pertama: false,
                                 })}>
                                 <Image
                                     style={styles.btnback}

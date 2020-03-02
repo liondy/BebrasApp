@@ -8,8 +8,9 @@ import {
     Alert
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import CountDown from 'react-native-countdown-component';
 import Des20161 from '../assets/soal/2016/1/DeskripsiSoal';
+import { wrong } from '../pages/TantanganSoal';
 
 function ImgSoal(){
     return(
@@ -21,13 +22,22 @@ function ImgSoal(){
 let availableSoal = []; //list of available numbers
 let answered = 0; //how many the user has answered
 let currentNumber = 0; //give the function the current number
-let path = <Des20161/>
+var currentTime = 0;
+
 function IsiSoal({route,navigation}){
     const { tahunId } = route.params;
     const { awal } = route.params; //checked if it is the beginnning or the middle of the soal
     const { number } = route.params;
+    const { pertama } = route.params;
+    const { time } = route.params;
+    var path;
+    if(!pertama){
+        currentTime = time;
+    }
     React.useEffect(()=>{
-        console.log('tahunId: '+{tahunId});
+        console.log('tahun: '+tahunId);
+        console.log('awal: '+awal);
+        console.log('pertama: '+pertama);
         BackHandler.addEventListener('hardwareBackPress', function(){
             Alert.alert(
                 'Keluar?',
@@ -44,50 +54,10 @@ function IsiSoal({route,navigation}){
             );
             return true;
         });
-        if(isAwal({awal})){
-            currentNumber = randomNomorSoal();
-            console.log('current number: '+currentNumber);
-        }
-        if({tahunId}=='2016'){
-            switch(currentNumber){
-                case 1:
-                    path = <Des20161/>;
-                    console.log('masuk');
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if({tahunId}=='2017'){
-            switch(currentNumber){
-                case 1:
-                    path = <Des20171/>;
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if({tahunId}=='2018'){
-            switch(currentNumber){
-                case 1:
-                    path = <Des20181/>;
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if({tahunId}=='2019'){
-            switch(currentNumber){
-                case 1:
-                    path = <Des20191/>;
-                    break;
-                default:
-                    break;
-            }
-        }
     });
     const isAwal = (awal) => {
-        if(awal==0){
+        if(awal=='0'){
+            console.log('masuk');
             for (let index = 0; index < 24; index++) {
                 availableSoal.pop(); //removing cache, make availableSoal to []
             }
@@ -121,11 +91,74 @@ function IsiSoal({route,navigation}){
         answered++; //increment the answered question
         return nomor; //gets the new number of soal
     };
+    if(isAwal(awal)){
+        currentNumber = randomNomorSoal();
+        console.log('current number: '+currentNumber);
+    }
+    if(tahunId=='2016'){
+        switch(currentNumber){
+            case 1:
+                path = <Des20161/>;
+                console.log('masukSini');
+                break;
+            default:
+                console.log('masukSitu');
+                path = <Des20161/>;
+                break;
+        }
+    }
+    else if(tahun=='2017'){
+        switch(currentNumber){
+            case 1:
+                path = <Des20171/>;
+                break;
+            default:
+                path = <Des20161/>;
+                break;
+        }
+    }
+    else if(tahun=='2018'){
+        switch(currentNumber){
+            case 1:
+                path = <Des20181/>;
+                break;
+            default:
+                path = <Des20161/>;
+                break;
+        }
+    }
+    else if(tahun=='2019'){
+        switch(currentNumber){
+            case 1:
+                path = <Des20191/>;
+                break;
+            default:
+                path = <Des20161/>;
+                break;
+        }
+    }
     return(
         <View style={styles.container}>
             <ImageBackground
                 source={require('../assets/picture/backgrounds/combined.png')}
                 style={styles.background}>
+                {pertama?null:<CountDown style={styles.waktu}
+                    until={time}
+                    onChange = {()=>{
+                        currentTime = currentTime-1
+                    }}
+                    size={15}
+                    onFinish={()=> {
+                        pertama?null:wrong.play()
+                        currentTime = 0
+                    }}
+                    digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#FFBD33'}}
+                    digitTxtStyle={{color: '#F0B50B'}}
+                    timeToShow={['M', 'S']}
+                    timeLabels={{m: null, s: null}}
+                    separatorStyle={{color: '#F0B50B'}}
+                    showSeparator
+                />}
                 <ImgSoal/>
                 <View style={styles.soalContainer}>
                     {path}
@@ -133,9 +166,10 @@ function IsiSoal({route,navigation}){
                 <View style={styles.tantangan}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('TantanganSoal',{
-                            tahunId: {tahunId},
-                            nomor: {currentNumber},
-                            jumlahSoal: {answered}
+                            tahunId: tahunId,
+                            nomor: currentNumber,
+                            jumlahSoal: answered,
+                            time: currentTime
                         })
                     }>
                         <Image source={require('../assets/picture/soal/btntantangan.png')}/>  
@@ -180,7 +214,7 @@ const styles = StyleSheet.create({
         height: '80%',
     },
     waktu:{
-        marginTop: 5
+        marginTop: 10
     }
 })
 

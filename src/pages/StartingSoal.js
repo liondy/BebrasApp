@@ -7,7 +7,10 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+var tahunSekarang;
+
 function TahunSoal({tahun}){
+    tahunSekarang = tahun
     if (tahun=='2016'){
         console.log('tahunId: '+tahun);
         return(
@@ -117,8 +120,9 @@ function StartingSoal({route, navigation}){
             <View style={styles.btnSoal}>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('IsiSoal',{
-                        tahunId: {tahunId},
-                        awal: 0
+                        tahunId: tahunSekarang,
+                        awal: 0,
+                        pertama: true,
                     })
                 }>
                     <Image source={require('../assets/picture/startingSoal/start.png')}/>
