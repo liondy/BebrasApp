@@ -7,7 +7,8 @@ import {
     Text,
     Modal,
     Alert,
-    TouchableOpacity
+    TouchableOpacity,
+    ScrollView
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 import { TouchableHighlight } from 'react-native-gesture-handler';
@@ -43,6 +44,43 @@ function Waktu(){
     )
 }
 
+function Penjelasan(){
+    return(
+        <ScrollView>
+            <Text style={styles.txIsiPenjelasan}>
+            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+
+            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+
+            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+        </Text>
+        </ScrollView>
+    )
+}
+
+function HidePenjelasan(status){
+    if(status){
+        return(
+            <View>
+                <Text style={styles.txPenjelasan}>Penjelasan</Text>
+                <Penjelasan/>
+            </View>
+        )
+    }
+    else{
+        <View></View>
+    }
+}
+
 var temp=0;
 
 function Gambar(){
@@ -68,11 +106,12 @@ function Gambar(){
 function TantanganSoal({navigation}){
     const[isVisible,toggle]=React.useState(false);
     const[isBenar,cek]=React.useState(false);
+    const [status,ubah]=React.useState(false);
 
     const benar = (trigger) => {
         isBenar = trigger;
     }
-
+    
     return(
         <>
         <View style={styles.container}>
@@ -145,22 +184,26 @@ function TantanganSoal({navigation}){
                 backdropTransitionInTiming={600}
                 backdropTransitionOutTiming={600}>                 
                     <View style={{width: '100%',height: '100%',marginTop: 10}}>
-                        <Text style={styles.jawaban}>Jawaban : </Text>
-                        <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
-                        
-                        <View style={{flexDirection: 'row'}}>
-                            <TouchableOpacity
-                                onPress={()=> {navigation.navigate('PenjelasanScreen'),toggle(currentIsOpen => !currentIsOpen)}}>
-                                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
-                            </TouchableOpacity>
-                            <Gambar/>
-                        </View>
-                        
                         <TouchableOpacity
                             style={styles.btnNext}
                             onPress={() => {navigation.navigate('SelesaiSoal'),toggle(currentIsOpen => !currentIsOpen)}}>
                             <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
                         </TouchableOpacity>
+                        <View style={{paddingLeft: 20,paddingRight: 10}}>
+                            <Text style={styles.jawaban}>Jawaban : </Text>
+                            <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
+                        </View>
+                        
+                        
+                        <View style={{flexDirection: 'row'}}>
+                        <TouchableOpacity
+                            onPress={()=> ubah(status=>!status) }>
+                                <Image
+                                    source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
+                            </TouchableOpacity>
+                        <Gambar/> 
+                        </View>
+                        {HidePenjelasan(status)}
                     </View>
                 </Modal>
             </View>
@@ -250,7 +293,24 @@ const styles = StyleSheet.create({
         fontFamily: 'KiriFont',
         fontSize: 15,
         textAlign: 'center'
-    }
+    },
+    txPenjelasan:{
+        color : '#6ac1bd',
+        fontWeight: 'bold',
+        fontSize: 25,
+        lineHeight: 40,
+        includeFontPadding: true,
+        padding: 15,
+        alignSelf: 'center'
+    },
+    txIsiPenjelasan:{
+        color : '#6ac1bd',
+        fontWeight: 'bold',
+        fontSize: 15,
+        lineHeight: 40,
+        includeFontPadding: true,
+        padding: 15
+    },
 })
 
 export default TantanganSoal;

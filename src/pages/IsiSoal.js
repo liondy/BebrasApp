@@ -53,7 +53,7 @@ function IsiSoal({navigation}){
         <>
         <View style={styles.container}>
             <ImageBackground
-                source={require('../assets/picture/backgrounds/combined.png')}
+                source={require('../assets/picture/backgrounds/primary.png')}
                 style={styles.background}>
                 <ImgSoal/>
 
@@ -92,9 +92,10 @@ const styles = StyleSheet.create({
     },
     textSoal:{
         color : '#FF5733',
+        // color: 'black',
         fontWeight: 'bold',
         fontSize: 18,
-        lineHeight: 40,
+        lineHeight: 45,
         includeFontPadding: true,
         padding: 15
     },
