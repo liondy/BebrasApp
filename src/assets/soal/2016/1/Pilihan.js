@@ -6,8 +6,8 @@ import {
     View,
     Button
 } from 'react-native';
-import { correct } from '../../../../pages/TantanganSoal';
-import { wrong } from '../../../../pages/TantanganSoal';
+import { correct, quiz } from '../../../../../App';
+import { wrong } from '../../../../../App';
 
 function Pilihan({showJawaban}){
     return(
@@ -15,7 +15,10 @@ function Pilihan({showJawaban}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> correct.play()}
+                onPressIn={()=> {
+                    quiz.pause();
+                    correct.play();
+                }}
                 onPress={()=> showJawaban(1)}>
                 <Text style={styles.txPilihan}>Kotalima</Text>
             </TouchableHighlight>
@@ -23,7 +26,10 @@ function Pilihan({showJawaban}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
+                onPressIn={()=> {
+                    quiz.pause();
+                    wrong.play();
+                }}
                 onPress={()=> showJawaban(0)}>
                 <Text style={styles.txPilihan}>Kotasatu</Text>
             </TouchableHighlight>
@@ -31,7 +37,10 @@ function Pilihan({showJawaban}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
+                onPressIn={()=> {
+                    quiz.pause();
+                    wrong.play()
+                }}
                 onPress={()=> showJawaban(0)}>
                 <Text style={styles.txPilihan}>Kotadua</Text>
             </TouchableHighlight>
@@ -39,7 +48,10 @@ function Pilihan({showJawaban}){
             <TouchableHighlight
                 underlayColor='#d9eb36'
                 style={styles.btnPilihan}
-                onPressIn={()=> wrong.play()}
+                onPressIn={()=> {
+                    quiz.pause();
+                    wrong.play();
+                }}
                 onPress={()=> showJawaban(0)}>
                 <Text style={styles.txPilihan}>Kotatiga</Text>
             </TouchableHighlight>

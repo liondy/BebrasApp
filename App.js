@@ -31,8 +31,45 @@ var backgroundSong = new Sound('background.mp3',Sound.MAIN_BUNDLE,(error)=>{
     backgroundSong.setNumberOfLoops(-1);
     backgroundSong.play();
 });
+
 // untuk digunakan di home agar dapat di toogle
 export {backgroundSong};
+
+var quiz = new Sound('quiz.mp3', Sound.MAIN_BUNDLE, (error)=> {
+  if(error){
+    console.log('failed to load the sound', error)
+    return;
+  }
+})
+
+export {quiz};
+
+var correct = new Sound('correct.mp3', Sound.MAIN_BUNDLE, (error)=> {
+  if(error){
+      console.log('failed to load the sound', error)
+      return;
+  }
+})
+
+export {correct};
+
+var wrong = new Sound('wrong.mp3', Sound.MAIN_BUNDLE, (error)=> {
+  if(error){
+      console.log('failed to load the sound', error)
+      return;
+  }
+})
+
+export {wrong};
+
+var finish = new Sound('finish.mp3', Sound.MAIN_BUNDLE, (error)=> {
+  if(error){
+      console.log('failed to load the sound', error)
+      return;
+  }
+})
+
+export {finish};
 
 BackHandler.addEventListener('hardwareBackPress',function(){
   if(Home){
@@ -53,7 +90,6 @@ function App() {
         backgroundSong.pause();
       });
   },[]);
-
   return (
     <NavigationContainer>
       <Stack.Navigator>

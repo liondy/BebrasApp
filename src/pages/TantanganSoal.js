@@ -9,29 +9,11 @@ import {
     TouchableOpacity
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
-import Sound from 'react-native-sound';
 import Modal from 'react-native-modal';
 import Soal20161 from '../assets/soal/2016/1/Soal';
 import Pilihan20161 from '../assets/soal/2016/1/Pilihan';
 import Jawaban20161 from '../assets/soal/2016/1/Jawaban';
-
-var correct = new Sound('correct.mp3', Sound.MAIN_BUNDLE, (error)=> {
-    if(error){
-        console.log('failed to load the sound', error)
-        return;
-    }
-})
-
-export {correct};
-
-var wrong = new Sound('wrong.mp3', Sound.MAIN_BUNDLE, (error)=> {
-    if(error){
-        console.log('failed to load the sound', error)
-        return;
-    }
-})
-
-export {wrong};
+import { quiz } from '../../App';
 
 function GambarBenar(){
     return(
@@ -210,7 +192,9 @@ function TantanganSoal({route,navigation}){
                                 nilai: currentNilai,
                                 awal: 2,
                                 pertama: true,
-                            }),toggle(currentIsOpen => !currentIsOpen)}}>
+                            }),
+                            toggle(currentIsOpen => !currentIsOpen),
+                            quiz.play()}}>
                             <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
                         </TouchableOpacity>
                     </View>

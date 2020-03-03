@@ -8,6 +8,7 @@ import Beranda from '../tabs/Home';
 import Profil from '../tabs/Profile';
 import Toko from '../tabs/Shop';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { backgroundSong } from '../../App';
 
 const Tab = createBottomTabNavigator();
 

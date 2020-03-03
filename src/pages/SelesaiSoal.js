@@ -7,6 +7,7 @@ import {
     Text
 } from 'react-native';
 import { TouchableOpacity} from 'react-native-gesture-handler';
+import { backgroundSong } from '../../App';
 
 function Selamat(){
     return(
@@ -54,7 +55,9 @@ function SelesaiSoal({route,navigation}){
                 <Diamond reward={nilai}/>
                 <TouchableOpacity
                     style={styles.btnBackBeranda}
-                    onPress={()=> navigation.navigate('Home')}>
+                    onPress={()=> {navigation.navigate('Home'),
+                        backgroundSong.play();
+                    }}>
                         <Image
                         style={styles.btnBack} 
                         source={require('../assets/picture/selesaiSoal/backBeranda.png')}/>

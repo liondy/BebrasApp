@@ -8,16 +8,12 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Penjelasan20161 from '../assets/soal/2016/1/Penjelasan';
-import { answered } from '../pages/IsiSoal';
 
 function PenjelasanScreen({route,navigation}){
     const {tahunId} = route.params;
     const {nomor} = route.params;
     const {nilai} = route.params;
     var contentPenjelasan;
-    React.useEffect=()=>{
-        console.log('tahunId: '+tahunId);
-    };
     if(tahunId=='2016'){
         switch(nomor){
             case 1:
@@ -37,15 +33,14 @@ function PenjelasanScreen({route,navigation}){
                 {contentPenjelasan}
 
             <TouchableOpacity
-                onPress={()=> answered==12?navigation.navigate('SelesaiSoal',{
+                onPress={()=> navigation.navigate('IsiSoal',{
                     tahunId: tahunId,
-                    nilai: nilai
-                }):navigation.navigate('IsiSoal',{
-                    tahunId: tahunId,
-                    nilai: nilai
+                    nilai: nilai,
+                    awal: 2,
+                    pertama: true
                 })}>
                 <Image style={styles.btnNext}
-                source={require('../assets/picture/hasilJawaban/next.png')}/>
+                    source={require('../assets/picture/hasilJawaban/next.png')}/>
             </TouchableOpacity>
 
             </ImageBackground>

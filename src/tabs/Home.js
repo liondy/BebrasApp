@@ -11,7 +11,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
 import ToggleSwitch from 'toggle-switch-react-native';
-import { backgroundSong } from '../../App';
+import {
+    backgroundSong,
+    correct,
+    wrong,
+    finish
+} from '../../App';
 import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
@@ -66,7 +71,18 @@ function Home({ navigation }) {
     };
 
     const handleMusic = (isOn) => {
-        isOn? backgroundSong.play():backgroundSong.stop();
+        if(isOn){
+            backgroundSong.play();
+            correct.setVolume(0);
+            wrong.setVolume(0);
+            finish.setVolume(0);
+        }
+        else{
+            backgroundSong.stop();
+            correct.setVolume(1);
+            wrong.setVolume(1);
+            finish.setVolume(1);
+        }
     }
     
     const selectSoal = (id) => {

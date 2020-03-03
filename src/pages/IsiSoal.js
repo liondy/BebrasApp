@@ -10,7 +10,8 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CountDown from 'react-native-countdown-component';
 import Des20161 from '../assets/soal/2016/1/DeskripsiSoal';
-import { wrong } from '../pages/TantanganSoal';
+import { wrong, quiz } from '../../App';
+import { finish } from '../../App';
 
 function ImgSoal(){
     return(
@@ -82,7 +83,9 @@ function IsiSoal({route,navigation}){
                 navigation.navigate('SelesaiSoal',{
                     tahunId: tahunId,
                     nilai: currentNilai
-                })
+                });
+                quiz.stop();
+                finish.play();
                 return false; //means you has to stop the game because you already have all 12 questions
             }
             else{
@@ -94,12 +97,12 @@ function IsiSoal({route,navigation}){
         let nomor;
         do{
             nomor = Math.floor(Math.random() * 24)+1; //random number 1-24
-            console.log('nomor soal: '+nomor);
         }
         while(availableSoal[nomor] = false && nomor == 0);
         availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
         answered++; //increment the answered question
         console.log('Soal ke: '+answered);
+        console.log('nomor soal: '+nomor);
         return nomor; //gets the new number of soal
     };
     if(isAwal(awal)){

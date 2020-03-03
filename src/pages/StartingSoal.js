@@ -6,6 +6,7 @@ import {
     ImageBackground,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { backgroundSong, quiz } from '../../App';
 
 var tahunSekarang;
 
@@ -118,12 +119,17 @@ function StartingSoal({route, navigation}){
             </View>
             <View style={styles.btnSoal}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('IsiSoal',{
+                    onPress={() => {navigation.navigate('IsiSoal',{
                         tahunId: tahunSekarang,
                         awal: 0,
                         pertama: true,
-                    })
-                }>
+                        nilai: 0,
+                    }),
+                    backgroundSong.stop();
+                    quiz.play();
+                    quiz.setVolume(0.3);
+                    quiz.setNumberOfLoops(-1);
+                }}>
                     <Image source={require('../assets/picture/startingSoal/start.png')}/>
                 </TouchableOpacity>
             </View>
