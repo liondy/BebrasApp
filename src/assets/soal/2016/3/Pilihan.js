@@ -69,8 +69,9 @@ const styles = StyleSheet.create({
     txPilihan: {
         color : '#FF5733',
         fontWeight: 'bold',
-        fontSize: 20,
-        textAlign: 'left'
+        fontSize: 18,
+        textAlign: 'left',
+        paddingLeft: 15
     },
 })
 

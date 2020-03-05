@@ -9,16 +9,13 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Sara ingin membeli sepatu, dan ayahnya memberi batasan
                 bahwa harganya tak boleh lebih dari Rp. 100.000,- rupiah. 
                 Sarah menyukai sepatu bot berwarna hitam.{"\n"}
-                        <Image></Image>
+                        {/* <Image></Image> */}
                 </Text>
-            </ImageBackground>
+            
         </ScrollView>
     )
 }

@@ -9,23 +9,19 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
-                <Text style={styles.textSoal} numberOflines={10}>
-                Keluarga Bebras mempunyai kebun apel. Setelah panen, 
-                mereka ingin mengemas sebaik-baiknya untuk dijual.{"\n"}
+            <Text style={styles.textSoal} numberOflines={10}>
+            Keluarga Bebras mempunyai kebun apel. Setelah panen, 
+            mereka ingin mengemas sebaik-baiknya untuk dijual.{"\n"}
 
-                <Text>
-                Mereka mengemas sesuai aturan sebagai berikut:{"\n"}
-                1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari
-                    8 apel, apel dibiarkan tidak dikemas.{"\n"}
-                2. Kantong akan dimasukkan ke kardus, Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong,
-                    kantong yang tersisa tidak dimasukkan ke kardus.
-                </Text>
-                    <Image></Image>
-                </Text>
-            </ImageBackground>
+            <Text>
+            Mereka mengemas sesuai aturan sebagai berikut:{"\n"}
+            1. Apel ditaruh di kantong. Setiap kantong diisi dengan 8 apel. Jika tersisa kurang dari
+                8 apel, apel dibiarkan tidak dikemas.{"\n"}
+            2. Kantong akan dimasukkan ke kardus, Setiap kardus berisi 8 kantong. Jika tersisa kurang dari 8 kantong,
+                kantong yang tersisa tidak dimasukkan ke kardus.
+            </Text>
+                {/* <Image></Image> */}
+            </Text>
         </ScrollView>
     )
 }

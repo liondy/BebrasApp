@@ -12,7 +12,7 @@ function Penjelasan(){
             6 (enam) loli yang dimakannya dan kapan ia
             menyikat gigi (ditandai X).{'\n'}
 
-            <Image></Image>
+            {/* <Image></Image> */}
         </Text>
     )
 }

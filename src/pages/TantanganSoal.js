@@ -19,13 +19,13 @@ import Soal20162 from '../assets/soal/2016/2/Soal';
 import Pilihan20162 from '../assets/soal/2016/2/Pilihan';
 import Jawaban20162 from '../assets/soal/2016/2/Jawaban';
 
-import Soal201613 from '../assets/soal/2016/3/Soal';
+import Soal20163 from '../assets/soal/2016/3/Soal';
 import Pilihan20163 from '../assets/soal/2016/3/Pilihan';
 import Jawaban20163 from '../assets/soal/2016/3/Jawaban';
 
 import Soal20164 from '../assets/soal/2016/4/Soal';
 import Pilihan20164 from '../assets/soal/2016/4/Pilihan';
-import Jawaban20164 from '../assets/soal/2016//Jawaban';
+import Jawaban20164 from '../assets/soal/2016/4/Jawaban';
 
 import Soal20165 from '../assets/soal/2016/5/Soal';
 import Pilihan20165 from '../assets/soal/2016/5/Pilihan';
@@ -39,7 +39,7 @@ import Soal20167 from '../assets/soal/2016/7/Soal';
 import Pilihan20167 from '../assets/soal/2016/7/Pilihan';
 import Jawaban20167 from '../assets/soal/2016/7/Jawaban';
 
-import Soal201618 from '../assets/soal/2016/8/Soal';
+import Soal20168 from '../assets/soal/2016/8/Soal';
 import Pilihan20168 from '../assets/soal/2016/8/Pilihan';
 import Jawaban20168 from '../assets/soal/2016/8/Jawaban';
 
@@ -68,13 +68,13 @@ import Soal20172 from '../assets/soal/2017/2/Soal';
 import Pilihan20172 from '../assets/soal/2017/2/Pilihan';
 import Jawaban20172 from '../assets/soal/2017/2/Jawaban';
 
-import Soal201713 from '../assets/soal/2017/3/Soal';
+import Soal20173 from '../assets/soal/2017/3/Soal';
 import Pilihan20173 from '../assets/soal/2017/3/Pilihan';
 import Jawaban20173 from '../assets/soal/2017/3/Jawaban';
 
 import Soal20174 from '../assets/soal/2017/4/Soal';
 import Pilihan20174 from '../assets/soal/2017/4/Pilihan';
-import Jawaban20174 from '../assets/soal/2017//Jawaban';
+import Jawaban20174 from '../assets/soal/2017/4/Jawaban';
 
 import Soal20175 from '../assets/soal/2017/5/Soal';
 import Pilihan20175 from '../assets/soal/2017/5/Pilihan';
@@ -153,6 +153,8 @@ function TantanganSoal({route,navigation}){
     const { nilai } = route.params;
 
     currentNilai = nilai;
+    console.log('tahun: '+tahunId);
+    console.log('nmor: '+nomor);
 
     const showJawaban = (x) => {
         temp = x;
@@ -335,23 +337,22 @@ function TantanganSoal({route,navigation}){
                         showSeparator
                     />
                     <View style={styles.tantanganCont}>
-                        <ImageBackground
-                            source={require('../assets/picture/tantangan/Dasar.png')}
-                            style={styles.dasar}>
-                            {soal}
-                            <TouchableOpacity 
-                                style={styles.toBtn}
-                                onPress={() => navigation.navigate('IsiSoal',{
-                                    number: nomor,
-                                    awal: 1,
-                                    time: currentTime,
-                                    pertama: false,
-                                })}>
-                                <Image
-                                    style={styles.btnback}
-                                    source={require('../assets/picture/tantangan/ButtonSoal.png')}/>
-                            </TouchableOpacity>
-                        </ImageBackground> 
+                        <View style={styles.soalContainer}>
+                            {soal}  
+                        </View>
+                        
+                        <TouchableOpacity 
+                            style={styles.toBtn}
+                            onPress={() => navigation.navigate('IsiSoal',{
+                                number: nomor,
+                                awal: 1,
+                                time: currentTime,
+                                pertama: false,
+                            })}>
+                            <Image
+                                style={styles.btnback}
+                                source={require('../assets/picture/tantangan/ButtonSoal.png')}/>
+                        </TouchableOpacity>
                     </View> 
                 </ImageBackground>
             </View>
@@ -454,6 +455,10 @@ const styles = StyleSheet.create({
     btnNext: {
         alignSelf: 'flex-end'
     },
+    soalContainer: {
+        width: '100%',
+        height: '50%'
+    }
 })
 
 export default TantanganSoal;

@@ -9,16 +9,12 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
-                <Text style={styles.textSoal} numberOflines={10}>
-                Seekor cacing sedang duduk di ujung cabang sebuah pohon apel. 
-                Ia ingin makan semua apel yang ada lewat dahan pohon. Setiap 
-                bagian dahan, panjangnya 1 meter.{'\n'} 
-                    <Image></Image>
-                </Text>
-            </ImageBackground>
+            <Text style={styles.textSoal} numberOflines={10}>
+            Seekor cacing sedang duduk di ujung cabang sebuah pohon apel. 
+            Ia ingin makan semua apel yang ada lewat dahan pohon. Setiap 
+            bagian dahan, panjangnya 1 meter.{'\n'} 
+                {/* <Image></Image> */}
+            </Text>
         </ScrollView>
     )
 }

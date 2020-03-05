@@ -9,16 +9,12 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
-                <Text style={styles.textSoal} numberOflines={10}>
-                Jack menggulirkan dadu sepanjang jalan tanpa pengeseran, 
-                tiga kali ke arah belakang dan dua kali berikutnya ke 
-                kanan (berhenti di jalan bertanda lingkaran putih.{'\n'} 
-                <Image></Image>
-                </Text>
-            </ImageBackground>
+            <Text style={styles.textSoal} numberOflines={10}>
+            Jack menggulirkan dadu sepanjang jalan tanpa pengeseran, 
+            tiga kali ke arah belakang dan dua kali berikutnya ke 
+            kanan (berhenti di jalan bertanda lingkaran putih.{'\n'} 
+            {/* <Image></Image> */}
+            </Text>
         </ScrollView>
     )
 }

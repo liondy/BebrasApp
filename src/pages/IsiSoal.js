@@ -63,6 +63,7 @@ function IsiSoal({route,navigation}){
 
     currentNilai = nilai;
     console.log('total nilai: '+currentNilai);
+    console.log('nomor: '+number);
 
     var path;
     if(!pertama){
@@ -102,11 +103,11 @@ function IsiSoal({route,navigation}){
             return true; //means you can start the game
         }
         else if(awal==1){
-            currentNumber = {number};
+            currentNumber = number;
             return false;
         }
         else {
-            if(answered==3){
+            if(answered==12){
                 navigation.navigate('SelesaiSoal',{
                     tahunId: tahunId,
                     nilai: currentNilai
@@ -122,21 +123,19 @@ function IsiSoal({route,navigation}){
     }
     const randomNomorSoal = () => {
         let nomor;
-        // do{
-        //     nomor = Math.floor(Math.random() * 12)+1; //random number 1-24
-        // }
-        for(let i=1; i<=12; i++){
-            nomor = i;
-        }
-        while(availableSoal[nomor] = false && nomor == 0);
+        do{
+            nomor = Math.floor(Math.random() * 12)+1; //random number 1-24
+        } while(availableSoal[nomor] = false && nomor == 0);
+       
         availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
         answered++; //increment the answered question
-        console.log('Soal ke: '+answered);
+        // console.log('Soal ke: '+answered);
         console.log('nomor soal: '+nomor);
         return nomor; //gets the new number of soal
     };
     if(isAwal(awal)){
         currentNumber = randomNomorSoal();
+        // currentNumber++;
     }
     if(tahunId=='2016'){
         switch(currentNumber){
@@ -181,7 +180,7 @@ function IsiSoal({route,navigation}){
                 break;
         }
     }
-    else if(tahun=='2017'){
+    else if(tahunId=='2017'){
         switch(currentNumber){
             case 1:
                 path = <Des20171/>;
@@ -247,7 +246,7 @@ function IsiSoal({route,navigation}){
     return(
         <View style={styles.container}>
             <ImageBackground
-                source={require('../assets/picture/backgrounds/combined.png')}
+                source={require('../assets/picture/backgrounds/primary.png')}
                 style={styles.background}>
                 {pertama?null:<CountDown style={styles.waktu}
                     until={time}
@@ -319,7 +318,7 @@ const styles = StyleSheet.create({
     },
     soalContainer: {
         width: '100%',
-        height: '80%',
+        height: '75%'
     },
     waktu:{
         marginTop: 10

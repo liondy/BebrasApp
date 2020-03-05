@@ -9,9 +9,6 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Sebuah robot pengecat mula-mula mempunyai 4 kaleng 
                 masing-masing berisi cat merah (M), hijau (H), 
@@ -28,9 +25,8 @@ function DeskripsiSoal(){
                 Dan seterusnya, sehingga semua kaleng cat kosong, atau 
                 tersisa cat di satu kaleng karena dua papan berurutan 
                 tak boleh berwarna sama.{"\n"}
-                    <Image></Image>
+                    {/* <Image></Image> */}
                 </Text>
-            </ImageBackground>
         </ScrollView>
     )
 }

@@ -9,9 +9,6 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Sebuah kelompok berjumlah 4 berang-berang memainkan 
                 "kursi-musik" yaitu berpindah kursi saat musik dimainkan.{"\n"}
@@ -25,9 +22,8 @@ function DeskripsiSoal(){
                 (2) kursi, sedangkan Berang-berang (B, D) hanya akan
                 berpindah satu (1) kursi. Semua brang-berang berpindah 
                 searah jarum jam.{"\n"}
-                    <Image></Image>
+                    {/* <Image></Image> */}
                 </Text>
-            </ImageBackground>
         </ScrollView>
     )
 }
@@ -40,7 +36,7 @@ const styles = StyleSheet.create({
     textSoal:{
         color : '#FF5733',
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 15,
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15

@@ -11,7 +11,7 @@ function Penjelasan(){
             Kita dapat melihat tempat mana yang dipakai dengan menempatkan mobil-mobil
              dari kedua hari di arena parkir secara bersamaan.{'\n'}
             </Text>
-            <Image></Image>
+            {/* <Image></Image> */}
             <Text>
             Kemudian kita dapat menghitung banyaknya tempat kosong untuk menentukan 4 tempat
              kosong pada hari Senin maupun hari Selasa.{'\n'}

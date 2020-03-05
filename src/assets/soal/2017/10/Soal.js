@@ -4,25 +4,23 @@ import {
     Text
 } from 'react-native';
 
-function Penjelasan(){
+function Soal(){
     return(
-        <View>
-            {/* <Image></Image>
-            <Image></Image> */}
-        </View>   
+        <Text style={styles.txTantangan}> 
+            place your 'X’ so that you have the best chance of winning.
+        </Text>
     )
 }
 
 const styles = StyleSheet.create({
-    txIsiPenjelasan:{
+    txTantangan:{
         color : '#FF5733',
         fontWeight: 'bold',
-        fontSize: 15,
+        fontSize: 20,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15,
-        marginTop: 50
+        padding: 15
     },
 })
 
-export default Penjelasan;
+export default Soal;

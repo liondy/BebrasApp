@@ -9,7 +9,8 @@ function Jawaban(){
         <>
             <Text style={styles.jawaban}>Jawaban : </Text>
             <Text style={styles.penjelasan}>
-                Jawaban yang tepat adalah C. Zac mengumpulkan BRSEBAASE dan Pan mengumpulkan RBSRBAE.</Text>
+                Jawaban yang tepat adalah 
+                Zac mengumpulkan BRSEBAASE dan Pan mengumpulkan RBSRBAE.</Text>
         </>
     )
 }

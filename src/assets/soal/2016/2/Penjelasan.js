@@ -8,7 +8,7 @@ function Penjelasan(){
     return(
         <Text style={styles.txIsiPenjelasan}>
             Menempatkan kartu secara berurutan, kita mendapatkan: 
-            <Image></Image>
+            {/* <Image></Image> */}
         </Text>
     )
 }

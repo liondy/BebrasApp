@@ -9,22 +9,18 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
-                <Text style={styles.textSoal} numberOflines={10}>
-                Bebras Jordan menebang pohon dan memotongnya sehingga setiap 
-                pohon menghasilkan batang pohon yang panjangnya 10 meter.{"\n"}
-                    <Image></Image>
-                    <Text>
-                    Bebras Ali ingin membangun bendungan dan membutuhkan kayu sepanjang
-                    4 meter sebanyak 7 batang, dan kayu sepanjang 3 meter sebanyak 7 batang. 
-                    Ali dapat memotong batang pohon yang sudah dipotong Jordan sesuai dengan 
-                    keperluannya. Jordan ingin memberikan batang pohon kepada Ali dengan 
-                    jumlah sesedikit mungkin.{"\n"}
-                    </Text>
+            <Text style={styles.textSoal} numberOflines={10}>
+            Bebras Jordan menebang pohon dan memotongnya sehingga setiap 
+            pohon menghasilkan batang pohon yang panjangnya 10 meter.{"\n"}
+                {/* <Image></Image> */}
+                <Text>
+                Bebras Ali ingin membangun bendungan dan membutuhkan kayu sepanjang
+                4 meter sebanyak 7 batang, dan kayu sepanjang 3 meter sebanyak 7 batang. 
+                Ali dapat memotong batang pohon yang sudah dipotong Jordan sesuai dengan 
+                keperluannya. Jordan ingin memberikan batang pohon kepada Ali dengan 
+                jumlah sesedikit mungkin.{"\n"}
                 </Text>
-            </ImageBackground>
+            </Text>
         </ScrollView>
     )
 }

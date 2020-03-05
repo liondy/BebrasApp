@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         color : '#FF5733',
         fontWeight: 'bold',
         fontSize: 20,
-        textAlign: 'left'
+        textAlign: 'centered'
     },
 })
 

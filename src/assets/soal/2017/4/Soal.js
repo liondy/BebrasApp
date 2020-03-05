@@ -7,7 +7,8 @@ import {
 function Soal(){
     return(
         <Text style={styles.txTantangan}> 
-            Manakah dari urutan sorakan berikut yang menyebabkan keduanya berhenti pada kotak yang sama?
+            Manakah dari urutan sorakan berikut 
+            yang menyebabkan keduanya berhenti pada kotak yang sama?
         </Text>
     )
 }

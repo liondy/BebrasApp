@@ -8,7 +8,7 @@ function Soal(){
     return(
         <Text style={styles.txTantangan}> 
             Saat Leo menerima urutan kartu berikut : 
-            <Image></Image>
+            {/* <Image></Image> */}
         </Text>
     )
 }

@@ -9,9 +9,6 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Bebras menemukan sebuah lorong yang terdiri dari sederet kotak, 
                 setiap kotak berisi permen loli atau sikat gigi. Ia harus 
@@ -21,9 +18,8 @@ function DeskripsiSoal(){
                 ia harus menggosok gigi sebelum boleh makan lagi. Pada setiap kotak,
                 ia hanya dapat makan loli, atau menggosok gigi, atau hanya berjalan.
                 Dia tak boleh membawa loli ataupun sikat gigi ke langkah berikutnya.{"\n"}
-                        <Image></Image>
+                        {/* <Image></Image> */}
                 </Text>
-            </ImageBackground>
         </ScrollView>
     )
 }

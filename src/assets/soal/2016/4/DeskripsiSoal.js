@@ -9,20 +9,16 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Si berang-berang ingin menjadi ninja dan menentukan namanya. 
                 Nama Ninja dibuat dengan mengganti setiap huruf yang berasal
                 dari nama sesungguhnya dengan suku-suku kata sesuai dengan 
                 tabel berikut:{"\n"}
-                        <Image></Image>
+                        {/* <Image></Image> */}
                         <Text> 
                         Misalnya "BEBRAS" mmemiliki nama ninja "pikupishikaari”.{"\n"}
                         </Text>
                 </Text>
-            </ImageBackground>
         </ScrollView>
     )
 }

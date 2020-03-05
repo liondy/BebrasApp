@@ -1,3 +1,4 @@
+//merupakan soal 2014 only nine keys
 import React from 'react';
 import {
     ImageBackground,
@@ -9,21 +10,18 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
-                Jeni si berang-berang cantik, pergi ke sekolah dengan berjalan kaki. 
-                Peta jalan yang dapat dilalui dari rumah ke sekolah seperti berikut:{"\n"}
-                <Image></Image>
-                <Text>
-                Jeni senang menempuh jalur yang berbeda-beda setiap hari. Dia hanya 
-                berjalan sepanjang jalan yang tersedia seperti pada gambar. Jalan yang 
-                Jeni gunakan pasti selalu mengarah ke sekolah. Artinya Jeni tidak akan
-                menggunakan jalan yang menjauhi sekolah.{"\n"}
+                Daniel is sending text messages from his old phone.
+                For every letter he has to press the proper key once, twice, three
+                or four times, followed by a short pause.
+                In order to type 'C' he has to press the number 2 key three times
+                because 'C' is the third letter written on this key.
+                In order to type 'HIM' he has to press the number 4 key twice,
+                followed by the number 4 key 3 times and finally the number 6
+                key once.
+                Daniel presses exactly six times to enter the name of a friend.{"\n"}
+                {/* <Image></Image> */}
                 </Text>
-                </Text>
-            </ImageBackground>
         </ScrollView>
     )
 }

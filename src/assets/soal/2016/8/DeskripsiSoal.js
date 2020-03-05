@@ -9,18 +9,14 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
-                <Text style={styles.textSoal} numberOflines={10}>
-                Si Bebras dapat memutar roda ke kanan atau ke kiri.
-                Pada setiap sekali putaran, roda berputar satu langkah
-                dan panah menunjuk ke warna berikutnya. Gambar berikut 
-                menunjukkan kondisi awal roda, dan kondisi setelah roda
-                diputar satu kali ke kiri:{"\n"}
-                    <Image></Image>
-                </Text>
-            </ImageBackground>
+            <Text style={styles.textSoal} numberOflines={10}>
+            Si Bebras dapat memutar roda ke kanan atau ke kiri.
+            Pada setiap sekali putaran, roda berputar satu langkah
+            dan panah menunjuk ke warna berikutnya. Gambar berikut 
+            menunjukkan kondisi awal roda, dan kondisi setelah roda
+            diputar satu kali ke kiri:{"\n"}
+                {/* <Image></Image> */}
+            </Text>
         </ScrollView>
     )
 }

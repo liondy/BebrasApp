@@ -20,7 +20,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Image></Image>
+                    <Text>1</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -31,7 +31,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Image></Image>
+                    <Text>1</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -42,7 +42,7 @@ function Pilihan({showJawaban}){
                     correct.play();
                 }}
                 onPress={()=> showJawaban(1)}>
-                <Image></Image>
+                    <Text>1</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -53,7 +53,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Image></Image>
+                <Text>1</Text>
             </TouchableHighlight>
         </>
     )

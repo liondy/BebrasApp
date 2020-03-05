@@ -1,3 +1,4 @@
+//dari soal 2014 tic tac toe
 import React from 'react';
 import {
     ImageBackground,
@@ -9,19 +10,14 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
-                Yaya punya 3 gambar bebras bermain pedang dan perisai sebagai berikut{'\n'} 
-                    <Image></Image>
-                    <Text>
-                    Yaya ingin membuat sebuah gambar, di mana setiap pedang harus menunjuk 
-                    pada berang-berang yang lain, dan setiap perisai harus menghalangi pedang 
-                    yang ditunjukkan kepadanya.
-                    </Text>
+                You are playing a game of tic-tac-toe with your friend. 
+                First your friend has to place an 'O', then you place your 'X'.
+                You continue taking turns in this way. The player who places their three
+                marks in a horizontal, vertical or diagonal line wins.
+                It is your turn to put an 'X' in the grid below:{'\n'}
+                    {/* <Image></Image> */}
                 </Text>
-            </ImageBackground>
         </ScrollView>
     )
 }

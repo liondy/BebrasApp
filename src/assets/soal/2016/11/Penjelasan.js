@@ -6,7 +6,7 @@ import {
 
 function Penjelasan(){
     return(
-        <image></image>
+        // <image></image>
     )
 }
 

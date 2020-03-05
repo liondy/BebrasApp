@@ -9,9 +9,6 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
                 <Text style={styles.textSoal} numberOflines={10}>
                     Bebras Zac dan bebras Pan ingin melakukan perjalanan sepanjang
                     lintasan seperti pada gambar di bawah ini. Zac ingin berjalan dari 
@@ -23,9 +20,8 @@ function DeskripsiSoal(){
                     dari lintasan, mereka akan menghasilkan sebaris huruf yang sudah mereka
                     kumpulkan sebagai catatan.
 
-                    <Image></Image>
+                    {/* <Image></Image> */}
                 </Text>
-            </ImageBackground>
         </ScrollView>
     )
 }

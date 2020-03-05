@@ -9,17 +9,13 @@ import {
 function DeskripsiSoal(){
     return(
         <ScrollView>
-            <ImageBackground 
-                style={styles.bgSoal}
-                source={require('../../../picture/soal/bgsoal.png')}>
-                <Text style={styles.textSoal} numberOflines={10}>
-                Robin si berang-berang ingin menempel kertas di dinding kamarnya yang berukuran 5x5, 
-                menggunakan kertas-kertas persegi dalam berbagai ukuran dan warna. Kertas selalu 
-                ditempel tanpa melampaui batas dindingnya dan tanpa mengguntingnya. Ia menumpukkan 
-                kertas suatu kertas di atas kertas lain. Hasilnya adalah sebagai berikut:{"\n"}
-                    <Image></Image>
-                </Text>
-            </ImageBackground>
+            <Text style={styles.textSoal} numberOflines={10}>
+            Robin si berang-berang ingin menempel kertas di dinding kamarnya yang berukuran 5x5, 
+            menggunakan kertas-kertas persegi dalam berbagai ukuran dan warna. Kertas selalu 
+            ditempel tanpa melampaui batas dindingnya dan tanpa mengguntingnya. Ia menumpukkan 
+            kertas suatu kertas di atas kertas lain. Hasilnya adalah sebagai berikut:{"\n"}
+                {/* <Image></Image> */}
+            </Text>
         </ScrollView>
     )
 }
