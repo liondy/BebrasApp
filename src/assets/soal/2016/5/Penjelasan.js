@@ -7,11 +7,10 @@ import {
 function Penjelasan(){
     return(
         <Text style={styles.txIsiPenjelasan}>
-        Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-        titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-        ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-        bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-    </Text>
+            A salah sebab ada paling tidak 1 kolom dengan dua stiker yang sama.
+            B salah sebab ada paling tidak 1 baris dengan dua stiker yang sama.
+            D salah sebab ada paling tidak 1 baris dengan dua stiker yang sama.
+        </Text>
     )
 }
 

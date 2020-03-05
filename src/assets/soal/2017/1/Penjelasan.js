@@ -6,12 +6,10 @@ import {
 
 function Penjelasan(){
     return(
-        <Text style={styles.txIsiPenjelasan}>
-        Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-        titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-        ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-        bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-    </Text>
+        <Text>
+            Jika kita mengurutkan data mobil lewat yang diberikan, 
+            nilai yang ketiga (di tengah) adalah 10, data dari mobil berwarna biru.
+        </Text>
     )
 }
 

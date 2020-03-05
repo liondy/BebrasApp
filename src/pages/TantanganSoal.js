@@ -10,9 +10,103 @@ import {
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 import Modal from 'react-native-modal';
+//2016
 import Soal20161 from '../assets/soal/2016/1/Soal';
 import Pilihan20161 from '../assets/soal/2016/1/Pilihan';
 import Jawaban20161 from '../assets/soal/2016/1/Jawaban';
+
+import Soal20162 from '../assets/soal/2016/2/Soal';
+import Pilihan20162 from '../assets/soal/2016/2/Pilihan';
+import Jawaban20162 from '../assets/soal/2016/2/Jawaban';
+
+import Soal201613 from '../assets/soal/2016/3/Soal';
+import Pilihan20163 from '../assets/soal/2016/3/Pilihan';
+import Jawaban20163 from '../assets/soal/2016/3/Jawaban';
+
+import Soal20164 from '../assets/soal/2016/4/Soal';
+import Pilihan20164 from '../assets/soal/2016/4/Pilihan';
+import Jawaban20164 from '../assets/soal/2016//Jawaban';
+
+import Soal20165 from '../assets/soal/2016/5/Soal';
+import Pilihan20165 from '../assets/soal/2016/5/Pilihan';
+import Jawaban20165 from '../assets/soal/2016/5/Jawaban';
+
+import Soal20166 from '../assets/soal/2016/6/Soal';
+import Pilihan20166 from '../assets/soal/2016/6/Pilihan';
+import Jawaban20166 from '../assets/soal/2016/6/Jawaban';
+
+import Soal20167 from '../assets/soal/2016/7/Soal';
+import Pilihan20167 from '../assets/soal/2016/7/Pilihan';
+import Jawaban20167 from '../assets/soal/2016/7/Jawaban';
+
+import Soal201618 from '../assets/soal/2016/8/Soal';
+import Pilihan20168 from '../assets/soal/2016/8/Pilihan';
+import Jawaban20168 from '../assets/soal/2016/8/Jawaban';
+
+import Soal20169 from '../assets/soal/2016/9/Soal';
+import Pilihan20169 from '../assets/soal/2016/9/Pilihan';
+import Jawaban20169 from '../assets/soal/2016/9/Jawaban';
+
+import Soal201610 from '../assets/soal/2016/10/Soal';
+import Pilihan201610 from '../assets/soal/2016/10/Pilihan';
+import Jawaban201610 from '../assets/soal/2016/10/Jawaban';
+
+import Soal201611 from '../assets/soal/2016/11/Soal';
+import Pilihan201611 from '../assets/soal/2016/11/Pilihan';
+import Jawaban201611 from '../assets/soal/2016/11/Jawaban';
+
+import Soal201612 from '../assets/soal/2016/12/Soal';
+import Pilihan201612 from '../assets/soal/2016/12/Pilihan';
+import Jawaban201612 from '../assets/soal/2016/12/Jawaban';
+
+//2017
+import Soal20171 from '../assets/soal/2017/1/Soal';
+import Pilihan20171 from '../assets/soal/2017/1/Pilihan';
+import Jawaban20171 from '../assets/soal/2017/1/Jawaban';
+
+import Soal20172 from '../assets/soal/2017/2/Soal';
+import Pilihan20172 from '../assets/soal/2017/2/Pilihan';
+import Jawaban20172 from '../assets/soal/2017/2/Jawaban';
+
+import Soal201713 from '../assets/soal/2017/3/Soal';
+import Pilihan20173 from '../assets/soal/2017/3/Pilihan';
+import Jawaban20173 from '../assets/soal/2017/3/Jawaban';
+
+import Soal20174 from '../assets/soal/2017/4/Soal';
+import Pilihan20174 from '../assets/soal/2017/4/Pilihan';
+import Jawaban20174 from '../assets/soal/2017//Jawaban';
+
+import Soal20175 from '../assets/soal/2017/5/Soal';
+import Pilihan20175 from '../assets/soal/2017/5/Pilihan';
+import Jawaban20175 from '../assets/soal/2017/5/Jawaban';
+
+import Soal20176 from '../assets/soal/2017/6/Soal';
+import Pilihan20176 from '../assets/soal/2017/6/Pilihan';
+import Jawaban20176 from '../assets/soal/2017/6/Jawaban';
+
+import Soal20177 from '../assets/soal/2017/7/Soal';
+import Pilihan20177 from '../assets/soal/2017/7/Pilihan';
+import Jawaban20177 from '../assets/soal/2017/7/Jawaban';
+
+import Soal20178 from '../assets/soal/2017/8/Soal';
+import Pilihan20178 from '../assets/soal/2017/8/Pilihan';
+import Jawaban20178 from '../assets/soal/2017/8/Jawaban';
+
+import Soal20179 from '../assets/soal/2017/9/Soal';
+import Pilihan20179 from '../assets/soal/2017/9/Pilihan';
+import Jawaban20179 from '../assets/soal/2017/9/Jawaban';
+
+import Soal201710 from '../assets/soal/2017/10/Soal';
+import Pilihan201710 from '../assets/soal/2017/10/Pilihan';
+import Jawaban201710 from '../assets/soal/2017/10/Jawaban';
+
+import Soal201711 from '../assets/soal/2017/11/Soal';
+import Pilihan201711 from '../assets/soal/2017/11/Pilihan';
+import Jawaban201711 from '../assets/soal/2017/11/Jawaban';
+
+import Soal201712 from '../assets/soal/2017/12/Soal';
+import Pilihan201712 from '../assets/soal/2017/12/Pilihan';
+import Jawaban201712 from '../assets/soal/2017/12/Jawaban';
 import { quiz } from '../../App';
 
 function GambarBenar(){
@@ -76,10 +170,122 @@ function TantanganSoal({route,navigation}){
                 pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20161/>
                 break;
+            case 2:
+                soal = <Soal20162/>;
+                pilihan = <Pilihan20162 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20162/>
+            case 3:
+                soal = <Soal20163/>;
+                pilihan = <Pilihan20163 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20163/>
+                break;
+            case 4:
+                soal = <Soal20164/>;
+                pilihan = <Pilihan20164 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20164/>
+            case 5:
+                soal = <Soal20165/>;
+                pilihan = <Pilihan20165 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20165/>
+                break;
+            case 6:
+                soal = <Soal20166/>;
+                pilihan = <Pilihan20166 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20166/>
+            case 7:
+                soal = <Soal20167/>;
+                pilihan = <Pilihan20167 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20167/>
+                break;
+            case 8:
+                soal = <Soal20168/>;
+                pilihan = <Pilihan20168 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20168/>   
+            case 9:
+                soal = <Soal20169/>;
+                pilihan = <Pilihan20169 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20169/>
+                break;
+            case 10:
+                soal = <Soal201610/>;
+                pilihan = <Pilihan201610 showJawaban={showJawaban}/>
+                jawaban = <Jawaban201610/>
+            case 11:
+                soal = <Soal201611/>;
+                pilihan = <Pilihan201611 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban201611/>
+                break;
+            case 12:
+                soal = <Soal201612/>;
+                pilihan = <Pilihan201612 showJawaban={showJawaban}/>
+                jawaban = <Jawaban201612/>      
             default:
                 soal = <Soal20161/>;
                 pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20161/>
+                break;
+        }
+    }
+    else if(tahunId=='2017'){
+        switch(nomor){
+            case 1:
+                soal = <Soal20171/>;
+                pilihan = <Pilihan20171 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20171/>
+                break;
+            case 2:
+                soal = <Soal20172/>;
+                pilihan = <Pilihan20172 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20172/>
+            case 3:
+                soal = <Soal20173/>;
+                pilihan = <Pilihan20173 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20173/>
+                break;
+            case 4:
+                soal = <Soal20174/>;
+                pilihan = <Pilihan20174 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20174/>
+            case 5:
+                soal = <Soal20175/>;
+                pilihan = <Pilihan20175 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20175/>
+                break;
+            case 6:
+                soal = <Soal20176/>;
+                pilihan = <Pilihan20176 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20176/>
+            case 7:
+                soal = <Soal20177/>;
+                pilihan = <Pilihan20177 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20177/>
+                break;
+            case 8:
+                soal = <Soal20178/>;
+                pilihan = <Pilihan20178 showJawaban={showJawaban}/>
+                jawaban = <Jawaban20178/>   
+            case 9:
+                soal = <Soal20179/>;
+                pilihan = <Pilihan20179 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20179/>
+                break;
+            case 10:
+                soal = <Soal201710/>;
+                pilihan = <Pilihan201710 showJawaban={showJawaban}/>
+                jawaban = <Jawaban201710/>
+            case 11:
+                soal = <Soal201711/>;
+                pilihan = <Pilihan201711 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban201711/>
+                break;
+            case 12:
+                soal = <Soal201712/>;
+                pilihan = <Pilihan201712 showJawaban={showJawaban}/>
+                jawaban = <Jawaban201712/>      
+            default:
+                soal = <Soal20171/>;
+                pilihan = <Pilihan20171 showJawaban={showJawaban}/>;
+                jawaban = <Jawaban20171/>
                 break;
         }
     }

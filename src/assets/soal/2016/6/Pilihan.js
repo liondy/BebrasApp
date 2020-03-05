@@ -17,10 +17,21 @@ function Pilihan({showJawaban}){
                 style={styles.btnPilihan}
                 onPressOut={()=> {
                     quiz.pause();
+                    wrong.play();
+                }}
+                onPress={()=> showJawaban(1)}>
+                <Text style={styles.txPilihan}>C</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+                underlayColor='#d9eb36'
+                style={styles.btnPilihan}
+                onPressOut={()=> {
+                    quiz.pause();
                     correct.play();
                 }}
                 onPress={()=> showJawaban(1)}>
-                <Text style={styles.txPilihan}>Kotalima</Text>
+                <Text style={styles.txPilihan}>A</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -31,7 +42,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotasatu</Text>
+                <Text style={styles.txPilihan}>F</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -42,7 +53,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotadua</Text>
+                <Text style={styles.txPilihan}>E</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -53,7 +64,18 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotatiga</Text>
+                <Text style={styles.txPilihan}>D</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+                underlayColor='#d9eb36'
+                style={styles.btnPilihan}
+                onPressOut={()=> {
+                    quiz.pause();
+                    wrong.play();
+                }}
+                onPress={()=> showJawaban(0)}>
+                <Text style={styles.txPilihan}>B</Text>
             </TouchableHighlight>
         </>
     )

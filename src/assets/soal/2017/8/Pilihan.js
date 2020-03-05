@@ -20,7 +20,7 @@ function Pilihan({showJawaban}){
                     correct.play();
                 }}
                 onPress={()=> showJawaban(1)}>
-                <Text style={styles.txPilihan}>Kotalima</Text>
+                <Text style={styles.txPilihan}>Ho dengan To, dan No dengan Ma.</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -31,7 +31,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotasatu</Text>
+                <Text style={styles.txPilihan}>Ka dengan No, dan No dengan Ma.</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -42,7 +42,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotadua</Text>
+                <Text style={styles.txPilihan}>Ho dengan To, dan Ma dengan To.</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -53,7 +53,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotatiga</Text>
+                <Text style={styles.txPilihan}>Dua jembatan kayu tidak cukup untuk itu.</Text>
             </TouchableHighlight>
         </>
     )
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         color : '#FF5733',
         fontWeight: 'bold',
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'left'
     },
 })
 

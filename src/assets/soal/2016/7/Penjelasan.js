@@ -7,11 +7,13 @@ import {
 function Penjelasan(){
     return(
         <Text style={styles.txIsiPenjelasan}>
-        Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-        titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-        ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-        bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-    </Text>
+            Bebras mulai berjalan dan makan loli sampai 
+            menemukan sikat gigi. Gambar berikut menunjukkan
+            6 (enam) loli yang dimakannya dan kapan ia
+            menyikat gigi (ditandai X).{'\n'}
+
+            <Image></Image>
+        </Text>
     )
 }
 

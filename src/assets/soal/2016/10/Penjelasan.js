@@ -7,11 +7,13 @@ import {
 function Penjelasan(){
     return(
         <Text style={styles.txIsiPenjelasan}>
-        Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-        titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-        ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-        bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-    </Text>
+            Setelah robot mencat M-H-K-B-M-H-K-B, cat Biru habis, 
+            sehingga berikutnya ia akan mencat M-H dan kemudian cat hijau habis.
+            Berikutnya ia K-M-K-M dan cat merah habis. 
+            Berikutnya lagi, ia mencat K dan berhenti. 
+            Jadi, dengan empat kaleng cat tersebut ia dapat mencat 15 papan:
+            M-H-K-B-M-H-K-B-M-H-K-M-K-M-K
+        </Text>
     )
 }
 

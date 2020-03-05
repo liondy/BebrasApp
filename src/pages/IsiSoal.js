@@ -9,7 +9,34 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CountDown from 'react-native-countdown-component';
+//2016
 import Des20161 from '../assets/soal/2016/1/DeskripsiSoal';
+import Des20162 from '../assets/soal/2016/2/DeskripsiSoal';
+import Des20163 from '../assets/soal/2016/3/DeskripsiSoal';
+import Des20164 from '../assets/soal/2016/4/DeskripsiSoal';
+import Des20165 from '../assets/soal/2016/5/DeskripsiSoal';
+import Des20166 from '../assets/soal/2016/6/DeskripsiSoal';
+import Des20167 from '../assets/soal/2016/7/DeskripsiSoal';
+import Des20168 from '../assets/soal/2016/8/DeskripsiSoal';
+import Des20169 from '../assets/soal/2016/9/DeskripsiSoal';
+import Des201610 from '../assets/soal/2016/10/DeskripsiSoal';
+import Des201611 from '../assets/soal/2016/11/DeskripsiSoal';
+import Des201612 from '../assets/soal/2016/12/DeskripsiSoal';
+
+//2017
+import Des20171 from '../assets/soal/2017/1/DeskripsiSoal';
+import Des20172 from '../assets/soal/2017/2/DeskripsiSoal';
+import Des20173 from '../assets/soal/2017/3/DeskripsiSoal';
+import Des20174 from '../assets/soal/2017/4/DeskripsiSoal';
+import Des20175 from '../assets/soal/2017/5/DeskripsiSoal';
+import Des20176 from '../assets/soal/2017/6/DeskripsiSoal';
+import Des20177 from '../assets/soal/2017/7/DeskripsiSoal';
+import Des20178 from '../assets/soal/2017/8/DeskripsiSoal';
+import Des20179 from '../assets/soal/2017/9/DeskripsiSoal';
+import Des201710 from '../assets/soal/2017/10/DeskripsiSoal';
+import Des201711 from '../assets/soal/2017/11/DeskripsiSoal';
+import Des201712 from '../assets/soal/2017/12/DeskripsiSoal';
+
 import { wrong, quiz } from '../../App';
 import { finish } from '../../App';
 
@@ -64,10 +91,10 @@ function IsiSoal({route,navigation}){
     });
     const isAwal = (awal) => {
         if(awal=='0'){
-            for (let index = 0; index < 24; index++) {
+            for (let index = 0; index < 12; index++) {
                 availableSoal.pop(); //removing cache, make availableSoal to []
             }
-            for (let index = 0; index < 24; index++) {
+            for (let index = 0; index < 12; index++) {
                 availableSoal.push(true); //make all numbers available again
             }
             currentNilai = 0;
@@ -95,8 +122,11 @@ function IsiSoal({route,navigation}){
     }
     const randomNomorSoal = () => {
         let nomor;
-        do{
-            nomor = Math.floor(Math.random() * 24)+1; //random number 1-24
+        // do{
+        //     nomor = Math.floor(Math.random() * 12)+1; //random number 1-24
+        // }
+        for(let i=1; i<=12; i++){
+            nomor = i;
         }
         while(availableSoal[nomor] = false && nomor == 0);
         availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
@@ -113,6 +143,39 @@ function IsiSoal({route,navigation}){
             case 1:
                 path = <Des20161/>;
                 break;
+            case 2:
+                path = <Des20162/>;
+                break;
+            case 3:
+                path = <Des20163/>;
+                break;
+            case 4:
+                path = <Des20164/>;
+                break;
+            case 5:
+                path = <Des20165/>;
+                break;
+            case 6:
+                path = <Des20166/>;
+                break;
+            case 7:
+                path = <Des20167/>;
+                break;
+            case 8:
+                path = <Des20168/>;
+                break; 
+            case 9:
+                path = <Des20169/>;
+                break;
+            case 10:
+                path = <Des201610/>;
+                break;
+            case 11:
+                path = <Des201611/>;
+                break;
+            case 12:
+                path = <Des201612/>;
+                break;       
             default:
                 path = <Des20161/>;
                 break;
@@ -123,8 +186,41 @@ function IsiSoal({route,navigation}){
             case 1:
                 path = <Des20171/>;
                 break;
+            case 2:
+                path = <Des20172/>;
+                break;
+            case 3:
+                path = <Des20173/>;
+                break;
+            case 4:
+                path = <Des20174/>;
+                break;
+            case 5:
+                path = <Des20175/>;
+                break;
+            case 6:
+                path = <Des20176/>;
+                break;
+            case 7:
+                path = <Des20177/>;
+                break;
+            case 8:
+                path = <Des20178/>;
+                break; 
+            case 9:
+                path = <Des20179/>;
+                break;
+            case 10:
+                path = <Des201710/>;
+                break;
+            case 11:
+                path = <Des201711/>;
+                break;
+            case 12:
+                path = <Des201712/>;
+                break;       
             default:
-                path = <Des20161/>;
+                path = <Des20171/>;
                 break;
         }
     }

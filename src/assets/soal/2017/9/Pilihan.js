@@ -17,10 +17,32 @@ function Pilihan({showJawaban}){
                 style={styles.btnPilihan}
                 onPressOut={()=> {
                     quiz.pause();
+                    wrong.play();
+                }}
+                onPress={()=> showJawaban(0)}>
+                <Text style={styles.txPilihan}>3</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+                underlayColor='#d9eb36'
+                style={styles.btnPilihan}
+                onPressOut={()=> {
+                    quiz.pause();
+                    wrong.play();
+                }}
+                onPress={()=> showJawaban(0)}>
+                <Text style={styles.txPilihan}>6</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+                underlayColor='#d9eb36'
+                style={styles.btnPilihan}
+                onPressOut={()=> {
+                    quiz.pause();
                     correct.play();
                 }}
                 onPress={()=> showJawaban(1)}>
-                <Text style={styles.txPilihan}>Kotalima</Text>
+                <Text style={styles.txPilihan}>4</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -31,29 +53,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotasatu</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-                underlayColor='#d9eb36'
-                style={styles.btnPilihan}
-                onPressOut={()=> {
-                    quiz.pause();
-                    wrong.play();
-                }}
-                onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotadua</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-                underlayColor='#d9eb36'
-                style={styles.btnPilihan}
-                onPressOut={()=> {
-                    quiz.pause();
-                    wrong.play();
-                }}
-                onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotatiga</Text>
+                <Text style={styles.txPilihan}>5</Text>
             </TouchableHighlight>
         </>
     )
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         color : '#FF5733',
         fontWeight: 'bold',
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'left'
     },
 })
 

@@ -6,12 +6,15 @@ import {
 
 function Penjelasan(){
     return(
-        <Text style={styles.txIsiPenjelasan}>
-        Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-        titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-        ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-        bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-    </Text>
+        <View>
+            <Image></Image>
+            <Text>
+            Pada informatika, anda tidak hanya dituntut untuk merencanakan instruksi 
+            untuk menyelesaikan persoalan, tetapi harus mencari solusi yang membutuhkan 
+            usaha minimal. Para ahli informatika menyebutkan hal ini dengan 
+            membuat solusi yang optimal.{'\n'}
+            </Text>
+        </View>
     )
 }
 
