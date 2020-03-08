@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -16,9 +17,9 @@ function DeskripsiSoal(){
             Saat kunci adalah 0, ‘A’ dikode sebagai ‘a'. Seperti ditunjukkan 
             pada gambar 2, saat kunci adalah A (sebab roda dalam digeser 1 
             posisi berlawanan arah jarum jam), 'A' dikode sebagai 'b'.{"\n"}
-                {/* <Image></Image> */}
                 <Text>Dengan kunci=1, kita akan meng-kode pesan “TANTANGAN BEBRAS” menjadi “uboubohbo cfcsbt”.{"\n"}</Text>
             </Text>
+            <Image style={styles.gmbr}source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }
@@ -36,6 +37,12 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        resizeMode: 'stretch',
+        width: 350,
+        height: 300,
+        marginLeft: 5
+    }
 })
 
 export default DeskripsiSoal;

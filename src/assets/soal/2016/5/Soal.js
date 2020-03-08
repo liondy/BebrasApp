@@ -7,7 +7,9 @@ import {
 function Soal(){
     return(
         <Text style={styles.txTantangan}> 
-            Susunan stiker mana yang benar?
+            Which two beavers still need to swap their 
+            toothbrushes so that all the beavers have
+            the correct brushes?
         </Text>
     )
 }

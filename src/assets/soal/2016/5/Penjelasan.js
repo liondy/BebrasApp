@@ -6,11 +6,19 @@ import {
 
 function Penjelasan(){
     return(
+        <>
         <Text style={styles.txIsiPenjelasan}>
-            A salah sebab ada paling tidak 1 kolom dengan dua stiker yang sama.
-            B salah sebab ada paling tidak 1 baris dengan dua stiker yang sama.
-            D salah sebab ada paling tidak 1 baris dengan dua stiker yang sama.
+        After “Eve and Chad, swap your brushes!”
         </Text>
+        <Image source={require('./img/gbr2.png')}/>
+        <Text style={styles.txIsiPenjelasan}>
+        After “Eve and Chad, swap your brushes!”
+        </Text>
+        <Image source={require('./img/gbr3.png')}/>
+        <Text style={styles.txIsiPenjelasan}>
+        All that remains is to swap Ben and Dan's brushes.
+        </Text>
+        </>
     )
 }
 

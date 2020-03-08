@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -18,8 +19,8 @@ function DeskripsiSoal(){
                 ia harus menggosok gigi sebelum boleh makan lagi. Pada setiap kotak,
                 ia hanya dapat makan loli, atau menggosok gigi, atau hanya berjalan.
                 Dia tak boleh membawa loli ataupun sikat gigi ke langkah berikutnya.{"\n"}
-                        {/* <Image></Image> */}
                 </Text>
+                {/* <Image source={require('./img/gbr1.png')}/> */}
         </ScrollView>
     )
 }

@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -25,7 +26,7 @@ function DeskripsiSoal(){
                 Dan seterusnya, sehingga semua kaleng cat kosong, atau 
                 tersisa cat di satu kaleng karena dua papan berurutan 
                 tak boleh berwarna sama.{"\n"}
-                    {/* <Image></Image> */}
+                <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
                 </Text>
         </ScrollView>
     )
@@ -44,6 +45,11 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        resizeMode: 'stretch',
+        width: 300,
+        height: 250
+    }
 })
 
 export default DeskripsiSoal;

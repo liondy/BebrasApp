@@ -20,7 +20,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                    <Text>1</Text>
+                    <Text style={styles.txPilihan}>Ben and Chad</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -31,7 +31,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                    <Text>1</Text>
+                    <Text style={styles.txPilihan}>Ann and Eve</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -42,7 +42,7 @@ function Pilihan({showJawaban}){
                     correct.play();
                 }}
                 onPress={()=> showJawaban(1)}>
-                    <Text>1</Text>
+                    <Text style={styles.txPilihan}>Ben and Dan</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -53,7 +53,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text>1</Text>
+                <Text style={styles.txPilihan}>Nobody</Text>
             </TouchableHighlight>
         </>
     )

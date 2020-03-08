@@ -1,14 +1,15 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function Soal(){
     return(
         <Text style={styles.txTantangan}> 
             Saat Leo menerima urutan kartu berikut : 
-            {/* <Image></Image> */}
+            <Image source={require('./img/gbr2.png')}/>
         </Text>
     )
 }

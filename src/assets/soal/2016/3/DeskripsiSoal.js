@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -19,9 +20,9 @@ function DeskripsiSoal(){
                     yang terletak pada sisi kiri mereka. Ketika Zac dan Pan mencapai akhir
                     dari lintasan, mereka akan menghasilkan sebaris huruf yang sudah mereka
                     kumpulkan sebagai catatan.
-
-                    {/* <Image></Image> */}
                 </Text>
+
+                <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }
@@ -39,6 +40,11 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        marginLeft: 5,
+        width: '100%',
+        height: 300
+    }
 })
 
 export default DeskripsiSoal;

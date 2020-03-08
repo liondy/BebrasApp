@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -13,9 +14,9 @@ function DeskripsiSoal(){
                 Sara ingin membeli sepatu, dan ayahnya memberi batasan
                 bahwa harganya tak boleh lebih dari Rp. 100.000,- rupiah. 
                 Sarah menyukai sepatu bot berwarna hitam.{"\n"}
-                        {/* <Image></Image> */}
                 </Text>
             
+                <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }
@@ -33,6 +34,11 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        marginLeft: 20,
+        width: '100%',
+        height: 300
+    }
 })
 
 export default DeskripsiSoal;

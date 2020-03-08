@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -11,16 +12,16 @@ function DeskripsiSoal(){
         <ScrollView>
             <Text style={styles.textSoal} numberOflines={10}>
             Bebras Jordan menebang pohon dan memotongnya sehingga setiap 
-            pohon menghasilkan batang pohon yang panjangnya 10 meter.{"\n"}
-                {/* <Image></Image> */}
-                <Text>
-                Bebras Ali ingin membangun bendungan dan membutuhkan kayu sepanjang
-                4 meter sebanyak 7 batang, dan kayu sepanjang 3 meter sebanyak 7 batang. 
-                Ali dapat memotong batang pohon yang sudah dipotong Jordan sesuai dengan 
-                keperluannya. Jordan ingin memberikan batang pohon kepada Ali dengan 
-                jumlah sesedikit mungkin.{"\n"}
-                </Text>
+            pohon menghasilkan batang pohon yang panjangnya 10 meter.
+                
+            Bebras Ali ingin membangun bendungan dan membutuhkan kayu sepanjang
+            4 meter sebanyak 7 batang, dan kayu sepanjang 3 meter sebanyak 7 batang. 
+            Ali dapat memotong batang pohon yang sudah dipotong Jordan sesuai dengan 
+            keperluannya. Jordan ingin memberikan batang pohon kepada Ali dengan 
+            jumlah sesedikit mungkin.{"\n"}
+                
             </Text>
+            <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }
@@ -38,6 +39,12 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        resizeMode: 'stretch',
+        marginLeft: 10,
+        width: 200,
+        height: 100
+    }
 })
 
 export default DeskripsiSoal;

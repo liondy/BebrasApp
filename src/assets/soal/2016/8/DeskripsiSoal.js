@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -15,8 +16,8 @@ function DeskripsiSoal(){
             dan panah menunjuk ke warna berikutnya. Gambar berikut 
             menunjukkan kondisi awal roda, dan kondisi setelah roda
             diputar satu kali ke kiri:{"\n"}
-                {/* <Image></Image> */}
             </Text>
+            <Image style={styles.gmbr}source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }
@@ -34,6 +35,12 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        resizeMode: 'stretch',
+        width: 300,
+        height: 200,
+        marginLeft: 20
+    }
 })
 
 export default DeskripsiSoal;

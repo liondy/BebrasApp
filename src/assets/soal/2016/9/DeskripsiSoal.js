@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -22,8 +23,9 @@ function DeskripsiSoal(){
                 (2) kursi, sedangkan Berang-berang (B, D) hanya akan
                 berpindah satu (1) kursi. Semua brang-berang berpindah 
                 searah jarum jam.{"\n"}
-                    {/* <Image></Image> */}
                 </Text>
+
+                <Image source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }

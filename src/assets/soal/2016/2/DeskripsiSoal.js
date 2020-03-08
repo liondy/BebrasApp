@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -16,8 +17,8 @@ function DeskripsiSoal(){
                 kartu.{"\n"}
                 Misalnya, untuk mengirim pesan DanceTime, Violeta membuat 3 kartu 
                 sebagai berikut : 
-                    {/* <Image></Image> */}
             </Text>
+            <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }
@@ -35,6 +36,12 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        resizeMode: 'stretch',
+        marginLeft: 50,
+        width: 200,
+        height: 60
+    }
 })
 
 export default DeskripsiSoal;

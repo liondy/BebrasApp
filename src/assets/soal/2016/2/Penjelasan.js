@@ -1,15 +1,18 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function Penjelasan(){
     return(
+        <>
         <Text style={styles.txIsiPenjelasan}>
             Menempatkan kartu secara berurutan, kita mendapatkan: 
-            {/* <Image></Image> */}
         </Text>
+        <Image style={styles.gmbr} source={require('./img/gbr3.png')}/>
+        </>
     )
 }
 
@@ -23,6 +26,11 @@ const styles = StyleSheet.create({
         padding: 15,
         marginTop: 50
     },
+    gmbr: {
+        marginLeft: 20,
+        width: '100%',
+        height: 300
+    }
 })
 
 export default Penjelasan;

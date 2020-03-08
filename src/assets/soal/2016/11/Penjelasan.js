@@ -1,12 +1,12 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text
+    Image
 } from 'react-native';
 
 function Penjelasan(){
     return(
-        // <image></image>
+        <Image source={require('./img/gbr2.png')}/>
     )
 }
 

@@ -3,16 +3,22 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 function DeskripsiSoal(){
     return(
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
-                Beni harus mengisi 9 kotak pada bidang dengan 3 macam stiker.
-                Setiap stiker berisi satu gambar. Syaratnya, pada setiap
-                baris maupun kolom, tidak boleh ada stiker yang sama.{"\n"}
+                It is time for bed! Every beaver should have a toothbrush that 
+                matches their size. But look at the picture to see what has happened.{"\n"}
+                </Text>
+                <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
+                <Text style={styles.textSoal} numberOflines={10}>
+                “Not so fast!” sighs mother beaver. 
+                “Eve and Chad, swap your brushes! Ann and Chad, you too!” 
+                But then she does not know how to continue.   
                 </Text>
         </ScrollView>
     )
@@ -31,6 +37,11 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15
     },
+    gmbr: {
+        resizeMode: 'stretch',
+        width: 400,
+        height: 200
+    }
 })
 
 export default DeskripsiSoal;
