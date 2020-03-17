@@ -310,9 +310,10 @@ const styles = StyleSheet.create({
     },
     textSoal:{
         color : '#FF5733',
+        // color: 'black',
         fontWeight: 'bold',
         fontSize: 18,
-        lineHeight: 40,
+        lineHeight: 45,
         includeFontPadding: true,
         padding: 15
     },

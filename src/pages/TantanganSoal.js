@@ -6,7 +6,8 @@ import {
     ImageBackground,
     BackHandler,
     Alert,
-    TouchableOpacity
+    TouchableOpacity,
+    ScrollView
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 import Modal from 'react-native-modal';
@@ -127,8 +128,44 @@ function GambarSalah(){
     )
 }
 
-export {GambarBenar};
-export {GambarSalah};
+function Penjelasan(){
+    return(
+        <ScrollView>
+            <Text style={styles.txIsiPenjelasan}>
+            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+
+            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+
+            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+        </Text>
+        </ScrollView>
+    )
+}
+
+function HidePenjelasan(status){
+    if(status){
+        return(
+            <View>
+                <Text style={styles.txPenjelasan}>Penjelasan</Text>
+                <Penjelasan/>
+            </View>
+        )
+    }
+    else{
+        <View></View>
+    }
+}
+
+var temp=0;
 
 
 var temp = 0; //bener atau salah
@@ -164,6 +201,8 @@ function TantanganSoal({route,navigation}){
     var soal;
     var pilihan;
     var jawaban;
+    const[isBenar,cek]=React.useState(false);
+    const [status,ubah]=React.useState(false);
 
     if(tahunId=='2016'){
         switch(nomor){
@@ -404,6 +443,21 @@ function TantanganSoal({route,navigation}){
                             quiz.play()}}>
                             <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
                         </TouchableOpacity>
+                        <View style={{paddingLeft: 20,paddingRight: 10}}>
+                            <Text style={styles.jawaban}>Jawaban : </Text>
+                            <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
+                        </View>
+                        
+                        
+                        <View style={{flexDirection: 'row'}}>
+                        <TouchableOpacity
+                            onPress={()=> ubah(status=>!status) }>
+                                <Image
+                                    source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
+                            </TouchableOpacity>
+                        <Gambar/> 
+                        </View>
+                        {HidePenjelasan(status)}
                     </View>
                 </Modal>
             </View>
@@ -459,6 +513,28 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '50%'
     }
+    txNext: {
+        fontFamily: 'KiriFont',
+        fontSize: 15,
+        textAlign: 'center'
+    },
+    txPenjelasan:{
+        color : '#6ac1bd',
+        fontWeight: 'bold',
+        fontSize: 25,
+        lineHeight: 40,
+        includeFontPadding: true,
+        padding: 15,
+        alignSelf: 'center'
+    },
+    txIsiPenjelasan:{
+        color : '#6ac1bd',
+        fontWeight: 'bold',
+        fontSize: 15,
+        lineHeight: 40,
+        includeFontPadding: true,
+        padding: 15
+    },
 })
 
 export default TantanganSoal;
