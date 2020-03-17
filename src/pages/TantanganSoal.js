@@ -512,7 +512,7 @@ const styles = StyleSheet.create({
     soalContainer: {
         width: '100%',
         height: '50%'
-    }
+    },
     txNext: {
         fontFamily: 'KiriFont',
         fontSize: 15,
