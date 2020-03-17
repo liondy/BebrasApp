@@ -7,108 +7,132 @@ import {
     BackHandler,
     Alert,
     TouchableOpacity,
-    ScrollView
+    Text
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 import Modal from 'react-native-modal';
+import { backgroundSong, quiz, wrong } from '../../App';
 //2016
 import Soal20161 from '../assets/soal/2016/1/Soal';
 import Pilihan20161 from '../assets/soal/2016/1/Pilihan';
 import Jawaban20161 from '../assets/soal/2016/1/Jawaban';
+import Penjelasan20161 from '../assets/soal/2016/1/Penjelasan';
 
 import Soal20162 from '../assets/soal/2016/2/Soal';
 import Pilihan20162 from '../assets/soal/2016/2/Pilihan';
 import Jawaban20162 from '../assets/soal/2016/2/Jawaban';
+import Penjelasan20162 from '../assets/soal/2016/2/Penjelasan';
 
 import Soal20163 from '../assets/soal/2016/3/Soal';
 import Pilihan20163 from '../assets/soal/2016/3/Pilihan';
 import Jawaban20163 from '../assets/soal/2016/3/Jawaban';
+import Penjelasan20163 from '../assets/soal/2016/3/Penjelasan';
 
 import Soal20164 from '../assets/soal/2016/4/Soal';
 import Pilihan20164 from '../assets/soal/2016/4/Pilihan';
 import Jawaban20164 from '../assets/soal/2016/4/Jawaban';
+import Penjelasan20164 from '../assets/soal/2016/4/Penjelasan';
 
 import Soal20165 from '../assets/soal/2016/5/Soal';
 import Pilihan20165 from '../assets/soal/2016/5/Pilihan';
 import Jawaban20165 from '../assets/soal/2016/5/Jawaban';
+import Penjelasan20165 from '../assets/soal/2016/5/Penjelasan';
 
 import Soal20166 from '../assets/soal/2016/6/Soal';
 import Pilihan20166 from '../assets/soal/2016/6/Pilihan';
 import Jawaban20166 from '../assets/soal/2016/6/Jawaban';
+import Penjelasan20166 from '../assets/soal/2016/6/Penjelasan';
 
 import Soal20167 from '../assets/soal/2016/7/Soal';
 import Pilihan20167 from '../assets/soal/2016/7/Pilihan';
 import Jawaban20167 from '../assets/soal/2016/7/Jawaban';
+import Penjelasan20167 from '../assets/soal/2016/7/Penjelasan';
 
 import Soal20168 from '../assets/soal/2016/8/Soal';
 import Pilihan20168 from '../assets/soal/2016/8/Pilihan';
 import Jawaban20168 from '../assets/soal/2016/8/Jawaban';
+import Penjelasan20168 from '../assets/soal/2016/8/Penjelasan';
 
 import Soal20169 from '../assets/soal/2016/9/Soal';
 import Pilihan20169 from '../assets/soal/2016/9/Pilihan';
 import Jawaban20169 from '../assets/soal/2016/9/Jawaban';
+import Penjelasan20169 from '../assets/soal/2016/9/Penjelasan';
 
 import Soal201610 from '../assets/soal/2016/10/Soal';
 import Pilihan201610 from '../assets/soal/2016/10/Pilihan';
 import Jawaban201610 from '../assets/soal/2016/10/Jawaban';
+import Penjelasan201610 from '../assets/soal/2016/10/Penjelasan';
 
 import Soal201611 from '../assets/soal/2016/11/Soal';
 import Pilihan201611 from '../assets/soal/2016/11/Pilihan';
 import Jawaban201611 from '../assets/soal/2016/11/Jawaban';
+import Penjelasan201611 from '../assets/soal/2016/11/Penjelasan';
 
 import Soal201612 from '../assets/soal/2016/12/Soal';
 import Pilihan201612 from '../assets/soal/2016/12/Pilihan';
 import Jawaban201612 from '../assets/soal/2016/12/Jawaban';
+import Penjelasan201612 from '../assets/soal/2016/12/Penjelasan';
 
 //2017
 import Soal20171 from '../assets/soal/2017/1/Soal';
 import Pilihan20171 from '../assets/soal/2017/1/Pilihan';
 import Jawaban20171 from '../assets/soal/2017/1/Jawaban';
+import Penjelasan20171 from '../assets/soal/2017/1/Penjelasan';
 
 import Soal20172 from '../assets/soal/2017/2/Soal';
 import Pilihan20172 from '../assets/soal/2017/2/Pilihan';
 import Jawaban20172 from '../assets/soal/2017/2/Jawaban';
+import Penjelasan20172 from '../assets/soal/2017/2/Penjelasan';
 
 import Soal20173 from '../assets/soal/2017/3/Soal';
 import Pilihan20173 from '../assets/soal/2017/3/Pilihan';
 import Jawaban20173 from '../assets/soal/2017/3/Jawaban';
+import Penjelasan20173 from '../assets/soal/2017/3/Penjelasan';
 
 import Soal20174 from '../assets/soal/2017/4/Soal';
 import Pilihan20174 from '../assets/soal/2017/4/Pilihan';
 import Jawaban20174 from '../assets/soal/2017/4/Jawaban';
+import Penjelasan20174 from '../assets/soal/2017/4/Penjelasan';
 
 import Soal20175 from '../assets/soal/2017/5/Soal';
 import Pilihan20175 from '../assets/soal/2017/5/Pilihan';
 import Jawaban20175 from '../assets/soal/2017/5/Jawaban';
+import Penjelasan20175 from '../assets/soal/2017/5/Penjelasan';
 
 import Soal20176 from '../assets/soal/2017/6/Soal';
 import Pilihan20176 from '../assets/soal/2017/6/Pilihan';
 import Jawaban20176 from '../assets/soal/2017/6/Jawaban';
+import Penjelasan20176 from '../assets/soal/2017/6/Penjelasan';
 
 import Soal20177 from '../assets/soal/2017/7/Soal';
 import Pilihan20177 from '../assets/soal/2017/7/Pilihan';
 import Jawaban20177 from '../assets/soal/2017/7/Jawaban';
+import Penjelasan20177 from '../assets/soal/2017/7/Penjelasan';
 
 import Soal20178 from '../assets/soal/2017/8/Soal';
 import Pilihan20178 from '../assets/soal/2017/8/Pilihan';
 import Jawaban20178 from '../assets/soal/2017/8/Jawaban';
+import Penjelasan20178 from '../assets/soal/2017/8/Penjelasan';
 
 import Soal20179 from '../assets/soal/2017/9/Soal';
 import Pilihan20179 from '../assets/soal/2017/9/Pilihan';
 import Jawaban20179 from '../assets/soal/2017/9/Jawaban';
+import Penjelasan20179 from '../assets/soal/2017/9/Penjelasan';
 
 import Soal201710 from '../assets/soal/2017/10/Soal';
 import Pilihan201710 from '../assets/soal/2017/10/Pilihan';
 import Jawaban201710 from '../assets/soal/2017/10/Jawaban';
+import Penjelasan201710 from '../assets/soal/2017/10/Penjelasan';
 
 import Soal201711 from '../assets/soal/2017/11/Soal';
 import Pilihan201711 from '../assets/soal/2017/11/Pilihan';
 import Jawaban201711 from '../assets/soal/2017/11/Jawaban';
+import Penjelasan201711 from '../assets/soal/2017/11/Penjelasan';
 
 import Soal201712 from '../assets/soal/2017/12/Soal';
 import Pilihan201712 from '../assets/soal/2017/12/Pilihan';
 import Jawaban201712 from '../assets/soal/2017/12/Jawaban';
-import { quiz } from '../../App';
+import Penjelasan201712 from '../assets/soal/2017/12/Penjelasan';
 
 function GambarBenar(){
     return(
@@ -128,51 +152,23 @@ function GambarSalah(){
     )
 }
 
-function Penjelasan(){
-    return(
-        <ScrollView>
-            <Text style={styles.txIsiPenjelasan}>
-            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-
-            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-
-            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-        </Text>
-        </ScrollView>
-    )
-}
-
-function HidePenjelasan(status){
+function HidePenjelasan(status,penjelasan){
     if(status){
         return(
             <View>
                 <Text style={styles.txPenjelasan}>Penjelasan</Text>
-                <Penjelasan/>
+                {penjelasan}
             </View>
         )
     }
-    else{
-        <View></View>
-    }
 }
-
-var temp=0;
 
 
 var temp = 0; //bener atau salah
 var currentTime;
 function checkTime(time){
     if(time==0){
-        currentTime = 180;
+        currentTime = 20;
     }
     else{
         currentTime = time;
@@ -180,6 +176,7 @@ function checkTime(time){
 }
 
 var currentNilai = 0;
+var dijawab = 0;
 
 function TantanganSoal({route,navigation}){
     const[isVisible,toggle]=React.useState(false);
@@ -188,6 +185,7 @@ function TantanganSoal({route,navigation}){
     const { jumlahSoal } = route.params;
     const { time } = route.params;
     const { nilai } = route.params;
+    const { salah } = route.params;
 
     currentNilai = nilai;
     console.log('tahun: '+tahunId);
@@ -195,12 +193,14 @@ function TantanganSoal({route,navigation}){
 
     const showJawaban = (x) => {
         temp = x;
+        dijawab = 1;
         toggle(currentIsOpen => !currentIsOpen);
     }
 
     var soal;
     var pilihan;
     var jawaban;
+    var penjelasan;
     const[isBenar,cek]=React.useState(false);
     const [status,ubah]=React.useState(false);
 
@@ -210,60 +210,80 @@ function TantanganSoal({route,navigation}){
                 soal = <Soal20161/>;
                 pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20161/>
+                penjelasan = <Penjelasan20161/>
                 break;
             case 2:
                 soal = <Soal20162/>;
                 pilihan = <Pilihan20162 showJawaban={showJawaban}/>
                 jawaban = <Jawaban20162/>
+                penjelasan = <Penjelasan20162/>
+                break;
             case 3:
                 soal = <Soal20163/>;
                 pilihan = <Pilihan20163 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20163/>
+                penjelasan = <Penjelasan20163/>
                 break;
             case 4:
+                console.log("masuk");
                 soal = <Soal20164/>;
                 pilihan = <Pilihan20164 showJawaban={showJawaban}/>
                 jawaban = <Jawaban20164/>
+                penjelasan = <Penjelasan20164/>
+                break;
             case 5:
                 soal = <Soal20165/>;
                 pilihan = <Pilihan20165 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20165/>
+                penjelasan = <Penjelasan20165/>
                 break;
             case 6:
                 soal = <Soal20166/>;
                 pilihan = <Pilihan20166 showJawaban={showJawaban}/>
                 jawaban = <Jawaban20166/>
+                penjelasan = <Penjelasan20166/>
+                break;
             case 7:
                 soal = <Soal20167/>;
                 pilihan = <Pilihan20167 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20167/>
+                penjelasan = <Penjelasan20167/>
                 break;
             case 8:
                 soal = <Soal20168/>;
                 pilihan = <Pilihan20168 showJawaban={showJawaban}/>
-                jawaban = <Jawaban20168/>   
+                jawaban = <Jawaban20168/>
+                penjelasan = <Penjelasan20168/>
+                break;
             case 9:
                 soal = <Soal20169/>;
                 pilihan = <Pilihan20169 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20169/>
+                penjelasan = <Penjelasan20169/>
                 break;
             case 10:
                 soal = <Soal201610/>;
                 pilihan = <Pilihan201610 showJawaban={showJawaban}/>
                 jawaban = <Jawaban201610/>
+                penjelasan = <Penjelasan201610/>
+                break;
             case 11:
                 soal = <Soal201611/>;
                 pilihan = <Pilihan201611 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban201611/>
+                penjelasan = <Penjelasan201611/>
                 break;
             case 12:
                 soal = <Soal201612/>;
                 pilihan = <Pilihan201612 showJawaban={showJawaban}/>
-                jawaban = <Jawaban201612/>      
+                jawaban = <Jawaban201612/>
+                penjelasan = <Penjelasan201612/>
+                break;
             default:
                 soal = <Soal20161/>;
                 pilihan = <Pilihan20161 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20161/>
+                penjelasan = <Penjelasan20161/>
                 break;
         }
     }
@@ -273,60 +293,79 @@ function TantanganSoal({route,navigation}){
                 soal = <Soal20171/>;
                 pilihan = <Pilihan20171 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20171/>
+                penjelasan = <Penjelasan20171/>
                 break;
             case 2:
                 soal = <Soal20172/>;
                 pilihan = <Pilihan20172 showJawaban={showJawaban}/>
                 jawaban = <Jawaban20172/>
+                penjelasan = <Penjelasan20172/>
+                break;
             case 3:
                 soal = <Soal20173/>;
                 pilihan = <Pilihan20173 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20173/>
+                penjelasan = <Penjelasan20173/>
                 break;
             case 4:
                 soal = <Soal20174/>;
                 pilihan = <Pilihan20174 showJawaban={showJawaban}/>
                 jawaban = <Jawaban20174/>
+                penjelasan = <Penjelasan20174/>
+                break;
             case 5:
                 soal = <Soal20175/>;
                 pilihan = <Pilihan20175 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20175/>
+                penjelasan = <Penjelasan20175/>
                 break;
             case 6:
                 soal = <Soal20176/>;
                 pilihan = <Pilihan20176 showJawaban={showJawaban}/>
                 jawaban = <Jawaban20176/>
+                penjelasan = <Penjelasan20176/>
+                break;
             case 7:
                 soal = <Soal20177/>;
                 pilihan = <Pilihan20177 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20177/>
+                penjelasan = <Penjelasan20177/>
                 break;
             case 8:
                 soal = <Soal20178/>;
                 pilihan = <Pilihan20178 showJawaban={showJawaban}/>
-                jawaban = <Jawaban20178/>   
+                jawaban = <Jawaban20178/>
+                penjelasan = <Penjelasan20178/>
+                break;
             case 9:
                 soal = <Soal20179/>;
                 pilihan = <Pilihan20179 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20179/>
+                penjelasan = <Penjelasan20179/>
                 break;
             case 10:
                 soal = <Soal201710/>;
                 pilihan = <Pilihan201710 showJawaban={showJawaban}/>
                 jawaban = <Jawaban201710/>
+                penjelasan = <Penjelasan201710/>
+                break;
             case 11:
                 soal = <Soal201711/>;
                 pilihan = <Pilihan201711 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban201711/>
+                penjelasan = <Penjelasan201711/>
                 break;
             case 12:
                 soal = <Soal201712/>;
                 pilihan = <Pilihan201712 showJawaban={showJawaban}/>
-                jawaban = <Jawaban201712/>      
+                jawaban = <Jawaban201712/>
+                penjelasan = <Penjelasan201712/>
+                break;
             default:
                 soal = <Soal20171/>;
                 pilihan = <Pilihan20171 showJawaban={showJawaban}/>;
                 jawaban = <Jawaban20171/>
+                penjelasan = <Penjelasan20171/>
                 break;
         }
     }
@@ -342,7 +381,12 @@ function TantanganSoal({route,navigation}){
                         onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel',
                     },
-                    {text: 'Iya', onPress: () => {navigation.navigate('Home'),currentTime=180}},
+                    {text: 'Iya', onPress: () => {
+                        navigation.navigate('Home'),
+                        currentTime=180,
+                        quiz.stop(),
+                        backgroundSong.play()
+                    }},
                 ],
                 {cancelable: false},
             );
@@ -350,6 +394,11 @@ function TantanganSoal({route,navigation}){
         });
     });
     checkTime(time);
+
+    if(salah){
+        console.log("masuk");
+        checkTime(1);
+    }
 
     return(
         <>
@@ -364,9 +413,10 @@ function TantanganSoal({route,navigation}){
                         }}
                         size={15}
                         onFinish={()=> {
-                            toggle(currentIsOpen=>!currentIsOpen),
-                            wrong.play(),
-                            currentTime = 180
+                            dijawab==1?null:toggle(currentIsOpen=>!currentIsOpen);
+                            dijawab==1?null:wrong.play();
+                            dijawab==1?null:quiz.stop();
+                            dijawab==1?null:currentTime = 20;
                         }}
                         digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#FFBD33'}}
                         digitTxtStyle={{color: '#F0B50B'}}
@@ -410,22 +460,6 @@ function TantanganSoal({route,navigation}){
                     backdropTransitionOutTiming={600}>
                     <View style={{width: '100%',height: '100%',marginTop: 10}}>
                         {jawaban}
-                        <View style={{flexDirection: 'row'}}>
-                            <TouchableOpacity
-                                onPress={() => {temp==1?navigation.navigate('PenjelasanScreen',{
-                                    tahunId: tahunId,
-                                    nomor: nomor,
-                                    nilai: currentNilai+10,
-                                }):navigation.navigate('PenjelasanScreen',{
-                                    tahunId: tahunId,
-                                    nomor: nomor,
-                                    nilai: currentNilai
-                                }),toggle(currentIsOpen => !currentIsOpen)}}>
-                                <Image source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
-                            </TouchableOpacity>
-                            {temp==1?<GambarBenar/>:<GambarSalah/>}
-                        </View>
-                        
                         <TouchableOpacity
                             style={styles.btnNext}
                             onPress={() => {temp==1?navigation.navigate('IsiSoal',{
@@ -443,10 +477,6 @@ function TantanganSoal({route,navigation}){
                             quiz.play()}}>
                             <Image source={require('../assets/picture/hasilJawaban/next.png')}/>
                         </TouchableOpacity>
-                        <View style={{paddingLeft: 20,paddingRight: 10}}>
-                            <Text style={styles.jawaban}>Jawaban : </Text>
-                            <Text style={styles.penjelasan}>Jawaban yang benar adalah Kotalima!</Text>
-                        </View>
                         
                         
                         <View style={{flexDirection: 'row'}}>
@@ -455,9 +485,9 @@ function TantanganSoal({route,navigation}){
                                 <Image
                                     source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
                             </TouchableOpacity>
-                        <Gambar/> 
+                        {temp==1?<GambarBenar/>:<GambarSalah/>}
                         </View>
-                        {HidePenjelasan(status)}
+                        {HidePenjelasan(status,penjelasan)}
                     </View>
                 </Modal>
             </View>

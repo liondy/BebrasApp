@@ -37,7 +37,7 @@ import Des201710 from '../assets/soal/2017/10/DeskripsiSoal';
 import Des201711 from '../assets/soal/2017/11/DeskripsiSoal';
 import Des201712 from '../assets/soal/2017/12/DeskripsiSoal';
 
-import { wrong, quiz } from '../../App';
+import { wrong, quiz, backgroundSong } from '../../App';
 import { finish } from '../../App';
 
 function ImgSoal(){
@@ -64,6 +64,7 @@ function IsiSoal({route,navigation}){
     currentNilai = nilai;
     console.log('total nilai: '+currentNilai);
     console.log('nomor: '+number);
+    console.log("ans: "+answered);
 
     var path;
     if(!pertama){
@@ -83,7 +84,12 @@ function IsiSoal({route,navigation}){
                         onPress: () => console.log('Cancel Pressed'),
                         style: 'cancel',
                     },
-                    {text: 'Iya', onPress: () => navigation.navigate('Home')},
+                    {text: 'Iya', onPress: () => {
+                        navigation.navigate('Home'),
+                        currentTime=180,
+                        quiz.stop(),
+                        backgroundSong.play()
+                    }},
                 ],
                 {cancelable: false},
             );
@@ -92,6 +98,7 @@ function IsiSoal({route,navigation}){
     });
     const isAwal = (awal) => {
         if(awal=='0'){
+            console.log("masuk sini");
             for (let index = 0; index < 12; index++) {
                 availableSoal.pop(); //removing cache, make availableSoal to []
             }
@@ -125,8 +132,8 @@ function IsiSoal({route,navigation}){
         let nomor;
         do{
             nomor = Math.floor(Math.random() * 12)+1; //random number 1-24
-        } while(availableSoal[nomor] = false && nomor == 0);
-       
+        }
+        while(!availableSoal[nomor] || nomor == 0);
         availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
         answered++; //increment the answered question
         // console.log('Soal ke: '+answered);
@@ -255,8 +262,17 @@ function IsiSoal({route,navigation}){
                     }}
                     size={15}
                     onFinish={()=> {
-                        pertama?null:wrong.play()
-                        currentTime = 0
+                        pertama?null:wrong.play(),
+                        currentTime = 0,
+                        quiz.stop(),
+                        navigation.navigate('TantanganSoal',{
+                            tahunId: tahunId,
+                            nomor: currentNumber,
+                            jumlahSoal: answered,
+                            time: 0,
+                            nilai: currentNilai,
+                            salah: true
+                        })
                     }}
                     digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#FFBD33'}}
                     digitTxtStyle={{color: '#F0B50B'}}
@@ -320,9 +336,6 @@ const styles = StyleSheet.create({
     soalContainer: {
         width: '100%',
         height: '75%'
-    },
-    waktu:{
-        marginTop: 10
     }
 })
 
