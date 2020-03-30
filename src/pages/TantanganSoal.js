@@ -166,12 +166,15 @@ function HidePenjelasan(status,penjelasan){
 
 var temp = 0; //bener atau salah
 var currentTime;
+var dumpTime;
 function checkTime(time){
     if(time==0){
         currentTime = 20;
+        dumpTime = 20;
     }
     else{
         currentTime = time;
+        dumpTime = time;
     }
 }
 
@@ -396,10 +399,10 @@ function TantanganSoal({route,navigation}){
     checkTime(time);
 
     if(salah){
-        console.log("masuk");
+        dijawab = 0
         checkTime(1);
     }
-
+    
     return(
         <>
             <View style={styles.container}>
@@ -409,14 +412,17 @@ function TantanganSoal({route,navigation}){
                     <CountDown style={styles.waktu}
                         until={currentTime}
                         onChange = {()=>{
-                            currentTime = currentTime-1
+                            dumpTime = dumpTime-1
+                            if(dumpTime==1){
+                                showJawaban(0)
+                            }
                         }}
                         size={15}
                         onFinish={()=> {
-                            dijawab==1?null:toggle(currentIsOpen=>!currentIsOpen);
                             dijawab==1?null:wrong.play();
                             dijawab==1?null:quiz.stop();
                             dijawab==1?null:currentTime = 20;
+                            dijawab==1?null:showJawaban(0);
                         }}
                         digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#FFBD33'}}
                         digitTxtStyle={{color: '#F0B50B'}}
@@ -435,7 +441,7 @@ function TantanganSoal({route,navigation}){
                             onPress={() => navigation.navigate('IsiSoal',{
                                 number: nomor,
                                 awal: 1,
-                                time: currentTime,
+                                time: dumpTime,
                                 pertama: false,
                             })}>
                             <Image

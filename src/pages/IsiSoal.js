@@ -5,7 +5,8 @@ import {
     Image,
     ImageBackground,
     BackHandler,
-    Alert
+    Alert,
+    Text
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CountDown from 'react-native-countdown-component';
@@ -40,10 +41,13 @@ import Des201712 from '../assets/soal/2017/12/DeskripsiSoal';
 import { wrong, quiz, backgroundSong } from '../../App';
 import { finish } from '../../App';
 
-function ImgSoal(){
+function ImgSoal({nomor}){
     return(
-        <Image style={styles.soal}
-        source={require('../assets/picture/soal/imgsoal.png')}/>
+        <>
+            <Image style={styles.soal}
+            source={require('../assets/picture/soal/imgsoal.png')}/>
+            <Text>{nomor}</Text>
+        </>
     )
 }
 
@@ -281,7 +285,7 @@ function IsiSoal({route,navigation}){
                     separatorStyle={{color: '#F0B50B'}}
                     showSeparator
                 />}
-                <ImgSoal/>
+                <ImgSoal nomor={answered}/>
                 <View style={styles.soalContainer}>
                     {path}
                 </View>
@@ -318,7 +322,9 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     tantangan:{
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        bottom:0
     },
     soal:{
         marginLeft: 50,
