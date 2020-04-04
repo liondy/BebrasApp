@@ -1,24 +1,26 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text
+    Text,
+    ScrollView,
+    Image
 } from 'react-native';
 
 function Penjelasan(){
     return(
-        <>
-        <Text style={styles.txIsiPenjelasan}>
-        After “Eve and Chad, swap your brushes!”
-        </Text>
-        <Image source={require('./img/gbr2.png')}/>
-        <Text style={styles.txIsiPenjelasan}>
-        After “Eve and Chad, swap your brushes!”
-        </Text>
-        <Image source={require('./img/gbr3.png')}/>
-        <Text style={styles.txIsiPenjelasan}>
-        All that remains is to swap Ben and Dan's brushes.
-        </Text>
-        </>
+        <ScrollView>
+            <Text style={styles.txIsiPenjelasan}>
+            After “Eve and Chad, swap your brushes!”
+            </Text>
+            <Image source={require('./img/gbr2.png')}/>
+            <Text style={styles.txIsiPenjelasan}>
+            After “Eve and Chad, swap your brushes!”
+            </Text>
+            <Image source={require('./img/gbr3.png')}/>
+            <Text style={styles.txIsiPenjelasan}>
+            All that remains is to swap Ben and Dan's brushes.
+            </Text>
+        </ScrollView>
     )
 }
 
@@ -30,7 +32,6 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15,
-        marginTop: 50
     },
 })
 

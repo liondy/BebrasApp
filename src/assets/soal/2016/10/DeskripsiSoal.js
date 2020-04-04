@@ -26,8 +26,8 @@ function DeskripsiSoal(){
                 Dan seterusnya, sehingga semua kaleng cat kosong, atau 
                 tersisa cat di satu kaleng karena dua papan berurutan 
                 tak boleh berwarna sama.{"\n"}
-                <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
                 </Text>
+                <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
     )
 }
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
         color : '#FF5733',
         fontWeight: 'bold',
         fontSize: 18,
-        lineHeight: 40,
         includeFontPadding: true,
-        padding: 15
+        padding: 15,
+        lineHeight: 30
     },
     gmbr: {
         resizeMode: 'stretch',
-        width: 300,
-        height: 250
+        width: 350,
+        height: 350
     }
 })
 

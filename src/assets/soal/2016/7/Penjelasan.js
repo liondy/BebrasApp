@@ -1,19 +1,22 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text
+    Text,
+    ScrollView
 } from 'react-native';
 
 function Penjelasan(){
     return(
-        <Text style={styles.txIsiPenjelasan}>
+        <ScrollView>
+            <Text style={styles.txIsiPenjelasan}>
             Bebras mulai berjalan dan makan loli sampai 
             menemukan sikat gigi. Gambar berikut menunjukkan
             6 (enam) loli yang dimakannya dan kapan ia
             menyikat gigi (ditandai X).{'\n'}
 
             {/* <Image></Image> */}
-        </Text>
+            </Text>
+        </ScrollView>
     )
 }
 
@@ -25,7 +28,6 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15,
-        marginTop: 50
     },
 })
 
