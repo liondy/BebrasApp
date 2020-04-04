@@ -2,17 +2,18 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 
 function Penjelasan(){
     return(
-        <>
-        <Text style={styles.txIsiPenjelasan}>
-            Menempatkan kartu secara berurutan, kita mendapatkan: 
-        </Text>
-        <Image style={styles.gmbr} source={require('./img/gbr3.png')}/>
-        </>
+        <ScrollView>
+            <Text style={styles.txIsiPenjelasan}>
+                Menempatkan kartu secara berurutan, kita mendapatkan: 
+            </Text>
+            <Image style={styles.gmbr} source={require('./img/gbr3.png')}/>
+        </ScrollView>
     )
 }
 
@@ -24,12 +25,12 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15,
-        marginTop: 50
     },
     gmbr: {
         marginLeft: 20,
-        width: '100%',
-        height: 300
+        width: 300,
+        height: 100,
+        resizeMode: 'stretch'
     }
 })
 

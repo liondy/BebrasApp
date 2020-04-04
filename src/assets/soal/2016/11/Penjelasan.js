@@ -1,12 +1,16 @@
 import React from 'react';
 import {
     StyleSheet,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 
 function Penjelasan(){
     return(
-        <Image source={require('./img/gbr2.png')}/>
+        <ScrollView>
+            <Image source={require('./img/gbr2.png')}/>
+        </ScrollView>
+        
     )
 }
 
@@ -18,7 +22,6 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15,
-        marginTop: 50
     },
 })
 

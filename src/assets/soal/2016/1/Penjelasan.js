@@ -2,20 +2,21 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 
 function Penjelasan(){
     return(
-        <>
-        <Text style={styles.txIsiPenjelasan}>
-        Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-        titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-        ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-        bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
-        </Text>
-        <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
-        </>
+        <ScrollView>
+            <Text style={styles.txIsiPenjelasan}>
+            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+            </Text>
+            <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
+        </ScrollView>        
     )
 }
 
@@ -27,12 +28,13 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15,
-        marginTop: 50
     },
     gmbr: {
-        marginLeft: 20,
-        width: '100%',
-        height: 300
+        marginLeft: 30,
+        width: 200,
+        height: 200,
+        resizeMode: 'stretch'
+
     }
 })
 

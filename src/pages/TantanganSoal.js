@@ -7,7 +7,8 @@ import {
     BackHandler,
     Alert,
     TouchableOpacity,
-    Text
+    Text,
+    ScrollView
 } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 import Modal from 'react-native-modal';
@@ -137,7 +138,7 @@ import Penjelasan201712 from '../assets/soal/2017/12/Penjelasan';
 function GambarBenar(){
     return(
         <View style={styles.penjelasanContainer}>
-            <Image source={require('../assets/picture/hasilJawaban/BebrasBenar.png')}/>
+            <Image style={styles.papan} source={require('../assets/picture/hasilJawaban/BebrasBenar.png')}/>
             <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiBenar.png')}/>
         </View>
     );
@@ -146,7 +147,7 @@ function GambarBenar(){
 function GambarSalah(){
     return(
         <View style={styles.penjelasanContainer}>
-            <Image source={require('../assets/picture/hasilJawaban/BebrasSalah.png')}/>
+            <Image style={styles.papan} source={require('../assets/picture/hasilJawaban/BebrasSalah.png')}/>
             <Image style={styles.nilai} source={require('../assets/picture/hasilJawaban/NilaiSalah.png')}/>
         </View>
     )
@@ -155,7 +156,7 @@ function GambarSalah(){
 function HidePenjelasan(status,penjelasan){
     if(status){
         return(
-            <View>
+            <View style={{flex: 1}}>
                 <Text style={styles.txPenjelasan}>Penjelasan</Text>
                 {penjelasan}
             </View>
@@ -488,7 +489,7 @@ function TantanganSoal({route,navigation}){
                         <View style={{flexDirection: 'row'}}>
                         <TouchableOpacity
                             onPress={()=> ubah(status=>!status) }>
-                                <Image
+                                <Image 
                                     source={require('../assets/picture/hasilJawaban/TombolPenjelasan.png')}/>
                             </TouchableOpacity>
                         {temp==1?<GambarBenar/>:<GambarSalah/>}
@@ -535,12 +536,13 @@ const styles = StyleSheet.create({
     },
     penjelasanContainer: {
         flexDirection: 'row',
+        alignContent: 'center'
     },
     nilai: {
         width: 50,
         height: 50,
         marginTop: 70,
-        marginRight: 10
+        marginLeft: -50
     },
     btnNext: {
         alignSelf: 'flex-end'
@@ -558,7 +560,6 @@ const styles = StyleSheet.create({
         color : '#6ac1bd',
         fontWeight: 'bold',
         fontSize: 25,
-        lineHeight: 40,
         includeFontPadding: true,
         padding: 15,
         alignSelf: 'center'
@@ -570,6 +571,12 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15
+    },
+    papan:{
+        resizeMode:'stretch',
+        width: 300,
+        height: 200,
+        marginLeft: -10
     },
 })
 

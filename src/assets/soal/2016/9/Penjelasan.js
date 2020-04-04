@@ -1,12 +1,14 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text
+    Text,
+    ScrollView
 } from 'react-native';
 
 function Penjelasan(){
     return(
-        <Text style={styles.txIsiPenjelasan}>
+        <ScrollView>
+            <Text style={styles.txIsiPenjelasan}>
             Berang-berang A pindah 3 kursi se arah jarum jam.
             Jadi A akan berpindah dari kursi 1 ke 2 setelah 3 putaran.{'\n'}
 
@@ -21,6 +23,7 @@ function Penjelasan(){
 
             Jadi, yang kosong adalah kursi 4 setelah 3 putaran{'\n'}      
         </Text>
+        </ScrollView>
     )
 }
 
@@ -32,7 +35,6 @@ const styles = StyleSheet.create({
         lineHeight: 40,
         includeFontPadding: true,
         padding: 15,
-        marginTop: 50
     },
 })
 
