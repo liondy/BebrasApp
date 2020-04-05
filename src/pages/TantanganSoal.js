@@ -432,28 +432,27 @@ function TantanganSoal({route,navigation}){
                         separatorStyle={{color: '#F0B50B'}}
                         showSeparator
                     />
-                    <View style={styles.tantanganCont}>
-                        <View style={styles.soalContainer}>
-                            {soal}  
-                        </View>
-                        
-                        <TouchableOpacity 
-                            style={styles.toBtn}
-                            onPress={() => navigation.navigate('IsiSoal',{
-                                number: nomor,
-                                awal: 1,
-                                time: dumpTime,
-                                pertama: false,
-                            })}>
-                            <Image
-                                style={styles.btnback}
-                                source={require('../assets/picture/tantangan/ButtonSoal.png')}/>
-                        </TouchableOpacity>
-                    </View> 
+                    <View style={styles.soalContainer}>
+                        {soal}  
+                    </View>
                 </ImageBackground>
             </View>
             <View style={styles.container}>
-                {pilihan}
+                <TouchableOpacity 
+                    style={styles.toBtn}
+                    onPress={() => navigation.navigate('IsiSoal',{
+                        number: nomor,
+                        awal: 1,
+                        time: dumpTime,
+                        pertama: false,
+                    })}>
+                    <Image
+                        style={styles.btnback}
+                        source={require('../assets/picture/tantangan/ButtonSoal.png')}/>
+                </TouchableOpacity>
+                <ScrollView>
+                    {pilihan}
+                </ScrollView>
                 <Modal
                     style={styles.modal}
                     visible={isVisible}
@@ -506,7 +505,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         alignContent:'center',
-        justifyContent:'center'
+        justifyContent:'center',
     },
     background:{
         width: '100%',
@@ -519,11 +518,6 @@ const styles = StyleSheet.create({
     btnback:{
         marginTop: -5,
         alignSelf: 'flex-end',
-    },
-    tantanganCont: {
-        marginTop: 25,
-        width: '100%',
-        height: '100%',
     },
     waktu:{
         marginTop: 10
@@ -578,6 +572,9 @@ const styles = StyleSheet.create({
         height: 200,
         marginLeft: -10
     },
+    toBtn:{
+        alignSelf: 'flex-end'
+    }
 })
 
 export default TantanganSoal;
