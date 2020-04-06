@@ -103,10 +103,10 @@ function IsiSoal({route,navigation}){
     const isAwal = (awal) => {
         if(awal=='0'){
             console.log("masuk sini");
-            for (let index = 0; index < 12; index++) {
+            for (let index = 0; index <= 12; index++) {
                 availableSoal.pop(); //removing cache, make availableSoal to []
             }
-            for (let index = 0; index < 12; index++) {
+            for (let index = 0; index <= 12; index++) {
                 availableSoal.push(true); //make all numbers available again
             }
             currentNilai = 0;
