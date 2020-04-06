@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15
+        padding: 15,
+        textAlign: 'justify'
     },
 })
 

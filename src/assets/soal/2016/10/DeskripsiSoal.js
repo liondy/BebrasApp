@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         includeFontPadding: true,
         padding: 15,
-        lineHeight: 30
+        lineHeight: 30,
+        textAlign: 'justify'
     },
     gmbr: {
         resizeMode: 'stretch',

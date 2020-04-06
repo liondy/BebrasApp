@@ -21,9 +21,10 @@ const styles = StyleSheet.create({
         color : '#FF5733',
         fontWeight: 'bold',
         fontSize: 20,
-        lineHeight: 40,
+        lineHeight: 30,
         includeFontPadding: true,
-        padding: 15
+        padding: 15,
+        textAlign: 'justify'
     },
 })
 

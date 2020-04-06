@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15
+        padding: 15,
+        textAlign: 'justify'
     },
     gmbr: {
         resizeMode: 'stretch',
