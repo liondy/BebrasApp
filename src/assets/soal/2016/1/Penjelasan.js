@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         width: 200,
         height: 200,
-        resizeMode: 'stretch'
-
+        resizeMode: 'stretch',
+        alignSelf: 'center'
     }
 })
 

@@ -8,7 +8,7 @@ import {
 function Penjelasan(){
     return(
         <ScrollView>
-            <Image source={require('./img/gbr2.png')}/>
+            <Image style={styles.gbr} source={require('./img/gbr2.png')}/>
         </ScrollView>
         
     )
@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
         includeFontPadding: true,
         padding: 15,
     },
+    gbr: {
+        resizeMode: 'stretch',
+        width: 400,
+        height: 300
+    }
 })
 
 export default Penjelasan;

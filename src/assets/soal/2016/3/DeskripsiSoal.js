@@ -9,6 +9,9 @@ import {
 
 function DeskripsiSoal(){
     return(
+        <ImageBackground
+        style={styles.background}
+        source={require('./img/bgsoal.png')}>
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                     Bebras Zac dan bebras Pan ingin melakukan perjalanan sepanjang
@@ -24,13 +27,16 @@ function DeskripsiSoal(){
 
                 <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
-    bgSoal:{
-        width: '100%',
-        height: '100%'
+    background:{
+        resizeMode: 'stretch',
+        width: 370,
+        height: 600,
+        alignSelf: 'center'
     },
     textSoal:{
         color : '#FF5733',
@@ -44,7 +50,8 @@ const styles = StyleSheet.create({
     gmbr: {
         marginLeft: 5,
         width: '100%',
-        height: 300
+        height: 300,
+        alignSelf: 'center'
     }
 })
 

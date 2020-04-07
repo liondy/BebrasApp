@@ -9,6 +9,9 @@ import {
 
 function DeskripsiSoal(){
     return(
+        <ImageBackground
+        style={styles.background}
+        source={require('./img/bgsoal.png')}>
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                 It is time for bed! Every beaver should have a toothbrush that 
@@ -21,13 +24,16 @@ function DeskripsiSoal(){
                 But then she does not know how to continue.   
                 </Text>
         </ScrollView>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
-    bgSoal:{
-        width: '100%',
-        height: '100%'
+    background:{
+        resizeMode: 'stretch',
+        width: 370,
+        height: 600,
+        alignSelf: 'center'
     },
     textSoal:{
         color : '#FF5733',
@@ -41,7 +47,8 @@ const styles = StyleSheet.create({
     gmbr: {
         resizeMode: 'stretch',
         width: 400,
-        height: 200
+        height: 200,
+        alignSelf: 'center'
     }
 })
 

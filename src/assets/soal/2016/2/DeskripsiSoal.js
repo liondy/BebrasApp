@@ -9,6 +9,9 @@ import {
 
 function DeskripsiSoal(){
     return(
+        <ImageBackground
+        style={styles.background}
+        source={require('./img/bgsoal.png')}>
         <ScrollView>
             <Text style={styles.textSoal} numberOflines={10}>
                 Violeta ingin mengirim pesan kepada Leo. Pesan dipeceh menjadi potongan
@@ -20,13 +23,16 @@ function DeskripsiSoal(){
             </Text>
             <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
-    bgSoal:{
-        width: '100%',
-        height: '100%'
+    background:{
+        resizeMode: 'stretch',
+        width: 370,
+        height: 600,
+        alignSelf: 'center'
     },
     textSoal:{
         color : '#FF5733',
@@ -39,9 +45,9 @@ const styles = StyleSheet.create({
     },
     gmbr: {
         resizeMode: 'stretch',
-        marginLeft: 50,
-        width: 200,
-        height: 60
+        width: 250,
+        height: 100,
+        alignSelf: 'center'
     }
 })
 

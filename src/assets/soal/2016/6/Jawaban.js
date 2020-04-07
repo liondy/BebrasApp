@@ -8,7 +8,7 @@ function Jawaban(){
     return(
         <>
             <Text style={styles.jawaban}>Jawaban : </Text>
-            <Text style={styles.penjelasan}>Jawaban yang benar adalah b)A</Text>
+            <Text style={styles.penjelasan}>Jawaban yang benar adalah A</Text>
         </>
     )
 }

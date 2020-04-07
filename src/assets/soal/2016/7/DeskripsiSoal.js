@@ -9,6 +9,9 @@ import {
 
 function DeskripsiSoal(){
     return(
+        <ImageBackground
+        style={styles.background}
+        source={require('./img/bgsoal.png')}>
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Bebras menemukan sebuah lorong yang terdiri dari sederet kotak, 
@@ -22,13 +25,16 @@ function DeskripsiSoal(){
                 </Text>
                 {/* <Image source={require('./img/gbr1.png')}/> */}
         </ScrollView>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
-    bgSoal:{
-        width: '100%',
-        height: '100%'
+    background:{
+        resizeMode: 'stretch',
+        width: 370,
+        height: 600,
+        alignSelf: 'center'
     },
     textSoal:{
         color : '#FF5733',

@@ -9,6 +9,9 @@ import {
 
 function DeskripsiSoal(){
     return(
+        <ImageBackground
+        style={styles.background}
+        source={require('./img/bgsoal.png')}>
         <ScrollView>
             <Text style={styles.textSoal} numberOflines={10}>
             Seekor berang-berang menemukan sebuah roda cipher untuk 
@@ -21,13 +24,16 @@ function DeskripsiSoal(){
             </Text>
             <Image style={styles.gmbr}source={require('./img/gbr1.png')}/>
         </ScrollView>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
-    bgSoal:{
-        width: '100%',
-        height: '100%'
+    background:{
+        resizeMode: 'stretch',
+        width: 370,
+        height: 600,
+        alignSelf: 'center'
     },
     textSoal:{
         color : '#FF5733',
@@ -42,7 +48,8 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
         width: 350,
         height: 300,
-        marginLeft: 5
+        marginLeft: 5,
+        alignSelf: 'center'
     }
 })
 

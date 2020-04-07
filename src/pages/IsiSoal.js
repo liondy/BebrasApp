@@ -43,11 +43,11 @@ import { finish } from '../../App';
 
 function ImgSoal({nomor}){
     return(
-        <>
+        <View style={styles.cnt}>
             <Image style={styles.soal}
-            source={require('../assets/picture/soal/imgsoal.png')}/>
-            <Text>{nomor}</Text>
-        </>
+            source={require('../assets/picture/soal/stikerSoal.png')}/>
+            <Text style={styles.nomorSoal}>{nomor}</Text>
+        </View>
     )
 }
 
@@ -327,8 +327,12 @@ const styles = StyleSheet.create({
         bottom:0
     },
     soal:{
-        marginLeft: 50,
-        marginTop: 10
+        // marginLeft: 50,
+        marginTop: 10,
+        alignSelf: 'center',
+        resizeMode: 'stretch',
+        width: 150,
+        height: 80
     },
     textSoal:{
         color : '#FF5733',
@@ -342,6 +346,19 @@ const styles = StyleSheet.create({
     soalContainer: {
         width: '100%',
         height: '75%'
+    },
+    nomorSoal: {
+        color : '#FF5733',
+        fontWeight: 'bold',
+        fontSize: 50,
+        includeFontPadding: true,
+        marginLeft: 10,
+        marginTop: 15,
+        marginRight: 10
+    },
+    cnt: {
+        flexDirection: 'row-reverse',
+        justifyContent: 'center'
     }
 })
 

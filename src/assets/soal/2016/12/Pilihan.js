@@ -20,7 +20,7 @@ function Pilihan({showJawaban}){
                     correct.play();
                 }}
                 onPress={()=> showJawaban(1)}>
-                <Text style={styles.txPilihan}>Kotalima</Text>
+                <Text style={styles.txPilihan}>KAMISAHABATBEBRAS</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -31,7 +31,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotasatu</Text>
+                <Text style={styles.txPilihan}>KAMICINTABONEKA</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -42,7 +42,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotadua</Text>
+                <Text style={styles.txPilihan}>KAMISUKASOAL</Text>
             </TouchableHighlight>
 
             <TouchableHighlight
@@ -53,7 +53,7 @@ function Pilihan({showJawaban}){
                     wrong.play();
                 }}
                 onPress={()=> showJawaban(0)}>
-                <Text style={styles.txPilihan}>Kotatiga</Text>
+                <Text style={styles.txPilihan}>SAYASAYANGBEBRAS</Text>
             </TouchableHighlight>
         </>
     )
