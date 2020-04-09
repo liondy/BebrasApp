@@ -4,7 +4,8 @@ import {
     StyleSheet,
     ScrollView,
     Text,
-    Image
+    Image,
+    View
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -12,6 +13,7 @@ function DeskripsiSoal(){
         <ImageBackground
         style={styles.background}
         source={require('./img/bgsoal.png')}>
+            <View style={{padding: 10, marginBottom: 10}}>
         <ScrollView>
             <Text style={styles.textSoal} numberOflines={10}>
                 Violeta ingin mengirim pesan kepada Leo. Pesan dipeceh menjadi potongan
@@ -23,6 +25,7 @@ function DeskripsiSoal(){
             </Text>
             <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
+        </View>
         </ImageBackground>
     )
 }
@@ -40,7 +43,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15,
         textAlign: 'justify'
     },
     gmbr: {

@@ -4,7 +4,8 @@ import {
     StyleSheet,
     ScrollView,
     Text,
-    Image
+    Image,
+    View
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -12,7 +13,8 @@ function DeskripsiSoal(){
         <ImageBackground
         style={styles.background}
         source={require('./img/bgsoal.png')}>
-        <ScrollView>
+            <View style={{padding: 10, marginBottom: 10}}>
+            <ScrollView>
             <Text style={styles.textSoal} numberOflines={10}>
             Bebras Jordan menebang pohon dan memotongnya sehingga setiap 
             pohon menghasilkan batang pohon yang panjangnya 10 meter.
@@ -26,6 +28,7 @@ function DeskripsiSoal(){
             </Text>
             <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
+            </View>
         </ImageBackground>
     )
 }
@@ -43,12 +46,10 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15,
         textAlign: 'justify'
     },
     gmbr: {
         resizeMode: 'stretch',
-        marginLeft: 10,
         width: 200,
         height: 100,
         alignSelf: 'center'

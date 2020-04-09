@@ -4,7 +4,8 @@ import {
     StyleSheet,
     ScrollView,
     Text,
-    Image
+    Image,
+    View
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -12,6 +13,7 @@ function DeskripsiSoal(){
         <ImageBackground
         style={styles.background}
         source={require('./img/bgsoal.png')}>
+            <View style={{padding: 10, marginBottom: 10}}>
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                 It is time for bed! Every beaver should have a toothbrush that 
@@ -24,6 +26,7 @@ function DeskripsiSoal(){
                 But then she does not know how to continue.   
                 </Text>
         </ScrollView>
+        </View>
         </ImageBackground>
     )
 }
@@ -41,7 +44,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15,
         textAlign: 'justify'
     },
     gmbr: {

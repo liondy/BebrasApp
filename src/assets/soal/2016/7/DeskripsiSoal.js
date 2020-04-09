@@ -4,7 +4,8 @@ import {
     StyleSheet,
     ScrollView,
     Text,
-    Image
+    Image,
+    View
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -12,6 +13,7 @@ function DeskripsiSoal(){
         <ImageBackground
         style={styles.background}
         source={require('./img/bgsoal.png')}>
+            <View style={{padding: 10, marginBottom: 10}}>
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Bebras menemukan sebuah lorong yang terdiri dari sederet kotak, 
@@ -23,8 +25,11 @@ function DeskripsiSoal(){
                 ia hanya dapat makan loli, atau menggosok gigi, atau hanya berjalan.
                 Dia tak boleh membawa loli ataupun sikat gigi ke langkah berikutnya.{"\n"}
                 </Text>
-                {/* <Image source={require('./img/gbr1.png')}/> */}
+                <ScrollView horizontal={true}>
+                <Image style={styles.gbr} source={require('./img/gbr1.png')}/>
+                </ScrollView>
         </ScrollView>
+        </View>
         </ImageBackground>
     )
 }
@@ -42,9 +47,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15,
         textAlign: 'justify'
     },
+    gbr: {
+        resizeMode: 'stretch',
+        width: 500,
+        height: 100
+    }
 })
 
 export default DeskripsiSoal;

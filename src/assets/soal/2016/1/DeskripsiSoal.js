@@ -3,7 +3,8 @@ import {
     ImageBackground,
     StyleSheet,
     ScrollView,
-    Text
+    Text,
+    View
 } from 'react-native';
 
 function DeskripsiSoal(){
@@ -11,6 +12,7 @@ function DeskripsiSoal(){
         <ImageBackground
         style={styles.background}
         source={require('./img/bgsoal.png')}>
+            <View style={{padding: 10, marginBottom: 10}}>
             <ScrollView>
                     <Text style={styles.textSoal} numberOflines={10}>
                         Bebras Joni ingin melakukan perjalanan untuk mengunjungi 5 kota di negaranya:
@@ -25,6 +27,7 @@ function DeskripsiSoal(){
                             </Text>
                     </Text>
             </ScrollView>
+            </View>
         </ImageBackground>
     )
 }
@@ -42,7 +45,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15,
         textAlign: 'justify'
     },
 })
