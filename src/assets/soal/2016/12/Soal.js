@@ -9,8 +9,8 @@ function Soal(){
     return(
         <ImageBackground
             style = {styles.bg}
-            source = {require('./img/bgsoal.png')}>
-        
+            source = {require('./img/bgsoal.png')}
+            imageStyle={{ borderRadius: 45}}>
         <Text style={styles.txTantangan}> 
             Jika pesan terkode adalah "lbnjtbibcbucfcsbt" 
             apa pesan aslinya jika roda dalam diputar dengan kunci= 1?

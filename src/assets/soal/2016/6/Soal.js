@@ -2,13 +2,15 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
-    ImageBackground
+    ImageBackground,
+    View
 } from 'react-native';
 
 function Soal(){
     return(
         <ImageBackground
             style = {styles.bg}
+            imageStyle={{ borderRadius: 45}}
             source = {require('./img/bgsoal.png')}>
         <Text style={styles.txTantangan}> 
             Merek apakah sepatu yang dipilih Sarah?

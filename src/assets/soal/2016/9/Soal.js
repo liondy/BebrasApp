@@ -9,6 +9,7 @@ function Soal(){
     return(
         <ImageBackground
         style = {styles.bg}
+        imageStyle={{ borderRadius: 45}}
         source = {require('./img/bgsoal.png')}>
         <Text style={styles.txTantangan}> 
             Jika pada awalnya posisi masing-masing 
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     },
     bg : {
         resizeMode : 'stretch',
-        width : 400,
+        width : 380,
         height : 350
     }
 })

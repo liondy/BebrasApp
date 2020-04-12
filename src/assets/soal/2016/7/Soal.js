@@ -9,6 +9,7 @@ function Soal(){
     return(
         <ImageBackground
             style = {styles.bg}
+            imageStyle={{ borderRadius: 45}}
             source = {require('./img/bgsoal.png')}>      
         <Text style={styles.txTantangan}> 
             Berapa sebanyak-banyaknya permen loli 

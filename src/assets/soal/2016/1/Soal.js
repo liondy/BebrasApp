@@ -9,6 +9,7 @@ function Soal(){
     return(
         <ImageBackground
             style={styles.bg}
+            imageStyle={{ borderRadius: 45}}
             source={require('./img/bgsoal.png')}>
             <Text style={styles.txTantangan}> 
                 Jika Joni memulai perjalanannya dari Kotatiga dengan bus,{"\n"}
@@ -32,7 +33,8 @@ const styles = StyleSheet.create({
     bg:{
         resizeMode : 'stretch',
         width : 400,
-        height : 350
+        height : 350,
+
     }
 })
 
