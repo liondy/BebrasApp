@@ -77,6 +77,14 @@ BackHandler.addEventListener('hardwareBackPress',function(){
   }
 })
 
+var diamond = 0;
+
+export {diamond};
+
+export function updateDiamond(newValue){
+  diamond += newValue;
+}
+
 const Stack = createStackNavigator();
 
 function App() {

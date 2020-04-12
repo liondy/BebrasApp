@@ -8,7 +8,7 @@ import {
     ScrollView
 } from 'react-native';
 import { TouchableOpacity} from 'react-native-gesture-handler';
-import { backgroundSong } from '../../App';
+import { backgroundSong,diamond,updateDiamond } from '../../App';
 
 function Selamat(){
     return(
@@ -57,6 +57,7 @@ function SelesaiSoal({route,navigation}){
                 <TouchableOpacity
                     style={styles.btnBackBeranda}
                     onPress={()=> {navigation.navigate('Home'),
+                        updateDiamond(nilai);
                         backgroundSong.play();
                     }}>
                         <Image
