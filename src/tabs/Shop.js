@@ -36,6 +36,15 @@ function Shop({navigation}) {
     );
 }
 
+function ShopTitle(){
+    return(
+        <Image
+            style={styles.title}
+            source={require('../assets/picture/shop/toko.png')}
+        />
+    );
+}
+
 function ShopStackScreen(){
     return(
         <ShopStack.Navigator>
@@ -43,7 +52,7 @@ function ShopStackScreen(){
                 name="Toko"
                 component={Shop}
                 options={{
-                    // headerTitle: props => <HomeTitle {...props}/>,
+                    headerTitle: props => <ShopTitle {...props}/>,
                     headerStyle: {
                         backgroundColor: 'transparent',
                         elevation: 0
@@ -66,6 +75,12 @@ const styles = StyleSheet.create({
         marginTop: -7,
         marginLeft: -5,
         marginRight: 10
+    },
+    title:{
+        width: 170,
+        height: 150,
+        resizeMode: 'stretch',
+        marginTop: 20
     },
 });
 
