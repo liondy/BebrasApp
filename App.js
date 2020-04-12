@@ -85,6 +85,10 @@ export function updateDiamond(newValue){
   diamond += newValue;
 }
 
+export function beli(newValue){
+  diamond -= newValue;
+}
+
 const Stack = createStackNavigator();
 
 function App() {

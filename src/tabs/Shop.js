@@ -3,17 +3,131 @@ import {
     StyleSheet,
     View,
     Text,
-    Image
+    Image,
+    FlatList,
+    ImageBackground
 } from 'react-native';
+import Dialog, { DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
+import { Button } from 'react-native-elements';
 import {
-    diamond
+    diamond,
+    beli
 } from '../../App';
+
+const DATA = [
+{
+    id: '1',
+    nama: 'beanie',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/beanie.png')}/>,
+    harga: 150
+},
+{
+    id: '2',
+    nama: 'kacamata',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/kacamata.png')}/>,
+    harga: 200
+},
+{
+    id: '3',
+    nama: 'kacamata 2',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/kacamata2.png')}/>,
+    harga: 200
+},
+{
+    id: '4',
+    nama: 'flower crown',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/flower_crown.png')}/>,
+    harga: 200
+},
+{
+    id: '5',
+    nama: 'permen',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/permen.png')}/>,
+    harga: 200
+},
+{
+    id: '6',
+    nama: 'topi',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/topi.png')}/>,
+    harga: 300
+},
+{
+    id: '7',
+    nama: 'dress',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/dress.png')}/>,
+    harga: 300
+},
+{
+    id: '8',
+    nama: 'kaos',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/kaos.png')}/>,
+    harga: 300
+},
+{
+    id: '9',
+    nama: 'kemeja',
+    bought: 'false',
+    image: <Image source={require('../assets/picture/shop/kemeja.png')}/>,
+    harga: 300
+}
+];
+
+function ListBarang({item,id,nama,harga,selectItem,bought}){
+    return(
+        <Button
+            type='clear'
+            disabled={bought==true?true:null}
+            disabledStyle={{opacity: 0.2}}
+            onPress={()=>selectItem(id,nama,harga)}
+            icon = {item}
+        />
+        //   {/* {bought == true? <Text>DIBELI</Text>:null}
+        //   {item}
+        // </TouchableHighlight> */}
+    );
+}
 
 const ShopStack = createStackNavigator();
 
+let namaBarang;
+let hargaBarang;
+let idBarang;
+let availableBarang = [];
+
 function Shop({navigation}) {
+    const[isVisible,showDialog] = React.useState(false);
+    const[isBeli,showBeli] = React.useState(false);
+    const[isCukup,showCukup] = React.useState(false);
+    const[bought,setBought] = React.useState(new Map());
+    const confirmBox = (id,barang,harga) => {
+        showDialog(isVisible => !isVisible);
+        idBarang = id;
+        namaBarang = barang;
+        hargaBarang = harga;
+    }
+    const buyAnimation = () => {
+        if (diamond < hargaBarang){
+            showCukup(isCukup => !isCukup);
+        }
+        else{
+            beli(hargaBarang);
+            availableBarang[idBarang] = false
+            const newBought = new Map(bought);
+            newBought.set(idBarang,!bought.get(idBarang))
+            setBought(newBought)
+            showBeli(isBeli => !isBeli);
+        }
+    }
     navigation.setOptions({
         headerRight: () => (
             <View style={{flexDirection: "row"}}>
@@ -31,7 +145,88 @@ function Shop({navigation}) {
     });
     return (
         <View style={styles.content}>
-            <Text>Ini toko</Text>
+            <ImageBackground 
+                source={require('../assets/picture/backgrounds/primary.png')}
+                style={styles.background}
+            >
+                <FlatList
+                    data={DATA}
+                    renderItem={({ item }) => (
+                        <ListBarang 
+                            item={item.image} 
+                            selectItem={confirmBox}
+                            bought={!!bought.get(item.id)}
+                            id={item.id} 
+                            nama={item.nama} 
+                            harga={item.harga}
+                        />
+                    )}
+                    extraData={bought}
+                    keyExtractor={item => item.id}
+                />
+                <Dialog
+                    visible = {isVisible}
+                    footer={
+                        <DialogFooter>
+                            <DialogButton
+                                text="Lain Kali"
+                                onPress={()=>{
+                                    confirmBox()
+                                }}
+                            />
+                            <DialogButton
+                                text="Beli"
+                                onPress={()=>{
+                                    showDialog(isVisible => !isVisible);
+                                    buyAnimation()
+                                }}
+                            />
+                        </DialogFooter>
+                    }
+                >
+                    <DialogContent>
+                        <Text>Beli {namaBarang} ini dengan {hargaBarang} diamond?</Text>
+                    </DialogContent>
+                </Dialog>
+                <Dialog
+                    visible = {isBeli}
+                    footer={
+                        <DialogFooter>
+                            <DialogButton
+                                text="OK"
+                                onPress={()=>{
+                                    showBeli(isBeli => !isBeli);
+                                }}
+                            />
+                        </DialogFooter>
+                    }
+                >
+                    <DialogContent>
+                        <Text>Terima kasih telah membeli {namaBarang} ini</Text>
+                        <Text>Silahkan memberikan aksesoris ini</Text>
+                        <Text>kepada bebras kamu ya!</Text>
+                    </DialogContent>
+                </Dialog>
+                <Dialog
+                    visible = {isCukup}
+                    footer={
+                        <DialogFooter>
+                            <DialogButton
+                                text="OK"
+                                onPress={()=>{
+                                    showCukup(isCukup => !isCukup);
+                                }}
+                            />
+                        </DialogFooter>
+                    }
+                >
+                    <DialogContent>
+                        <Text>Maaf, diamond kamu tidak mencukupi</Text>
+                        <Text>Silahkan mengerjakan paket soal lagi</Text>
+                        <Text>untuk menambah diamond kamu</Text>
+                    </DialogContent>
+                </Dialog>
+            </ImageBackground>
         </View>
     );
 }
@@ -68,6 +263,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    background:{
+        width:'100%',
+        height:'100%'
     },
     txdiamond: {
         fontSize: 50,
