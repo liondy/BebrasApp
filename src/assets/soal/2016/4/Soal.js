@@ -1,15 +1,20 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text
+    Text,
+    ImageBackground
 } from 'react-native';
 
 function Soal(){
     return(
-        <Text style={styles.txTantangan}> 
-            Jika nama ninjanya adalah "zukume moru",
-            siapa namanya yang sesungguhnya?
-        </Text>
+        <ImageBackground
+            style = {styles.bg}
+            source = {require('./img/bgsoal.png')}>
+            <Text style={styles.txTantangan}> 
+                Jika nama ninjanya adalah "zukume moru",
+                siapa namanya yang sesungguhnya?
+            </Text>
+        </ImageBackground>
     )
 }
 
@@ -20,9 +25,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         lineHeight: 40,
         includeFontPadding: true,
-        padding: 15,
-        textAlign: 'justify'
+        textAlign: 'justify',
+        padding : 15,
+        margin : 10
     },
+    bg : {
+        resizeMode : 'stretch',
+        width : 400,
+        height : 350
+    }
 })
 
 export default Soal;

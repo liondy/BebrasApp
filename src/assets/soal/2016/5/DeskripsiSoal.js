@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     },
     gmbr: {
         resizeMode: 'stretch',
-        width: 400,
+        width: 300,
         height: 200,
         alignSelf: 'center'
     }
