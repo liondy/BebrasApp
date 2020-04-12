@@ -13,8 +13,10 @@ function Soal(){
             source={require('./img/bgsoal.png')}>
             <Text style={styles.txTantangan}> 
                 Saat Leo menerima urutan kartu berikut : 
-                <Image source={require('./img/gbr2.png')}/>
             </Text>
+            <Image 
+                style={styles.img}
+                source={require('./img/gbr2.png')}/>
         </ImageBackground>
     )
 }
@@ -34,6 +36,12 @@ const styles = StyleSheet.create({
         resizeMode : 'stretch',
         width : 400,
         height : 350
+    },
+    img : {
+        resizeMode : 'stretch',
+        width : 350,
+        height : 150,
+        alignSelf : 'center'
     }
 })
 
