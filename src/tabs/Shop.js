@@ -9,79 +9,73 @@ import {
 } from 'react-native';
 import Dialog, { DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 import { createStackNavigator } from '@react-navigation/stack';
+import { TabActions } from '@react-navigation/native';
 import { Button } from 'react-native-elements';
 import {
     diamond,
-    beli
+    beli,
 } from '../../App';
+import {
+    bought,
+    setBought
+} from '../tabs/Profile';
 
 const DATA = [
 {
     id: '1',
     nama: 'beanie',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/beanie.png')}/>,
     harga: 150
 },
 {
     id: '2',
     nama: 'kacamata',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/kacamata.png')}/>,
     harga: 200
 },
 {
     id: '3',
-    nama: 'kacamata 2',
-    bought: 'false',
+    nama: 'kacamata bajak laut',
     image: <Image source={require('../assets/picture/shop/kacamata2.png')}/>,
     harga: 200
 },
 {
     id: '4',
     nama: 'flower crown',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/flower_crown.png')}/>,
     harga: 200
 },
 {
     id: '5',
     nama: 'permen',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/permen.png')}/>,
     harga: 200
 },
 {
     id: '6',
     nama: 'topi',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/topi.png')}/>,
     harga: 300
 },
 {
     id: '7',
     nama: 'dress',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/dress.png')}/>,
     harga: 300
 },
 {
     id: '8',
     nama: 'kaos',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/kaos.png')}/>,
     harga: 300
 },
 {
     id: '9',
     nama: 'kemeja',
-    bought: 'false',
     image: <Image source={require('../assets/picture/shop/kemeja.png')}/>,
     harga: 300
 }
 ];
-
-export {DATA}
 
 function ListBarang({item,id,nama,harga,selectItem,bought}){
     return(
@@ -100,13 +94,6 @@ const ShopStack = createStackNavigator();
 let namaBarang;
 let hargaBarang;
 let idBarang;
-
-let bought = new Map();
-export {bought};
-
-function setBought(newBought){
-    bought = newBought;
-}
 
 function Shop({navigation}) {
     const[isVisible,showDialog] = React.useState(false);
@@ -128,6 +115,14 @@ function Shop({navigation}) {
             newBought.set(idBarang,!bought.get(idBarang))
             setBought(newBought)
             showBeli(isBeli => !isBeli);
+            navigation.navigate('Profil',{
+                screen: 'Profile',
+                params: {
+                    punya: idBarang
+                }
+            })
+            // const jumpToAction = TabActions.jumpTo('Profil',{punya: idBarang});
+            // navigation.dispatch(jumpToAction);
         }
     }
     navigation.setOptions({
