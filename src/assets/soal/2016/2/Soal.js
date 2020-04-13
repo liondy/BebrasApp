@@ -3,13 +3,16 @@ import {
     StyleSheet,
     Text,
     Image,
-    ImageBackground
+    ImageBackground,
+    View
 } from 'react-native';
 
 function Soal(){
     return(
+        <View style={padding=10}>
         <ImageBackground
             style={styles.bg}
+            imageStyle={{ borderRadius: 45}}
             source={require('./img/bgsoal.png')}>
             <Text style={styles.txTantangan}> 
                 Saat Leo menerima urutan kartu berikut : 
@@ -18,6 +21,7 @@ function Soal(){
                 style={styles.img}
                 source={require('./img/gbr2.png')}/>
         </ImageBackground>
+        </View>
     )
 }
 

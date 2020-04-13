@@ -2,19 +2,23 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
-    ImageBackground
+    ImageBackground,
+    View
 } from 'react-native';
 
 function Soal(){
     return(
+    <View style={{padding:10}}>
     <ImageBackground
         style={styles.bg}
+        imageStyle={{ borderRadius: 45}}
         source={require('./img/bgsoal.png')}>
         <Text style={styles.txTantangan}> 
             Apakah barisan huruf yang berhasil dicatat oleh masing masing
             berang berang tersebut di akhir perjalanan mereka ?
         </Text>
     </ImageBackground>
+    </View>
     )
 }
 
