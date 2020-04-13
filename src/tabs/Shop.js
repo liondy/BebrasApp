@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import Dialog, { DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements';
 import {
     diamond,
@@ -91,9 +90,6 @@ function ListBarang({item,id,nama,harga,selectItem,bought}){
             onPress={()=>selectItem(id,nama,harga)}
             icon = {item}
         />
-        //   {/* {bought == true? <Text>DIBELI</Text>:null}
-        //   {item}
-        // </TouchableHighlight> */}
     );
 }
 
@@ -102,7 +98,6 @@ const ShopStack = createStackNavigator();
 let namaBarang;
 let hargaBarang;
 let idBarang;
-let availableBarang = [];
 
 function Shop({navigation}) {
     const[isVisible,showDialog] = React.useState(false);
@@ -121,7 +116,6 @@ function Shop({navigation}) {
         }
         else{
             beli(hargaBarang);
-            availableBarang[idBarang] = false
             const newBought = new Map(bought);
             newBought.set(idBarang,!bought.get(idBarang))
             setBought(newBought)
