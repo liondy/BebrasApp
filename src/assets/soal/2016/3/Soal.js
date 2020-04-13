@@ -8,7 +8,6 @@ import {
 
 function Soal(){
     return(
-    <View style={{padding:10}}>
     <ImageBackground
         style={styles.bg}
         imageStyle={{ borderRadius: 45}}
@@ -18,7 +17,6 @@ function Soal(){
             berang berang tersebut di akhir perjalanan mereka ?
         </Text>
     </ImageBackground>
-    </View>
     )
 }
 

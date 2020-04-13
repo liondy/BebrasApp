@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
     bg : {
         resizeMode : 'stretch',
-        width : 380,
+        width : 400,
         height : 350
     }
 })
