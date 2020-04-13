@@ -81,6 +81,8 @@ const DATA = [
 }
 ];
 
+export {DATA}
+
 function ListBarang({item,id,nama,harga,selectItem,bought}){
     return(
         <Button
@@ -99,11 +101,17 @@ let namaBarang;
 let hargaBarang;
 let idBarang;
 
+let bought = new Map();
+export {bought};
+
+function setBought(newBought){
+    bought = newBought;
+}
+
 function Shop({navigation}) {
     const[isVisible,showDialog] = React.useState(false);
     const[isBeli,showBeli] = React.useState(false);
     const[isCukup,showCukup] = React.useState(false);
-    const[bought,setBought] = React.useState(new Map());
     const confirmBox = (id,barang,harga) => {
         showDialog(isVisible => !isVisible);
         idBarang = id;

@@ -77,7 +77,7 @@ BackHandler.addEventListener('hardwareBackPress',function(){
   }
 })
 
-var diamond = 0;
+var diamond = 1500;
 
 export {diamond};
 
