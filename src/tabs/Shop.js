@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Dialog, { DialogContent, DialogFooter, DialogButton } from 'react-native-popup-dialog';
 import { createStackNavigator } from '@react-navigation/stack';
-import { TabActions } from '@react-navigation/native';
+import { TabActions, useNavigationBuilder, useNavigationState } from '@react-navigation/native';
 import { Button } from 'react-native-elements';
 
 const DATA = [
@@ -87,7 +87,8 @@ let namaBarang;
 let hargaBarang;
 let idBarang;
 
-function Shop({navigation,diamond,bought,setBought,}) {
+function Shop({route,navigation}) {
+    const diamond = route.params?.diamond??0;
     const[isVisible,showDialog] = React.useState(false);
     const[isBeli,showBeli] = React.useState(false);
     const[isCukup,showCukup] = React.useState(false);
@@ -102,17 +103,17 @@ function Shop({navigation,diamond,bought,setBought,}) {
             showCukup(isCukup => !isCukup);
         }
         else{
-            beli(hargaBarang);
-            const newBought = new Map(bought);
-            newBought.set(idBarang,!bought.get(idBarang))
-            setBought(newBought);
-            showBeli(isBeli => !isBeli);
-            navigation.navigate('Profil',{
-                screen: 'Profile',
-                params: {
-                    punya: idBarang
-                }
-            })
+            // beli(hargaBarang);
+            // const newBought = new Map(bought);
+            // newBought.set(idBarang,!bought.get(idBarang))
+            // setBought(newBought);
+            // showBeli(isBeli => !isBeli);
+            // navigation.navigate('Profil',{
+            //     screen: 'Profile',
+            //     params: {
+            //         punya: idBarang
+            //     }
+            // })
         }
     }
     navigation.setOptions({
@@ -143,12 +144,13 @@ function Shop({navigation,diamond,bought,setBought,}) {
                             item={item.image} 
                             selectItem={confirmBox}
                             // bought={!!bought.get(item.id)}
+                            bought={true}
                             id={item.id} 
                             nama={item.nama} 
                             harga={item.harga}
                         />
                     )}
-                    extraData={bought}
+                    // extraData={bought}
                     keyExtractor={item => item.id}
                 />
                 <Dialog
@@ -227,7 +229,7 @@ function ShopTitle(){
     );
 }
 
-function ShopStackScreen({diamond}){
+function ShopStackScreen({route}){
     return(
         <ShopStack.Navigator>
             <ShopStack.Screen
@@ -240,8 +242,8 @@ function ShopStackScreen({diamond}){
                         elevation: 0
                     }
                 }}
-                initialParams= {{
-                    diamond: {diamond}
+                initialParams={{
+                    diamond: route.params.diamond
                 }}
             />
         </ShopStack.Navigator>

@@ -2,6 +2,7 @@ import React from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export const storeDiamond = async(currentDiamond) => {
+    console.log("store: "+JSON.stringify(currentDiamond));
     try {
         await AsyncStorage.setItem('@diamond',JSON.stringify(currentDiamond));
     } catch (error) {
@@ -12,14 +13,13 @@ export const storeDiamond = async(currentDiamond) => {
 export const getDiamond = async() => {
     try {
         const lastDiamond = await AsyncStorage.getItem('@diamond');
-        const result = 0;
-        if(lastDiamond !== null){
+        if(!lastDiamond){
             result = JSON.parse(lastDiamond);
+            return result;
         }
-        return result;
     } catch (error) {
-        console.log("error getting last user diamond");
-        return error;
+        console.log(error);
+        return 0;
     }
 }
 

@@ -56,8 +56,9 @@ function SelesaiSoal({route,navigation}){
                 <Diamond reward={nilai}/>
                 <TouchableOpacity
                     style={styles.btnBackBeranda}
-                    onPress={()=> {navigation.navigate('Home'),
-                        updateDiamond(nilai);
+                    onPress={()=> {navigation.navigate('Home',{
+                        nilai: nilai
+                    }),
                         backgroundSong.play();
                     }}>
                         <Image

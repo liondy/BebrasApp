@@ -19,7 +19,14 @@ import StartingSoal from './src/pages/StartingSoal';
 import IsiSoal from './src/pages/IsiSoal';
 import TantanganSoal from './src/pages/TantanganSoal';
 import SelesaiSoal from './src/pages/SelesaiSoal';
-import PenjelasanScreen from './src/pages/PenjelasanScreen'
+import PenjelasanScreen from './src/pages/PenjelasanScreen';
+
+import {
+  getDiamond,
+  storeDiamond,
+  storeBoughtItem,
+  getBoughtItem
+} from './src/component/Storage.js';
 
 
 //bingung naro kode ini dimana
@@ -80,10 +87,26 @@ BackHandler.addEventListener('hardwareBackPress',function(){
 
 const Stack = createStackNavigator();
 
-function App() {
+function App({route}) {
+  const [diamond,updateDiamond] = React.useState(0);
+  const [bought,updateBought] = React.useState(new Map());
+  const fetchUserLastState = async() => {
+      const fetchedDiamond = await getDiamond();
+      updateDiamond(fetchedDiamond);
+      const fetchedBought = await getBoughtItem();
+      updateBought(fetchedBought);
+  }
+  const addDiamond = async (newDiamond) => {
+      const currentDiamond = parseInt(diamond)+parseInt(newDiamond);
+      console.log("get diamond: "+currentDiamond);
+      updateDiamond(currentDiamond);
+      await storeDiamond(currentDiamond);
+  }
+  console.log("current diamond: "+diamond);
   React.useEffect(()=>{
     SplashScreen.hide();
     backgroundSong.play();
+    fetchUserLastState();
     console.disableYellowBox = true;
     DeviceEventEmitter.addListener(
       'ON_HOME_BUTTON_PRESSED',
@@ -99,6 +122,10 @@ function App() {
           component={Home}
           options={{
             headerShown: false
+          }}
+          initialParams={{
+            diamond: diamond,
+            addDiamond: addDiamond(),
           }}
         />
         <Stack.Screen

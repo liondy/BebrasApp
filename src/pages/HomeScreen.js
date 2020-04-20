@@ -8,12 +8,6 @@ import Beranda from '../tabs/Home';
 import Profil from '../tabs/Profile';
 import Toko from '../tabs/Shop';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {
-    getDiamond,
-    storeDiamond,
-    storeBoughtItem,
-    getBoughtItem
-} from '../component/Storage.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,22 +44,13 @@ function Shop(){
     )
 }
 
-function HomeScreen() {
-    const [diamond,updateDiamond] = React.useState(0);
-    const [bought,updateBought] = React.useState(new Map());
-    const fetchUserLastState = async() => {
-        const fetchedDiamond = getDiamond();
-        updateDiamond(fetchedDiamond);
-        const fetchedBought = getBoughtItem();
-        updateBought(fetchedBought);
-    }
-    const addDiamond = (newDiamond) => {
-        diamond += newDiamond;
-        storeDiamond(diamond);
-    }
+function HomeScreen({route,addDiamond}) {
+    console.log(route.params.diamond);
     React.useEffect(()=>{
-        fetchUserLastState();
-    },[])
+        if(route.params?.nilai){
+            addDiamond(route.params.nilai);
+        }
+    },[route.params?.nilai])
     return (
         <Tab.Navigator
             tabBarOptions={{
@@ -80,9 +65,6 @@ function HomeScreen() {
                 options={{
                     tabBarIcon:({props})=>
                         <Home {...props}/>
-                }}
-                initialParams={{
-                    updateDiamond: addDiamond
                 }}
             />
             <Tab.Screen
@@ -103,7 +85,7 @@ function HomeScreen() {
                         <Shop {...props}/>
                 }}
                 initialParams={{
-                    diamond: diamond
+                    diamond: route.params.diamond
                 }}
             />
         </Tab.Navigator>
