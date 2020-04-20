@@ -170,8 +170,8 @@ var currentTime;
 var dumpTime;
 function checkTime(time){
     if(time==0){
-        currentTime = 20;
-        dumpTime = 20;
+        currentTime = 180;
+        dumpTime = 180;
     }
     else{
         currentTime = time;
