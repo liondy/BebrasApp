@@ -8,7 +8,7 @@ import {
     ScrollView
 } from 'react-native';
 import { TouchableOpacity} from 'react-native-gesture-handler';
-import { backgroundSong,diamond,updateDiamond } from '../../App';
+import { backgroundSong} from '../../App';
 
 function Selamat(){
     return(

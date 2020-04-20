@@ -8,7 +8,12 @@ import Beranda from '../tabs/Home';
 import Profil from '../tabs/Profile';
 import Toko from '../tabs/Shop';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { backgroundSong } from '../../App';
+import {
+    getDiamond,
+    storeDiamond,
+    storeBoughtItem,
+    getBoughtItem
+} from '../component/Storage.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +51,21 @@ function Shop(){
 }
 
 function HomeScreen() {
+    const [diamond,updateDiamond] = React.useState(0);
+    const [bought,updateBought] = React.useState(new Map());
+    const fetchUserLastState = async() => {
+        const fetchedDiamond = getDiamond();
+        updateDiamond(fetchedDiamond);
+        const fetchedBought = getBoughtItem();
+        updateBought(fetchedBought);
+    }
+    const addDiamond = (newDiamond) => {
+        diamond += newDiamond;
+        storeDiamond(diamond);
+    }
+    React.useEffect(()=>{
+        fetchUserLastState();
+    },[])
     return (
         <Tab.Navigator
             tabBarOptions={{
@@ -60,6 +80,9 @@ function HomeScreen() {
                 options={{
                     tabBarIcon:({props})=>
                         <Home {...props}/>
+                }}
+                initialParams={{
+                    updateDiamond: addDiamond
                 }}
             />
             <Tab.Screen
@@ -78,6 +101,9 @@ function HomeScreen() {
                     title:'Toko',
                     tabBarIcon:({props})=>
                         <Shop {...props}/>
+                }}
+                initialParams={{
+                    diamond: diamond
                 }}
             />
         </Tab.Navigator>

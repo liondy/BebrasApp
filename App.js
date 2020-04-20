@@ -12,6 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { BackHandler,DeviceEventEmitter} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import Home from './src/pages/HomeScreen';
 import StartingSoal from './src/pages/StartingSoal';
@@ -76,18 +77,6 @@ BackHandler.addEventListener('hardwareBackPress',function(){
     backgroundSong.pause();
   }
 })
-
-var diamond = 15000;
-
-export {diamond};
-
-export function updateDiamond(newValue){
-  diamond += newValue;
-}
-
-export function beli(newValue){
-  diamond -= newValue;
-}
 
 const Stack = createStackNavigator();
 

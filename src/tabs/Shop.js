@@ -11,14 +11,6 @@ import Dialog, { DialogContent, DialogFooter, DialogButton } from 'react-native-
 import { createStackNavigator } from '@react-navigation/stack';
 import { TabActions } from '@react-navigation/native';
 import { Button } from 'react-native-elements';
-import {
-    diamond,
-    beli,
-} from '../../App';
-import {
-    bought,
-    setBought
-} from '../tabs/Profile';
 
 const DATA = [
 {
@@ -95,7 +87,7 @@ let namaBarang;
 let hargaBarang;
 let idBarang;
 
-function Shop({navigation}) {
+function Shop({navigation,diamond,bought,setBought,}) {
     const[isVisible,showDialog] = React.useState(false);
     const[isBeli,showBeli] = React.useState(false);
     const[isCukup,showCukup] = React.useState(false);
@@ -113,7 +105,7 @@ function Shop({navigation}) {
             beli(hargaBarang);
             const newBought = new Map(bought);
             newBought.set(idBarang,!bought.get(idBarang))
-            setBought(newBought)
+            setBought(newBought);
             showBeli(isBeli => !isBeli);
             navigation.navigate('Profil',{
                 screen: 'Profile',
@@ -121,8 +113,6 @@ function Shop({navigation}) {
                     punya: idBarang
                 }
             })
-            // const jumpToAction = TabActions.jumpTo('Profil',{punya: idBarang});
-            // navigation.dispatch(jumpToAction);
         }
     }
     navigation.setOptions({
@@ -152,7 +142,7 @@ function Shop({navigation}) {
                         <ListBarang 
                             item={item.image} 
                             selectItem={confirmBox}
-                            bought={!!bought.get(item.id)}
+                            // bought={!!bought.get(item.id)}
                             id={item.id} 
                             nama={item.nama} 
                             harga={item.harga}
@@ -237,7 +227,7 @@ function ShopTitle(){
     );
 }
 
-function ShopStackScreen(){
+function ShopStackScreen({diamond}){
     return(
         <ShopStack.Navigator>
             <ShopStack.Screen
@@ -249,6 +239,9 @@ function ShopStackScreen(){
                         backgroundColor: 'transparent',
                         elevation: 0
                     }
+                }}
+                initialParams= {{
+                    diamond: {diamond}
                 }}
             />
         </ShopStack.Navigator>

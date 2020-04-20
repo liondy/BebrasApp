@@ -9,14 +9,7 @@ import {
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
-import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler';
-
-let bought = new Map();
-export {bought};
-
-export function setBought(newBought){
-    bought = newBought;
-}
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const DATA = [
     {
