@@ -18,7 +18,12 @@ import StartingSoal from './src/pages/StartingSoal';
 import IsiSoal from './src/pages/IsiSoal';
 import TantanganSoal from './src/pages/TantanganSoal';
 import SelesaiSoal from './src/pages/SelesaiSoal';
-import PenjelasanScreen from './src/pages/PenjelasanScreen'
+import PenjelasanScreen from './src/pages/PenjelasanScreen';
+
+import {
+  storeDiamond,
+  getDiamond,
+} from './src/components/Storage.js';
 
 
 //bingung naro kode ini dimana
@@ -77,16 +82,28 @@ BackHandler.addEventListener('hardwareBackPress',function(){
   }
 })
 
-var diamond = 0;
+const getLastUserDiamond = async () => {
+  const lastDiamond = await getDiamond();
+  setDiamond(parseInt(lastDiamond));
+}
+
+var diamond;
+getLastUserDiamond();
+
+const setDiamond = (newDiamond) => {
+  diamond = newDiamond;
+}
 
 export {diamond};
 
-export function updateDiamond(newValue){
+export async function updateDiamond (newValue){
   diamond += newValue;
+  await storeDiamond(diamond);
 }
 
-export function beli(newValue){
+export async function beli(newValue){
   diamond -= newValue;
+  await storeDiamond(diamond);
 }
 
 const Stack = createStackNavigator();

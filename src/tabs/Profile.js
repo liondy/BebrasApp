@@ -11,11 +11,28 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
 import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler';
 
+import {
+    storeBoughtItem,
+    getBoughtItem
+} from '../components/Storage.js';
+
+const getLastItemBought = async() => {
+    const lastBought = await getBoughtItem();
+    setLastBought(lastBought)
+}
+
 let bought = new Map();
+getLastItemBought();
+
+const setLastBought = (newBought) => {
+    bought = new Map(JSON.parse(newBought));
+}
+
 export {bought};
 
-export function setBought(newBought){
+export async function setBought(newBought){
     bought = newBought;
+    await storeBoughtItem(bought);
 }
 
 const DATA = [
