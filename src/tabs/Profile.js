@@ -106,7 +106,7 @@ function ListBarang({item,id,nama,selectedid}){
                 onPressIn={() => selectedid(id)}>
                 <Button
                     type='outline'
-                    buttonStyle={{width: 180, height: 180, marginTop: 5, marginBottom: 5}}
+                    buttonStyle={{width: 150, height: 150, marginTop: 5, marginBottom: 5, marginLeft: 5, marginRight: 10}}
                     icon = {item}
                 />
             </TouchableOpacity>
@@ -221,6 +221,10 @@ function Profile() {
                 lepasKemeja(isKemeja==0 ? 1 : 0);
                 lepasDress(isDress==0? 1 : 0);
             }
+            else if(isPermen==1){
+                lepasPermen(isPermen==0? 1 : 0);
+                lepasDress(isDress==0 ? 1 : 0);
+            }
             else{
                 lepasDress(isDress==0? 1 : 0);
             }
@@ -234,6 +238,10 @@ function Profile() {
                 lepasKemeja(isKemeja==0 ? 1 : 0);
                 lepasKaos(isKaos==0? 1 : 0);
             }
+            else if(isPermen==1){
+                lepasPermen(isPermen==0? 1 : 0);
+                lepasKaos(isKaos==0 ? 1 : 0);
+            }
             else{
                 lepasKaos(isKaos==0? 1 : 0);
             }
@@ -246,6 +254,10 @@ function Profile() {
             }
             else if(isKaos==1){
                 lepasKaos(isKaos==0? 1 : 0);
+                lepasKemeja(isKemeja==0 ? 1 : 0);
+            }
+            else if(isPermen==1){
+                lepasPermen(isPermen==0? 1 : 0);
                 lepasKemeja(isKemeja==0 ? 1 : 0);
             }
             else{
@@ -270,43 +282,27 @@ function Profile() {
                         <Image
                             style={isBeanie==1 ? styles.pakeBeanie : styles.lepasBeanie }
                             source={require('../assets/picture/profile/beanie.png')}/>
-                        </View>
-                        <View>
-                        <Image 
-                            style={isKacamata1==1 ? styles.pakeKacamata1 : styles.lepasBeanie}
-                            source={require('../assets/picture/profile/kacamata.png')}/>
-                        </View>
-                        <View>
-                        <Image
-                            style={isKacamata2==1 ? styles.pakeKacamata2 : styles.lepasKacamata2}
-                            source={require('../assets/picture/profile/kacamata2.png')}/>
-                        </View>
-                        <View>
                         <Image
                             style={isCrown==1 ? styles.pakeCrown : styles.lepasCrown}
                             source={require('../assets/picture/profile/flower_crown.png')}/>
-                        </View>
-                        <View>
-                        <Image
-                            style={isPermen==1 ? styles.pakePermen : styles.lepasPermen}
-                            source={require('../assets/picture/profile/permen.png')}/>
-                        </View>
-                        <View>
                         <Image
                             style={isTopi==1 ? styles.pakeTopi : styles.lepasTopi}
                             source={require('../assets/picture/profile/topi.png')}/>
-                        </View>
-                        <View>
+                        <Image 
+                            style={isKacamata1==1 ? styles.pakeKacamata1 : styles.lepasKacamata1}
+                            source={require('../assets/picture/profile/kacamata.png')}/>
+                        <Image
+                            style={isKacamata2==1 ? styles.pakeKacamata2 : styles.lepasKacamata2}
+                            source={require('../assets/picture/profile/kacamata2.png')}/>
+                        <Image
+                            style={isPermen==1 ? styles.pakePermen : styles.lepasPermen}
+                            source={require('../assets/picture/profile/permen.png')}/>
                         <Image 
                             style={isDress==1 ? styles.pakeDress : styles.lepasDress}
                             source={require('../assets/picture/profile/dress.png')}/>
-                        </View>
-                        <View>
                         <Image
                             style={isKaos==1 ? styles.pakeKaos : styles.lepasKaos}
                             source={require('../assets/picture/profile/kaos.png')}/>
-                        </View>
-                        <View>
                         <Image
                             style={isKemeja==1 ? styles.pakeKemeja : styles.lepasKemeja}
                             source={require('../assets/picture/profile/kemeja.png')}/>
@@ -461,7 +457,7 @@ const styles = StyleSheet.create({
         width: 150,
         height : 60,
         marginLeft: 120, 
-        marginTop: -90, 
+        marginTop: -60, 
         opacity: 0 
     },
     pakeKacamata2 : {
@@ -469,7 +465,7 @@ const styles = StyleSheet.create({
         width: 150, 
         height : 60,
         marginLeft: 120, 
-        marginTop: -90, 
+        marginTop: -60, 
         opacity: 1
     },
     lepasCrown : {
@@ -477,7 +473,7 @@ const styles = StyleSheet.create({
         width: 150, 
         height: 100, 
         marginLeft: 120, 
-        marginTop: -140, 
+        marginTop: -100,
         opacity: 0
     },
     pakeCrown : {
@@ -485,15 +481,15 @@ const styles = StyleSheet.create({
         width: 150, 
         height: 100, 
         marginLeft: 120, 
-        marginTop: -140, 
+        marginTop: -100, 
         opacity: 1
     },
     lepasPermen : {
         resizeMode: 'stretch', 
         width: 50, 
-        height: 50, 
+        height: 50,
         marginLeft: 180, 
-        marginTop: 15, 
+        marginTop: 40,   
         opacity: 0
     },
     pakePermen : {
@@ -501,7 +497,7 @@ const styles = StyleSheet.create({
         width: 50, 
         height: 50, 
         marginLeft: 180, 
-        marginTop: 15, 
+        marginTop: 40, 
         opacity: 1
     },
     lepasTopi : {
@@ -509,7 +505,7 @@ const styles = StyleSheet.create({
         width: 170, 
         height: 100, 
         marginLeft: 110, 
-        marginTop: -200, 
+        marginTop: -100, 
         opacity: 0
     },
     pakeTopi : {
@@ -517,7 +513,7 @@ const styles = StyleSheet.create({
         width: 170, 
         height: 100, 
         marginLeft: 110, 
-        marginTop: -200, 
+        marginTop: -100, 
         opacity: 1
     },
     lepasDress : {
@@ -531,41 +527,41 @@ const styles = StyleSheet.create({
     pakeDress : {
         resizeMode: 'stretch', 
         width: 235, 
-        height: 140, 
+        height: 120, 
         marginTop: -60, 
         marginLeft: 80, 
         opacity: 1
     },
     lepasKaos : {
         resizeMode: 'stretch', 
-        width: 220, 
-        height: 110, 
+        width: 215, 
+        height: 100, 
         marginLeft: 95, 
-        marginTop: -290, 
+        marginTop: -160, 
         opacity: 0
     },
     pakeKaos : {
         resizeMode: 'stretch', 
-        width: 220, 
-        height: 110, 
+        width: 215, 
+        height: 100, 
         marginLeft: 95, 
-        marginTop: -290, 
+        marginTop: -160, 
         opacity: 1
     },
     lepasKemeja : {
         resizeMode: 'stretch', 
         width: 210, 
-        height: 110, 
-        marginLeft: 90, 
-        marginTop: -300, 
+        height: 100, 
+        marginLeft: 90,  
+        marginTop: -100,
         opacity: 0
     },
     pakeKemeja : {
         resizeMode: 'stretch', 
         width: 210, 
-        height: 110, 
+        height: 100, 
         marginLeft: 90, 
-        marginTop: -300, 
+        marginTop: -100,
         opacity: 1
     },
 });
