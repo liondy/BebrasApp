@@ -186,14 +186,11 @@ function TantanganSoal({route,navigation}){
     const[isVisible,toggle]=React.useState(false);
     const { tahunId } = route.params;
     const { nomor } = route.params;
-    const { jumlahSoal } = route.params;
     const { time } = route.params;
     const { nilai } = route.params;
     const { salah } = route.params;
 
     currentNilai = nilai;
-    console.log('tahun: '+tahunId);
-    console.log('nmor: '+nomor);
 
     const showJawaban = (x) => {
         temp = x;
@@ -229,7 +226,6 @@ function TantanganSoal({route,navigation}){
                 penjelasan = <Penjelasan20163/>
                 break;
             case 4:
-                console.log("masuk");
                 soal = <Soal20164/>;
                 pilihan = <Pilihan20164 showJawaban={showJawaban}/>
                 jawaban = <Jawaban20164/>

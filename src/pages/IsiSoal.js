@@ -66,9 +66,6 @@ function IsiSoal({route,navigation}){
     const { nilai } = route.params;
 
     currentNilai = nilai;
-    console.log('total nilai: '+currentNilai);
-    console.log('nomor: '+number);
-    console.log("ans: "+answered);
 
     var path;
     if(!pertama){
@@ -102,7 +99,6 @@ function IsiSoal({route,navigation}){
     });
     const isAwal = (awal) => {
         if(awal=='0'){
-            console.log("masuk sini");
             for (let index = 0; index <= 12; index++) {
                 availableSoal.pop(); //removing cache, make availableSoal to []
             }
@@ -140,13 +136,10 @@ function IsiSoal({route,navigation}){
         while(!availableSoal[nomor] || nomor == 0);
         availableSoal[nomor] = false; //the available number from the number that has been generated sets to false
         answered++; //increment the answered question
-        // console.log('Soal ke: '+answered);
-        console.log('nomor soal: '+nomor);
         return nomor; //gets the new number of soal
     };
     if(isAwal(awal)){
         currentNumber = randomNomorSoal();
-        // currentNumber++;
     }
     if(tahunId=='2016'){
         switch(currentNumber){

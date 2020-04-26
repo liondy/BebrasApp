@@ -121,8 +121,6 @@ function Shop({navigation}) {
                     punya: idBarang
                 }
             })
-            // const jumpToAction = TabActions.jumpTo('Profil',{punya: idBarang});
-            // navigation.dispatch(jumpToAction);
         }
     }
     navigation.setOptions({

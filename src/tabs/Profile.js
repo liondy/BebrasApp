@@ -9,12 +9,15 @@ import {
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
-import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler';
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import {
     storeBoughtItem,
     getBoughtItem
 } from '../components/Storage.js';
+import {
+    wear,
+    updateWear
+} from './Home.js';
 
 const getLastItemBought = async() => {
     const lastBought = await getBoughtItem();
@@ -121,16 +124,33 @@ function ListBarang({item,id,nama,selectedid}){
 
 let klikId = 0
 
-function Profile() {
-    const[isBeanie,lepasBeanie] = React.useState(0);
-    const[isKacamata1,lepasKacamata1] = React.useState(0);
-    const[isKacamata2,lepasKacamata2] = React.useState(0);
-    const[isCrown,lepasCrown] = React.useState(0);
-    const[isPermen,lepasPermen] = React.useState(0);
-    const[isTopi,lepasTopi] = React.useState(0);
-    const[isDress,lepasDress] = React.useState(0);
-    const[isKaos,lepasKaos] = React.useState(0);
-    const[isKemeja,lepasKemeja] = React.useState(0);
+function Profile({navigation}) {
+    const[isBeanie,lepasBeanie] = React.useState(wear.get("1"));
+    const[isKacamata1,lepasKacamata1] = React.useState(wear.get("2"));
+    const[isKacamata2,lepasKacamata2] = React.useState(wear.get("3"));
+    const[isCrown,lepasCrown] = React.useState(wear.get("4"));
+    const[isPermen,lepasPermen] = React.useState(wear.get("5"));
+    const[isTopi,lepasTopi] = React.useState(wear.get("6"));
+    const[isDress,lepasDress] = React.useState(wear.get("7"));
+    const[isKaos,lepasKaos] = React.useState(wear.get("8"));
+    const[isKemeja,lepasKemeja] = React.useState(wear.get("9"));
+
+    navigation.setOptions({
+        headerRight: () => (
+            <TouchableOpacity
+                style={{marginRight: 15}}
+                onPress={() => {navigation.navigate('Beranda',{
+                    screen: 'Home'
+                })
+                }}>
+                <Button
+                    type='outline'
+                    buttonStyle={styles.settings_button}
+                    title="Simpan"
+                />
+            </TouchableOpacity>
+        ),
+    });
 
     const selectedid = (id) => {
         klikId = id;
@@ -138,23 +158,28 @@ function Profile() {
     }
 
     const setOp = () => {
+        const newAcc = new Map(wear);
+        newAcc.set(klikId,wear.get(klikId)==0?1:0);
         if(klikId==1){
             if(isCrown==1){
-                lepasCrown(isCrown==0? 1 : 0);
-                lepasBeanie(isBeanie==0 ? 1 : 0);
+                lepasCrown(isCrown==0? 1 : 0); //lepas crown
+                lepasBeanie(isBeanie==0 ? 1 : 0); //pakai beanie
+                newAcc.set("4",0);
             }
             else if(isTopi==1){
-                lepasTopi(isTopi==0? 1 : 0);
-                lepasBeanie(isBeanie==0 ? 1 : 0);
+                lepasTopi(isTopi==0? 1 : 0); //lepas topi
+                lepasBeanie(isBeanie==0 ? 1 : 0); //pakai beanie
+                newAcc.set("6",0);
             }
             else{
-                lepasBeanie(isBeanie==0 ? 1 : 0);
+                lepasBeanie(isBeanie==0 ? 1 : 0); //pakai beanie
             }
         }
         else if(klikId==2){
             if(isKacamata2==1){
-                lepasKacamata2(isKacamata2==0? 1 : 0);
+                lepasKacamata2(isKacamata2==0? 1 : 0); //lepas kacamata 2
                 lepasKacamata1(isKacamata1==0? 1 : 0);
+                newAcc.set("3",0);
             }
             else{
                 lepasKacamata1(isKacamata1==0? 1 : 0);
@@ -162,8 +187,9 @@ function Profile() {
         }
         else if(klikId==3){
             if(isKacamata1==1){
-                lepasKacamata1(isKacamata1==0? 1 : 0);
+                lepasKacamata1(isKacamata1==0? 1 : 0); //lepas kacamata 1
                 lepasKacamata2(isKacamata2==0? 1 : 0);
+                newAcc.set("2",0);
             }
             else{
                 lepasKacamata2(isKacamata2==0? 1 : 0);
@@ -172,11 +198,13 @@ function Profile() {
         else if(klikId==4){
             if(isBeanie==1){
                 lepasBeanie(isBeanie==0 ? 1 : 0);
-                lepasCrown(isCrown==0? 1 : 0);   
+                lepasCrown(isCrown==0? 1 : 0);
+                newAcc.set("1",0);
             }
             else if(isTopi==1){
                 lepasTopi(isTopi==0? 1 : 0);
                 lepasCrown(isCrown==0? 1 : 0);
+                newAcc.set("6",0);
             }
             else{
                 lepasCrown(isCrown==0? 1 : 0);
@@ -186,14 +214,17 @@ function Profile() {
             if(isKaos==1){
                 lepasKaos(isKaos==0? 1 : 0);
                 lepasPermen(isPermen==0? 1 : 0);
+                newAcc.set("8",0);
             }
             else if(isKemeja==1){
                 lepasKemeja(isKemeja==0 ? 1 : 0);
                 lepasPermen(isPermen==0? 1 : 0);
+                newAcc.set("9",0);
             }
             else if(isDress==1){
                 lepasDress(isDress==0? 1 : 0);
                 lepasPermen(isPermen==0? 1 : 0);
+                newAcc.set("7",0);
             }
             else{
                 lepasPermen(isPermen==0? 1 : 0);
@@ -203,10 +234,12 @@ function Profile() {
             if(isBeanie==1){
                 lepasBeanie(isBeanie==0 ? 1 : 0);
                 lepasTopi(isTopi==0? 1 : 0);
+                newAcc.set("1",0);
             }
             else if(isCrown==1){
                 lepasCrown(isCrown==0? 1 : 0);
                 lepasTopi(isTopi==0? 1 : 0);
+                newAcc.set("4",0);
             }
             else{
                 lepasTopi(isTopi==0? 1 : 0);
@@ -216,14 +249,17 @@ function Profile() {
             if(isKaos==1){
                 lepasKaos(isKaos==0? 1 : 0);
                 lepasDress(isDress==0? 1 : 0);
+                newAcc.set("8",0);
             }
             else if(isKemeja==1){
                 lepasKemeja(isKemeja==0 ? 1 : 0);
                 lepasDress(isDress==0? 1 : 0);
+                newAcc.set("9",0);
             }
             else if(isPermen==1){
                 lepasPermen(isPermen==0? 1 : 0);
                 lepasDress(isDress==0 ? 1 : 0);
+                newAcc.set("5",0);
             }
             else{
                 lepasDress(isDress==0? 1 : 0);
@@ -233,14 +269,17 @@ function Profile() {
             if(isDress==1){
                 lepasDress(isDress==0? 1 : 0);
                 lepasKaos(isKaos==0? 1 : 0);
+                newAcc.set("7",0);
             }
             else if(isKemeja==1){
                 lepasKemeja(isKemeja==0 ? 1 : 0);
                 lepasKaos(isKaos==0? 1 : 0);
+                newAcc.set("9",0);
             }
             else if(isPermen==1){
                 lepasPermen(isPermen==0? 1 : 0);
                 lepasKaos(isKaos==0 ? 1 : 0);
+                newAcc.set("5",0);
             }
             else{
                 lepasKaos(isKaos==0? 1 : 0);
@@ -251,19 +290,23 @@ function Profile() {
             if(isDress==1){
                 lepasDress(isDress==0? 1 : 0);
                 lepasKemeja(isKemeja==0 ? 1 : 0);
+                newAcc.set("7",0);
             }
             else if(isKaos==1){
                 lepasKaos(isKaos==0? 1 : 0);
                 lepasKemeja(isKemeja==0 ? 1 : 0);
+                newAcc.set("8",0);
             }
             else if(isPermen==1){
                 lepasPermen(isPermen==0? 1 : 0);
                 lepasKemeja(isKemeja==0 ? 1 : 0);
+                newAcc.set("5",0);
             }
             else{
                 lepasKemeja(isKemeja==0 ? 1 : 0);
             }
         }
+        updateWear(newAcc);
     }
 
     return (

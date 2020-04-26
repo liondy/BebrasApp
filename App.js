@@ -87,7 +87,7 @@ const getLastUserDiamond = async () => {
   setDiamond(parseInt(lastDiamond));
 }
 
-var diamond;
+var diamond = 0;
 getLastUserDiamond();
 
 const setDiamond = (newDiamond) => {

@@ -18,6 +18,29 @@ import {
     finish
 } from '../../App';
 import { useNavigation } from '@react-navigation/native';
+import {
+    getWearItems,
+    storeWearItems
+} from '../components/Storage.js';
+
+const getLastItem = async() => {
+    const lastItem = await getWearItems();
+    update(lastItem);
+}
+
+let wear = new Map();
+getLastItem();
+
+const update = (lastItem) => {
+    wear = new Map(JSON.parse(lastItem));
+}
+
+export const updateWear = async(newWear) => {
+    wear = newWear
+    await storeWearItems(wear);
+}
+
+export {wear};
 
 const DATA = [
     {
@@ -65,7 +88,7 @@ const HomeStack = createStackNavigator();
 function Home({ navigation }) {
     const[isVisible,toggle]=React.useState(false);
     const[isMusicOn,turnMusic]=React.useState(true);
-
+    const[wearNow,updateWearNow]=React.useState(new Map());
     const changeMusic = () => {
         turnMusic(isMusicOn => !isMusicOn);
     };
@@ -105,6 +128,16 @@ function Home({ navigation }) {
         ),
     });
 
+    const updateItems = async() => {
+        const lastWearItems = await getWearItems();
+        updateWearNow(new Map(JSON.parse(lastWearItems)));
+    }
+    React.useEffect(()=>{
+        const unsubscribe = navigation.addListener('focus',() => {
+            updateItems();
+        })
+        return unsubscribe;
+    },[navigation]);
     return (
         <View style={styles.container}>
             <ImageBackground
@@ -114,7 +147,17 @@ function Home({ navigation }) {
                     style={styles.contentContainer}>
                     <View style={styles.content}>
                         <View style={styles.character}>
-                            <UserCharacter/>
+                            <UserCharacter
+                                isBeanie={wearNow.get("1")}
+                                isKacamata1={wearNow.get("2")}
+                                isKacamata2={wearNow.get("3")}
+                                isCrown={wearNow.get("4")}
+                                isPermen={wearNow.get('5')}
+                                isTopi={wearNow.get("6")}
+                                isDress={wearNow.get("7")}
+                                isKaos={wearNow.get("8")}
+                                isKemeja={wearNow.get("9")}
+                            />
                         </View>
                         <View style={styles.prop}>
                             <PilihSoal/>
@@ -170,12 +213,41 @@ function PilihSoal(){
     );
 }
 
-function UserCharacter(){
+function UserCharacter({isBeanie,isKacamata1,isKacamata2,isCrown,isPermen,isTopi,isDress,isKaos,isKemeja}){
     return(
-        <Image
+        <ImageBackground
             style={styles.userCharacter}
-            source={require('../assets/picture/profile/original_character.png')}
-        />
+            source={require('../assets/picture/profile/original_character.png')}>
+            <View>
+                <Image
+                    style={isBeanie==1 ? styles.pakeBeanie : styles.lepasBeanie }
+                    source={require('../assets/picture/profile/beanie.png')}/>
+                <Image
+                    style={isCrown==1 ? styles.pakeCrown : styles.lepasCrown}
+                    source={require('../assets/picture/profile/flower_crown.png')}/>
+                <Image
+                    style={isTopi==1 ? styles.pakeTopi : styles.lepasTopi}
+                    source={require('../assets/picture/profile/topi.png')}/>
+                <Image 
+                    style={isKacamata1==1 ? styles.pakeKacamata1 : styles.lepasKacamata1}
+                    source={require('../assets/picture/profile/kacamata.png')}/>
+                <Image
+                    style={isKacamata2==1 ? styles.pakeKacamata2 : styles.lepasKacamata2}
+                    source={require('../assets/picture/profile/kacamata2.png')}/>
+                <Image
+                    style={isPermen==1 ? styles.pakePermen : styles.lepasPermen}
+                    source={require('../assets/picture/profile/permen.png')}/>
+                <Image 
+                    style={isDress==1 ? styles.pakeDress : styles.lepasDress}
+                    source={require('../assets/picture/profile/dress.png')}/>
+                <Image
+                    style={isKaos==1 ? styles.pakeKaos : styles.lepasKaos}
+                    source={require('../assets/picture/profile/kaos.png')}/>
+                <Image
+                    style={isKemeja==1 ? styles.pakeKemeja : styles.lepasKemeja}
+                    source={require('../assets/picture/profile/kemeja.png')}/>
+            </View>
+        </ImageBackground>
     )
 }
 
@@ -255,12 +327,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     userCharacter: {
-        width: 250,
-        height: 250,
+        width: 300,
+        height: 300,
     },
     character: {
         alignSelf: 'baseline', //ini buat si view nya dia jd wrap content
-        paddingHorizontal: 50
+        paddingHorizontal: 50,
+        paddingTop: 60,
     },
     contentTitle: {
         fontSize: 20,
@@ -270,7 +343,151 @@ const styles = StyleSheet.create({
         alignSelf: 'baseline',
         marginTop: -10,
         paddingBottom: 35
-    }
+    },
+    lepasBeanie : {
+        resizeMode: 'stretch',
+        width: 150,
+        height: 120,
+        marginLeft: 120,
+        marginTop: -60,
+        opacity: 0
+    },
+    pakeBeanie : {
+        resizeMode: 'stretch',
+        width: 150,
+        height: 120,
+        marginLeft: 120,
+        marginTop: -60,
+        opacity: 1
+    },
+    lepasKacamata1 :{
+        resizeMode: 'stretch', 
+        width: 150, 
+        height: 40, 
+        marginLeft: 145,
+        marginTop: -10, 
+        opacity: 0
+    },
+    pakeKacamata1 :{
+        resizeMode: 'stretch', 
+        width: 150, 
+        height: 40, 
+        marginLeft: 145,
+        marginTop: -10, 
+        opacity: 1
+    },
+    lepasKacamata2 : {
+        resizeMode: 'stretch',
+        width: 150,
+        height : 60,
+        marginLeft: 120, 
+        marginTop: -60, 
+        opacity: 0 
+    },
+    pakeKacamata2 : {
+        resizeMode: 'stretch',
+        width: 150, 
+        height : 60,
+        marginLeft: 120, 
+        marginTop: -60, 
+        opacity: 1
+    },
+    lepasCrown : {
+        resizeMode: 'stretch', 
+        width: 150, 
+        height: 100, 
+        marginLeft: 120, 
+        marginTop: -100,
+        opacity: 0
+    },
+    pakeCrown : {
+        resizeMode: 'stretch', 
+        width: 150, 
+        height: 100, 
+        marginLeft: 120, 
+        marginTop: -100, 
+        opacity: 1
+    },
+    lepasPermen : {
+        resizeMode: 'stretch', 
+        width: 50, 
+        height: 50,
+        marginLeft: 180, 
+        marginTop: 40,   
+        opacity: 0
+    },
+    pakePermen : {
+        resizeMode: 'stretch', 
+        width: 50, 
+        height: 50, 
+        marginLeft: 180, 
+        marginTop: 40, 
+        opacity: 1
+    },
+    lepasTopi : {
+        resizeMode: 'stretch', 
+        width: 170, 
+        height: 100, 
+        marginLeft: 110, 
+        marginTop: -100, 
+        opacity: 0
+    },
+    pakeTopi : {
+        resizeMode: 'stretch', 
+        width: 170, 
+        height: 100, 
+        marginLeft: 110, 
+        marginTop: -100, 
+        opacity: 1
+    },
+    lepasDress : {
+        resizeMode: 'stretch', 
+        width: 235, 
+        height: 140, 
+        marginTop: -60, 
+        marginLeft: 80, 
+        opacity: 0
+    },
+    pakeDress : {
+        resizeMode: 'stretch', 
+        width: 235, 
+        height: 120, 
+        marginTop: -60, 
+        marginLeft: 80, 
+        opacity: 1
+    },
+    lepasKaos : {
+        resizeMode: 'stretch', 
+        width: 215, 
+        height: 100, 
+        marginLeft: 95, 
+        marginTop: -160, 
+        opacity: 0
+    },
+    pakeKaos : {
+        resizeMode: 'stretch', 
+        width: 215, 
+        height: 100, 
+        marginLeft: 95, 
+        marginTop: -160, 
+        opacity: 1
+    },
+    lepasKemeja : {
+        resizeMode: 'stretch', 
+        width: 210, 
+        height: 100, 
+        marginLeft: 90,  
+        marginTop: -100,
+        opacity: 0
+    },
+    pakeKemeja : {
+        resizeMode: 'stretch', 
+        width: 210, 
+        height: 100, 
+        marginLeft: 90, 
+        marginTop: -100,
+        opacity: 1
+    },
 });
 
 export default HomeStackScreen;
