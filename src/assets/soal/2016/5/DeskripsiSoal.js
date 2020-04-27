@@ -13,7 +13,7 @@ function DeskripsiSoal(){
         <ImageBackground
         style={styles.background}
         source={require('./img/bgsoal.png')}>
-            <View style={{padding: 10, marginBottom: 10}}>
+            <View style={{padding: 20, marginBottom: 20}}>
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                 It is time for bed! Every beaver should have a toothbrush that 

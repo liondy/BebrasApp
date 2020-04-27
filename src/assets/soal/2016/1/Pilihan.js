@@ -3,8 +3,6 @@ import {
     TouchableHighlight,
     StyleSheet,
     Text,
-    View,
-    Button
 } from 'react-native';
 import { correct, quiz } from '../../../../../App';
 import { wrong } from '../../../../../App';

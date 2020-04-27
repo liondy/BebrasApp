@@ -10,10 +10,10 @@ function Penjelasan(){
     return(
         <ScrollView>
             <Text style={styles.txIsiPenjelasan}>
-            Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
-            titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
-            ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
-            bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
+                Kamu dapat menggambar suatu diagram dengan kota digambarkan sebagai 
+                titik dan jalur bus sebagai garis yang tidak berpotongan, seperti 
+                ditunjukkan dalam gambar berikut ini. Dalam gambar terlihat jelas 
+                bahwa tidakmungkin mencapai Kotalima dari Kotatiga.
             </Text>
             <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>        
