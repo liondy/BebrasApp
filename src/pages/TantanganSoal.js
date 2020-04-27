@@ -374,7 +374,7 @@ function TantanganSoal({route,navigation}){
         BackHandler.addEventListener('hardwareBackPress', function(){
             Alert.alert(
                 'Keluar?',
-                'Apakah kamu yakin ingin keluar dari game ini?',
+                'Apakah kamu yakin ingin keluar dari soal ini?',
                 [
                     {
                         text: 'Tidak',

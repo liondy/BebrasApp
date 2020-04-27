@@ -13,7 +13,7 @@ function DeskripsiSoal(){
         <ImageBackground
         style={styles.background}
         source={require('./img/bgsoal.png')}>
-            <View style={{padding: 10, marginBottom: 10}}>
+            <View style={{padding: 10, marginBottom: 30}}>
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Bebras menemukan sebuah lorong yang terdiri dari sederet kotak, 

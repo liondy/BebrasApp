@@ -4,7 +4,9 @@ import {
     View,
     Image,
     ImageBackground,
-    FlatList
+    FlatList,
+    BackHandler,
+    Alert
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -133,6 +135,25 @@ function Home({ navigation }) {
         updateWearNow(new Map(JSON.parse(lastWearItems)));
     }
     React.useEffect(()=>{
+        BackHandler.addEventListener('hardwareBackPress', function(){
+            Alert.alert(
+                'Keluar?',
+                'Apakah kamu yakin ingin keluar dari game ini?',
+                [
+                    {
+                        text: 'Tidak',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    {text: 'Iya', onPress: () => {
+                        backgroundSong.stop(),
+                        BackHandler.exitApp()
+                    }},
+                ],
+                {cancelable: false},
+            );
+            return true;
+        });
         const unsubscribe = navigation.addListener('focus',() => {
             updateItems();
         })
