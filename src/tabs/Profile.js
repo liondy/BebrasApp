@@ -5,7 +5,8 @@ import {
     Text,
     Image,
     FlatList,
-    ImageBackground
+    ImageBackground,
+    ScrollView
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from 'react-native-elements';
@@ -102,17 +103,18 @@ const DATA = [
 
 const ProfileStack = createStackNavigator();
 
-function ListBarang({item,id,nama,selectedid}){
+function ListBarang({item,id,selectedid,status}){
     if (bought.get(id)){
+        let txt = status.get(id)==0?"pakai":"lepas";
         return(
-            <TouchableOpacity
-                onPressIn={() => selectedid(id)}>
-                <Button
-                    type='outline'
-                    buttonStyle={{width: 150, height: 150, marginTop: 5, marginBottom: 5, marginLeft: 5, marginRight: 10}}
-                    icon = {item}
-                />
-            </TouchableOpacity>
+            <Button
+                type='solid'
+                onPress={() => selectedid(id)}
+                buttonStyle={styles.btnAcc}
+                icon = {item}
+                title = {txt}
+                titleStyle={styles.txtAcc}
+            />
         );
     }
     else{
@@ -124,7 +126,7 @@ function ListBarang({item,id,nama,selectedid}){
 
 let klikId = 0
 
-function Profile({navigation}) {
+function Profile() {
     const[isBeanie,lepasBeanie] = React.useState(wear.get("1"));
     const[isKacamata1,lepasKacamata1] = React.useState(wear.get("2"));
     const[isKacamata2,lepasKacamata2] = React.useState(wear.get("3"));
@@ -134,23 +136,6 @@ function Profile({navigation}) {
     const[isDress,lepasDress] = React.useState(wear.get("7"));
     const[isKaos,lepasKaos] = React.useState(wear.get("8"));
     const[isKemeja,lepasKemeja] = React.useState(wear.get("9"));
-
-    navigation.setOptions({
-        headerRight: () => (
-            <TouchableOpacity
-                style={{marginRight: 15}}
-                onPress={() => {navigation.navigate('Beranda',{
-                    screen: 'Home'
-                })
-                }}>
-                <Button
-                    type='outline'
-                    buttonStyle={styles.settings_button}
-                    title="Simpan"
-                />
-            </TouchableOpacity>
-        ),
-    });
 
     const selectedid = (id) => {
         klikId = id;
@@ -352,9 +337,6 @@ function Profile({navigation}) {
                         </View>
                     </ImageBackground>
                 </View>
-                <View>
-                    
-                </View>
                 <View
                     style={styles.acc}
                 >
@@ -379,6 +361,7 @@ function Profile({navigation}) {
                                     id={item.id} 
                                     nama={item.nama}
                                     selectedid={selectedid}
+                                    status={wear}
                                 />
                             )}
                             extraData={bought}
@@ -422,7 +405,7 @@ const styles = StyleSheet.create({
     content:{
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     background:{
         width:'100%',
@@ -441,7 +424,8 @@ const styles = StyleSheet.create({
     },
     acc:{
         height: '50%',
-        marginBottom: 50
+        marginBottom: 50,
+        paddingHorizontal: 20
     },
     character:{
         width: 300,
@@ -462,6 +446,25 @@ const styles = StyleSheet.create({
         resizeMode : 'stretch',
         width : '100%',
         height : '85%',
+    },
+    txtAcc: {
+        alignSelf: 'flex-start',
+        marginLeft: -50,
+        marginTop: -10,
+        fontSize: 20,
+        color: '#eb2f06'
+    },
+    btnAcc: {
+        borderRadius: 20,
+        borderColor: 'red',
+        borderWidth: 1.7,
+        width: 170,
+        height: 170,
+        marginTop: 5,
+        marginBottom: 5,
+        marginLeft: 5,
+        marginRight: 10,
+        backgroundColor: '#f6c695',
     },
     lepasBeanie : {
         resizeMode: 'stretch',

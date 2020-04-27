@@ -84,7 +84,7 @@ BackHandler.addEventListener('hardwareBackPress',function(){
 
 const getLastUserDiamond = async () => {
   const lastDiamond = await getDiamond();
-  setDiamond(parseInt(lastDiamond));
+  setDiamond(parseInt(15000));
 }
 
 var diamond = 0;
