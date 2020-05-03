@@ -19,7 +19,7 @@ function DeskripsiSoal(){
                 Violeta ingin mengirim pesan kepada Leo. Pesan dipeceh menjadi potongan
                 maksimal 3 huruf yang dituliskan dalam kartu dan diberi nomor urut.
                 Untuk mengerti pesan aslinya, Leo harus mengurutkan kartu sesuai nomor
-                kartu.{"\n"}
+                kartu.{"\n"}{"\n"}
                 Misalnya, untuk mengirim pesan DanceTime, Violeta membuat 3 kartu 
                 sebagai berikut : 
             </Text>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         textAlign: 'justify'
     },
     gmbr: {
-        resizeMode: 'stretch',
+        resizeMode: 'contain',
         width: 250,
         height: 100,
         alignSelf: 'center'

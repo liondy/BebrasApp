@@ -20,7 +20,6 @@ function DeskripsiSoal(){
                 bahwa harganya tak boleh lebih dari Rp. 100.000,- rupiah. 
                 Sarah menyukai sepatu bot berwarna hitam.{"\n"}
                 </Text>
-            
                 <Image style={styles.gmbr} source={require('./img/gbr1.png')}/>
         </ScrollView>
         </View>

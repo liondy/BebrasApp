@@ -19,12 +19,13 @@ function DeskripsiSoal(){
                 Bebras menemukan sebuah lorong yang terdiri dari sederet kotak, 
                 setiap kotak berisi permen loli atau sikat gigi. Ia harus 
                 berjalan sepanjang lorong menuju ujung kanan dan tidak boleh 
-                mundur atau balik arah ke ujung kiri. Bebras dapat menggosok 
-                gigi kalau menemukan sikat gigi. Setelah makan dua permen loli,
+                mundur atau balik arah ke ujung kiri.{"\n"}{"\n"}
+                Bebras dapat menggosok gigi kalau menemukan sikat gigi. Setelah makan dua permen loli,
                 ia harus menggosok gigi sebelum boleh makan lagi. Pada setiap kotak,
                 ia hanya dapat makan loli, atau menggosok gigi, atau hanya berjalan.
                 Dia tak boleh membawa loli ataupun sikat gigi ke langkah berikutnya.{"\n"}
                 </Text>
+                <Text style={{fontSize: 14, color: '#FF5733', fontWeight: 'bold'}}>Gambar ini dapat dislide ke kanan.</Text>
                 <ScrollView horizontal={true}>
                 <Image style={styles.gbr} source={require('./img/gbr1.png')}/>
                 </ScrollView>

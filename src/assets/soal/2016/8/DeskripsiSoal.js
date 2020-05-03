@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         textAlign: 'justify'
     },
     gmbr: {
-        resizeMode: 'stretch',
+        resizeMode: 'contain',
         width: 300,
         height: 200,
         marginLeft: 20,

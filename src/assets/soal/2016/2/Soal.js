@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         height : 350
     },
     img : {
-        resizeMode : 'stretch',
+        resizeMode : 'contain',
         width : 350,
         height : 150,
         alignSelf : 'center'

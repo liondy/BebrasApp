@@ -17,11 +17,11 @@ function DeskripsiSoal(){
         <ScrollView>
                 <Text style={styles.textSoal} numberOflines={10}>
                 Sebuah kelompok berjumlah 4 berang-berang memainkan 
-                "kursi-musik" yaitu berpindah kursi saat musik dimainkan.{"\n"}
+                "kursi-musik" yaitu berpindah kursi saat musik dimainkan.{"\n"}{"\n"}
 
                 Saat musik dimulai, setiap berang-berang harus berpindah 
                 ke kursi searah dengan putaran jarum jam. Satu kursi dapat 
-                ditempati oleh lebih dari satu berang-berang.{"\n"}
+                ditempati oleh lebih dari satu berang-berang.{"\n"}{"\n"}
 
                 Pada setiap putaran, Berang-berang (A) akan berpindah 
                 tiga (3) kursi. Berang-berang (C) akan berpindah dua 

@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
         width: 350,
         height: 300,
         alignSelf:'center',
-        resizeMode: 'stretch'
+        resizeMode: 'contain',
+        marginTop: -60
     }
 })
 

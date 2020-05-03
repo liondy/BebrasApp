@@ -17,10 +17,11 @@ function DeskripsiSoal(){
             <ScrollView>
             <Text style={styles.textSoal} numberOflines={10}>
             Bebras Jordan menebang pohon dan memotongnya sehingga setiap 
-            pohon menghasilkan batang pohon yang panjangnya 10 meter.
+            pohon menghasilkan batang pohon yang panjangnya 10 meter.{"\n"}{"\n"}
                 
             Bebras Ali ingin membangun bendungan dan membutuhkan kayu sepanjang
-            4 meter sebanyak 7 batang, dan kayu sepanjang 3 meter sebanyak 7 batang. 
+            4 meter sebanyak 7 batang, dan kayu sepanjang 3 meter sebanyak 7 batang.{"\n"}{"\n"}
+            
             Ali dapat memotong batang pohon yang sudah dipotong Jordan sesuai dengan 
             keperluannya. Jordan ingin memberikan batang pohon kepada Ali dengan 
             jumlah sesedikit mungkin.{"\n"}

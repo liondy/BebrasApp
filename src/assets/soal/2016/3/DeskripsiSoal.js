@@ -18,7 +18,7 @@ function DeskripsiSoal(){
                 <Text style={styles.textSoal} numberOflines={10}>
                     Bebras Zac dan bebras Pan ingin melakukan perjalanan sepanjang
                     lintasan seperti pada gambar di bawah ini. Zac ingin berjalan dari 
-                    titik 1 ke titik 2 dan Pan ingin berjalan dari titik 2 ke titik 1.{"\n"}
+                    titik 1 ke titik 2 dan Pan ingin berjalan dari titik 2 ke titik 1.{"\n"}{"\n"}
 
                     Sepanjang lintasan, terdapat huruf-huruf (‘B’, ‘E’,’R’,’A’, dan ‘S’)
                     yang harus Zac dan Pan catat. Zac dan Pan hanya dapat mencatat huruf
